@@ -38,7 +38,7 @@
           position: relative;
           height: calc(100% - 5.4rem); }
           .todo-application .sidebar .todo-sidebar .todo-app-menu .sidebar-menu-list .filter-label {
-            font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+            font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
             letter-spacing: 1px;
             color: #bac0c7; }
           .todo-application .sidebar .todo-sidebar .todo-app-menu .sidebar-menu-list .list-group .list-group-item {
@@ -49,7 +49,7 @@
             background-color: transparent;
             border-radius: 0.25rem !important; }
             .todo-application .sidebar .todo-sidebar .todo-app-menu .sidebar-menu-list .list-group .list-group-item.active {
-              background-color: #00b5b8 !important;
+              background-color: #acc937 !important;
               color: #fff; }
   .todo-application .todo-new-task-sidebar {
     /* todo-new-task-sidebar */
@@ -85,7 +85,7 @@
       .todo-application .todo-new-task-sidebar .close-icon i {
         font-size: 1.75rem; }
     .todo-application .todo-new-task-sidebar .task-title {
-      font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+      font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
       font-size: 1.1rem; }
     .todo-application .todo-new-task-sidebar .assigned .select-box .select2-container .select2-selection--single {
       border-color: #E4E7ED !important; }
@@ -117,10 +117,10 @@
         color: #404e67 !important; }
       .todo-application .todo-new-task-sidebar .select2-assign-label + .select2-container .select2-selection__rendered .select2-selection__choice[title="Frontend"] {
         background-color: #E2ECFF !important;
-        color: #00b5b8 !important; }
+        color: #acc937 !important; }
       .todo-application .todo-new-task-sidebar .select2-assign-label + .select2-container .select2-selection__rendered .select2-selection__choice[title="Backend"] {
         background-color: #D2FFE8 !important;
-        color: #16d39a !important; }
+        color: #acc937 !important; }
       .todo-application .todo-new-task-sidebar .select2-assign-label + .select2-container .select2-selection__rendered .select2-selection__choice[title="Issue"] {
         background-color: #FFDEDE !important;
         color: #ff7588 !important; }
@@ -216,7 +216,7 @@
               opacity: 1;
               transition: all .35s ease 0s !important; }
           .todo-application .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item .todo-title {
-            font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+            font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
             color: #404e67; }
           .todo-application .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item .todo-item-favorite,
           .todo-application .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item .todo-item-delete {

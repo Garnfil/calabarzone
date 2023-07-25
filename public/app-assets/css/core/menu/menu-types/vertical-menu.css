@@ -120,8 +120,8 @@ body.vertical-layout.vertical-menu.menu-collapsed .main-menu {
     color: #fff;
     text-transform: uppercase;
     text-align: left;
-    background-color: #00b5b8;
-    border-color: #00b5b8;
+    background-color: #acc937;
+    border-color: #acc937;
     padding: 13px 20px; }
   body.vertical-layout.vertical-menu.menu-collapsed .main-menu .main-menu-content > ul.menu-content {
     left: 60px;
@@ -170,8 +170,8 @@ body.vertical-layout.vertical-menu.menu-collapsed .main-menu {
         color: #fff;
         text-transform: uppercase;
         text-align: left;
-        background-color: #00b5b8;
-        border-color: #00b5b8;
+        background-color: #acc937;
+        border-color: #acc937;
         padding: 11px 20px; }
       body.vertical-layout.vertical-menu.menu-collapsed .main-menu .navigation > li > a > i {
         margin-right: 0;
@@ -287,8 +287,8 @@ body.vertical-layout.vertical-menu.menu-collapsed.menu-flipped .footer {
 
 /*=========================================================================================
 	File Name: vertical-overlay-menu.scss
-	Description: A overlay style vertical menu with show and hide support. It support 
-	light & dark version, filpped layout, right side icons, native scroll and borders menu 
+	Description: A overlay style vertical menu with show and hide support. It support
+	light & dark version, filpped layout, right side icons, native scroll and borders menu
 	item seperation.
 	----------------------------------------------------------------------------------------
 	Item Name: Stack - Responsive Admin Theme

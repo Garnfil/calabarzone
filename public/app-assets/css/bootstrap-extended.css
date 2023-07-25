@@ -544,10 +544,10 @@ html [type="button"],
   background-color: #cccccc; }
 
 .btn-primary ~ .dropdown-menu .dropdown-item.active {
-  background-color: #00b5b8; }
+  background-color: #acc937; }
 
 .btn-success ~ .dropdown-menu .dropdown-item.active {
-  background-color: #16d39a; }
+  background-color: #acc937; }
 
 .btn-danger ~ .dropdown-menu .dropdown-item.active {
   background-color: #ff7588; }
@@ -676,7 +676,7 @@ html [type="button"],
 .header-navbar {
   padding: 0px;
   min-height: 4rem;
-  font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+  font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
   transition: 300ms ease all;
   /* For sm screen*/ }
   .header-navbar .navbar-wrapper {
@@ -855,7 +855,7 @@ html [type="button"],
 .navbar-semi-dark {
   background: #fff; }
   .navbar-semi-dark .navbar-header {
-    background: #404E67; }
+    background: #16468a; }
     .navbar-semi-dark .navbar-header .brand-text {
       color: #fff; }
   .navbar-semi-dark .navbar-nav li {
@@ -893,7 +893,7 @@ html [type="button"],
     display: flex; }
 
 .bg-mega {
-  background: linear-gradient(to right, #00b5b8, #16d39a);
+  background: linear-gradient(to right, #acc937, #acc937);
   border-radius: 0.5rem; }
 
 .navigation-main .mega-dropdown-menu,
@@ -923,7 +923,7 @@ html [type="button"],
         .navigation-main .mega-dropdown-menu ul li a:hover,
         .navbar-nav .mega-dropdown-menu ul li a:hover {
           text-decoration: none;
-          color: #00b5b8; }
+          color: #acc937; }
         .navigation-main .mega-dropdown-menu ul li a:focus,
         .navbar-nav .mega-dropdown-menu ul li a:focus {
           text-decoration: none;
@@ -1272,7 +1272,7 @@ html [type="button"],
 
 .breadcrumb {
   font-size: 0.9rem;
-  font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+  font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
   text-transform: uppercase;
   background-color: transparent;
   padding: 0 0 0.75rem 0rem; }
@@ -1291,7 +1291,7 @@ html [type="button"],
 .badge {
   color: #fff;
   font-weight: 400;
-  background-color: #00b5b8; }
+  background-color: #acc937; }
   .badge[class*='badge-'] [class*='icon-'] {
     line-height: 1; }
     .badge[class*='badge-'] [class*='icon-'] ~ span {
@@ -1335,16 +1335,16 @@ html [type="button"],
     background-color: #2c3648; }
 
 .badge-primary {
-  background-color: #00b5b8; }
+  background-color: #acc937; }
   .badge-primary.badge-glow {
-    box-shadow: 0px 0px 10px #00b5b8; }
+    box-shadow: 0px 0px 10px #acc937; }
   .badge-primary[href]:hover, .badge-primary[href]:focus {
     background-color: #008385; }
 
 .badge-success {
-  background-color: #16d39a; }
+  background-color: #acc937; }
   .badge-success.badge-glow {
-    box-shadow: 0px 0px 10px #16d39a; }
+    box-shadow: 0px 0px 10px #acc937; }
   .badge-success[href]:hover, .badge-success[href]:focus {
     background-color: #11a578; }
 
@@ -1477,14 +1477,14 @@ html [type="button"],
     background-color: #ffffff;
     color: #55595c; }
     .nav.nav-pills.nav-pill-with-active-bordered .nav-item a.nav-link.active {
-      border: 1px solid #00b5b8;
-      color: #00b5b8; }
+      border: 1px solid #acc937;
+      color: #acc937; }
   .nav.nav-pills.nav-active-bordered-pill .nav-item a.nav-link {
     color: #55595c; }
     .nav.nav-pills.nav-active-bordered-pill .nav-item a.nav-link.active {
-      border: 1px solid #00b5b8;
+      border: 1px solid #acc937;
       border-radius: 0.25rem;
-      color: #00b5b8;
+      color: #acc937;
       background-color: #ffffff; }
   .nav.nav-pills.nav-pill-toolbar.nav-stacked .nav-item ~ .nav-item a.nav-link {
     border-left: 1px solid #d3d3d3;
@@ -1556,9 +1556,9 @@ html [type="button"],
       .nav.nav-tabs.nav-justified .nav-item a.nav-link .active {
         background-color: #fff; }
   .nav.nav-tabs.nav-top-border .nav-item a {
-    color: #16d39a; }
+    color: #acc937; }
     .nav.nav-tabs.nav-top-border .nav-item a.nav-link.active {
-      border-top: 3px solid #16d39a;
+      border-top: 3px solid #acc937;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       color: #555; }

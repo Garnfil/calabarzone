@@ -6,7 +6,7 @@
   border : none;
 }
 .menu-collapsed .main-menu .navigation > li.open > a {
-  border-right : 4px solid #00B5B8;
+  border-right : 4px solid #acc937;
 }
 
 .dropdown-user.nav-item i {

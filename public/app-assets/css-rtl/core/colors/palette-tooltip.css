@@ -21,14 +21,14 @@
 }
 
 .tooltip-bg-primary .tooltip-inner {
-  background-color : #00B5B8;
+  background-color : #acc937;
 }
 .tooltip-bg-primary .tooltip-inner:before {
-  border-top-color : #00B5B8 !important;
+  border-top-color : #acc937 !important;
 }
 
 .tooltip-text-primary .tooltip-inner {
-  color : #00B5B8;
+  color : #acc937;
 }
 
 .tooltip-bg-secondary .tooltip-inner {
@@ -43,14 +43,14 @@
 }
 
 .tooltip-bg-success .tooltip-inner {
-  background-color : #16D39A;
+  background-color : #acc937;
 }
 .tooltip-bg-success .tooltip-inner:before {
-  border-top-color : #16D39A !important;
+  border-top-color : #acc937 !important;
 }
 
 .tooltip-text-success .tooltip-inner {
-  color : #16D39A;
+  color : #acc937;
 }
 
 .tooltip-bg-info .tooltip-inner {

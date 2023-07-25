@@ -158,13 +158,13 @@
           content: '';
           display: inline-block;
           border: 0 0 7px 7px solid transparent;
-          border-bottom-color: #00b5b8;
+          border-bottom-color: #acc937;
           border-top-color: rgba(0, 0, 0, 0.2);
           position: absolute;
           bottom: 4px;
           right: 4px; }
       .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
-        background-color: #00b5b8;
+        background-color: #acc937;
         color: #fff;
         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
       .bootstrap-datetimepicker-widget table td.active.today:before {
@@ -184,7 +184,7 @@
         .bootstrap-datetimepicker-widget table td span:hover {
           background: #98a4b8; }
         .bootstrap-datetimepicker-widget table td span.active {
-          background-color: #00b5b8;
+          background-color: #acc937;
           color: #fff;
           text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
         .bootstrap-datetimepicker-widget table td span.old {

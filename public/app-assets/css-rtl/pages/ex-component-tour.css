@@ -2,11 +2,11 @@
   background : transparent;
 }
 .shepherd-element.shepherd-element-attached-right .shepherd-arrow {
-  border-right-color : #00B5B8 !important;
+  border-right-color : #acc937 !important;
   border-bottom-color : transparent !important;
 }
 .shepherd-element .shepherd-arrow {
-  border-bottom-color : #00B5B8 !important;
+  border-bottom-color : #acc937 !important;
 }
 
 .tour-container {
@@ -19,7 +19,7 @@
   color : #FFFFFF;
 }
 .tour-container.shadow-md .shepherd-content, .tour-container.bg-purple-dark .shepherd-content {
-  background-color : #00B5B8 !important;
+  background-color : #acc937 !important;
   border-radius : 0.5rem;
   padding : 10px;
 }

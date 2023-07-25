@@ -39,12 +39,12 @@
 }
 
 .form-group.validate .help-block, .form-group.validate .help-inline {
-  color : #16D39A;
+  color : #acc937;
 }
 
 .form-group.validate input, .form-group.validate select, .form-group.validate textarea {
-  color : #16D39A;
-  border-color : #16D39A;
+  color : #acc937;
+  border-color : #acc937;
 }
 
 .form-group.validate input:focus, .form-group.validate select:focus, .form-group.validate textarea:focus {
@@ -53,9 +53,9 @@
 }
 
 .form-group.validate .input-prepend .add-on, .form-group.validate .input-append .add-on {
-  color : #16D39A;
+  color : #acc937;
   background-color : #DDF6F0;
-  border-color : #16D39A;
+  border-color : #acc937;
 }
 
 .form-group .help-block ul {
@@ -64,6 +64,6 @@
 
 /*Bootstrap TouchPin*/
 .input-group.bootstrap-touchspin .input-group-prepend .btn.btn-default.bootstrap-touchspin-down, .input-group.bootstrap-touchspin .input-group-prepend .btn.btn-default.bootstrap-touchspin-up, .input-group.bootstrap-touchspin .input-group-append .btn.btn-default.bootstrap-touchspin-down, .input-group.bootstrap-touchspin .input-group-append .btn.btn-default.bootstrap-touchspin-up {
-  background-color : #00B5B8;
+  background-color : #acc937;
   color : #FFFFFF;
 }

@@ -46,18 +46,18 @@
   border: none;
   border-radius: 50%;
   background: #FFF;
-  border: 5px solid #00b5b8; }
+  border: 5px solid #acc937; }
   .noUi-handle:after, .noUi-handle:before {
     display: none; }
 
 .circle-filled .noUi-handle {
-  background: #00b5b8;
+  background: #acc937;
   border-radius: 50%; }
   .circle-filled .noUi-handle:after, .circle-filled .noUi-handle:before {
     display: none; }
 
 .square .noUi-handle {
-  background: #00b5b8;
+  background: #acc937;
   border-radius: 3px; }
   .square .noUi-handle:before {
     display: block;
@@ -89,7 +89,7 @@
   top: 2px; }
 
 .noUi-connect {
-  background: #00b5b8;
+  background: #acc937;
   box-shadow: none; }
 
 .noUi-vertical {
@@ -102,7 +102,7 @@
     top: -5px;
     left: -6px; }
   .noUi-vertical.square .noUi-handle {
-    background: #00b5b8;
+    background: #acc937;
     border-radius: 3px; }
     .noUi-vertical.square .noUi-handle:before {
       display: block;

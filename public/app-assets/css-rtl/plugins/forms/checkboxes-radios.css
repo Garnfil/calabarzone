@@ -32,7 +32,7 @@
 
 /* Image Checkbox selected*/
 input[type='checkbox']:checked + img.img-thumbnail {
-  background-color : #00B5B8;
+  background-color : #acc937;
   color : #999966;
-  border-color : #00B5B8;
+  border-color : #acc937;
 }

@@ -103,56 +103,56 @@
     background-color: #000000 !important; }
 
 .loader-primary div {
-  background-color: #00b5b8 !important; }
+  background-color: #acc937 !important; }
 
 .loader-primary.ball-clip-rotate div {
-  border-color: #00b5b8 !important;
+  border-color: #acc937 !important;
   border-bottom-color: transparent !important;
   background-color: transparent !important; }
 
 .loader-primary.ball-clip-rotate-pulse div:first-child {
-  background: #00b5b8 !important; }
+  background: #acc937 !important; }
 
 .loader-primary.ball-clip-rotate-pulse div:last-child {
   background: transparent !important;
-  border-color: #00b5b8 transparent #00b5b8 transparent !important; }
+  border-color: #acc937 transparent #acc937 transparent !important; }
 
 .loader-primary.ball-clip-rotate-multiple div {
   background-color: transparent !important;
-  border-color: transparent #00b5b8 transparent #00b5b8 !important; }
+  border-color: transparent #acc937 transparent #acc937 !important; }
 
 .loader-primary.ball-rotate div:before, .loader-primary.ball-rotate div:after {
-  background-color: #00b5b8 !important; }
+  background-color: #acc937 !important; }
 
 .loader-primary.ball-triangle-path div {
   background-color: transparent !important;
-  border-color: #00b5b8 !important; }
+  border-color: #acc937 !important; }
 
 .loader-primary.ball-scale-ripple div {
   background-color: transparent !important;
-  border-color: #00b5b8 !important; }
+  border-color: #acc937 !important; }
 
 .loader-primary.ball-scale-ripple-multiple div {
   background-color: transparent !important;
-  border-color: #00b5b8 !important; }
+  border-color: #acc937 !important; }
 
 .loader-primary.triangle-skew-spin div {
   background-color: transparent !important;
-  border-bottom-color: #00b5b8 !important; }
+  border-bottom-color: #acc937 !important; }
 
 .loader-primary.semi-circle-spin div {
-  background-image: linear-gradient(transparent 0%, transparent 70%, #00b5b8 30%, #00b5b8 100%);
+  background-image: linear-gradient(transparent 0%, transparent 70%, #acc937 30%, #acc937 100%);
   background-color: transparent !important; }
 
 .loader-primary.fading-circle div {
   background-color: transparent !important; }
   .loader-primary.fading-circle div:before {
-    background-color: #00b5b8 !important; }
+    background-color: #acc937 !important; }
 
 .loader-primary.folding-cube div {
   background-color: transparent !important; }
   .loader-primary.folding-cube div:before {
-    background-color: #00b5b8 !important; }
+    background-color: #acc937 !important; }
 
 .loader-secondary div {
   background-color: #404e67 !important; }
@@ -207,56 +207,56 @@
     background-color: #404e67 !important; }
 
 .loader-success div {
-  background-color: #16d39a !important; }
+  background-color: #acc937 !important; }
 
 .loader-success.ball-clip-rotate div {
-  border-color: #16d39a !important;
+  border-color: #acc937 !important;
   border-bottom-color: transparent !important;
   background-color: transparent !important; }
 
 .loader-success.ball-clip-rotate-pulse div:first-child {
-  background: #16d39a !important; }
+  background: #acc937 !important; }
 
 .loader-success.ball-clip-rotate-pulse div:last-child {
   background: transparent !important;
-  border-color: #16d39a transparent #16d39a transparent !important; }
+  border-color: #acc937 transparent #acc937 transparent !important; }
 
 .loader-success.ball-clip-rotate-multiple div {
   background-color: transparent !important;
-  border-color: transparent #16d39a transparent #16d39a !important; }
+  border-color: transparent #acc937 transparent #acc937 !important; }
 
 .loader-success.ball-rotate div:before, .loader-success.ball-rotate div:after {
-  background-color: #16d39a !important; }
+  background-color: #acc937 !important; }
 
 .loader-success.ball-triangle-path div {
   background-color: transparent !important;
-  border-color: #16d39a !important; }
+  border-color: #acc937 !important; }
 
 .loader-success.ball-scale-ripple div {
   background-color: transparent !important;
-  border-color: #16d39a !important; }
+  border-color: #acc937 !important; }
 
 .loader-success.ball-scale-ripple-multiple div {
   background-color: transparent !important;
-  border-color: #16d39a !important; }
+  border-color: #acc937 !important; }
 
 .loader-success.triangle-skew-spin div {
   background-color: transparent !important;
-  border-bottom-color: #16d39a !important; }
+  border-bottom-color: #acc937 !important; }
 
 .loader-success.semi-circle-spin div {
-  background-image: linear-gradient(transparent 0%, transparent 70%, #16d39a 30%, #16d39a 100%);
+  background-image: linear-gradient(transparent 0%, transparent 70%, #acc937 30%, #acc937 100%);
   background-color: transparent !important; }
 
 .loader-success.fading-circle div {
   background-color: transparent !important; }
   .loader-success.fading-circle div:before {
-    background-color: #16d39a !important; }
+    background-color: #acc937 !important; }
 
 .loader-success.folding-cube div {
   background-color: transparent !important; }
   .loader-success.folding-cube div:before {
-    background-color: #16d39a !important; }
+    background-color: #acc937 !important; }
 
 .loader-info div {
   background-color: #2dcee3 !important; }

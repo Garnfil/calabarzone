@@ -70,7 +70,7 @@
   box-shadow : none;
 }
 .email-application .app-content .sidebar .email-app-sidebar .email-app-menu .list-group .list-group-item.active {
-  background-color : #00B5B8;
+  background-color : #acc937;
 }
 .email-application .app-content .sidebar .email-app-sidebar .email-app-menu i {
   font-size : 1.3rem;
@@ -20419,7 +20419,7 @@
   margin-left : 0.5rem;
 }
 .email-application .app-content .sidebar-label {
-  font-family : 'Montserrat', Georgia, 'Times New Roman', Times, serif;
+  font-family : 'Poppins', Georgia, 'Times New Roman', Times, serif;
   letter-spacing : 1px;
   color : #98A4B8;
   margin : 1.8rem 1rem 0.5rem 0;

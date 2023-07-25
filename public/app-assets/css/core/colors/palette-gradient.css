@@ -17,11 +17,11 @@
   background-repeat: repeat-x; }
 
 .bg-gradient-x2-primary {
-  background-image: linear-gradient(to right, #00e7eb, #00b5b8 50%, #06fbff);
+  background-image: linear-gradient(to right, #00e7eb, #acc937 50%, #06fbff);
   background-repeat: no-repeat; }
 
 .bg-gradient-y2-primary {
-  background-image: linear-gradient(#00e7eb, #00b5b8 50%, #06fbff);
+  background-image: linear-gradient(#00e7eb, #acc937 50%, #06fbff);
   background-repeat: no-repeat; }
 
 .bg-gradient-radial-primary {
@@ -77,11 +77,11 @@
   background-repeat: repeat-x; }
 
 .bg-gradient-x2-success {
-  background-image: linear-gradient(to right, #32eab2, #16d39a 50%, #49ecbb);
+  background-image: linear-gradient(to right, #32eab2, #acc937 50%, #49ecbb);
   background-repeat: no-repeat; }
 
 .bg-gradient-y2-success {
-  background-image: linear-gradient(#32eab2, #16d39a 50%, #49ecbb);
+  background-image: linear-gradient(#32eab2, #acc937 50%, #49ecbb);
   background-repeat: no-repeat; }
 
 .bg-gradient-radial-success {

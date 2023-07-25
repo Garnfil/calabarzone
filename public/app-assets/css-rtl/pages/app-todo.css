@@ -46,7 +46,7 @@
   height : calc(100% - 5.4rem);
 }
 .todo-application .sidebar .todo-sidebar .todo-app-menu .sidebar-menu-list .filter-label {
-  font-family : 'Montserrat', Georgia, 'Times New Roman', Times, serif;
+  font-family : 'Poppins', Georgia, 'Times New Roman', Times, serif;
   letter-spacing : 1px;
   color : #BAC0C7;
 }
@@ -59,7 +59,7 @@
   border-radius : 0.25rem !important;
 }
 .todo-application .sidebar .todo-sidebar .todo-app-menu .sidebar-menu-list .list-group .list-group-item.active {
-  background-color : #00B5B8 !important;
+  background-color : #acc937 !important;
   color : #FFFFFF;
 }
 .todo-application .todo-new-task-sidebar {
@@ -110,7 +110,7 @@
   font-size : 1.75rem;
 }
 .todo-application .todo-new-task-sidebar .task-title {
-  font-family : 'Montserrat', Georgia, 'Times New Roman', Times, serif;
+  font-family : 'Poppins', Georgia, 'Times New Roman', Times, serif;
   font-size : 1.1rem;
 }
 .todo-application .todo-new-task-sidebar .assigned .select-box .select2-container .select2-selection--single {
@@ -154,11 +154,11 @@
 }
 .todo-application .todo-new-task-sidebar .select2-assign-label + .select2-container .select2-selection__rendered .select2-selection__choice[title='Frontend'] {
   background-color : #E2ECFF !important;
-  color : #00B5B8 !important;
+  color : #acc937 !important;
 }
 .todo-application .todo-new-task-sidebar .select2-assign-label + .select2-container .select2-selection__rendered .select2-selection__choice[title='Backend'] {
   background-color : #D2FFE8 !important;
-  color : #16D39A !important;
+  color : #acc937 !important;
 }
 .todo-application .todo-new-task-sidebar .select2-assign-label + .select2-container .select2-selection__rendered .select2-selection__choice[title='Issue'] {
   background-color : #FFDEDE !important;
@@ -290,7 +290,7 @@
           transition : all 0.35s ease 0s !important;
 }
 .todo-application .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item .todo-title {
-  font-family : 'Montserrat', Georgia, 'Times New Roman', Times, serif;
+  font-family : 'Poppins', Georgia, 'Times New Roman', Times, serif;
   color : #404E67;
 }
 .todo-application .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item .todo-item-favorite, .todo-application .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item .todo-item-delete {

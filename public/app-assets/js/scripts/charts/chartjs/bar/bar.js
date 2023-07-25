@@ -9,8 +9,7 @@
 
 // Bar chart
 // ------------------------------
-$(window).on("load", function(){
-
+$(window).on("load", function () {
     //Get the context of the Chart canvas element we want to select
     var ctx = $("#bar-chart");
 
@@ -21,69 +20,76 @@ $(window).on("load", function(){
         elements: {
             rectangle: {
                 borderWidth: 2,
-                borderColor: 'rgb(0, 255, 0)',
-                borderSkipped: 'left'
-            }
+                borderColor: "rgb(0, 255, 0)",
+                borderSkipped: "left",
+            },
         },
         responsive: true,
         maintainAspectRatio: false,
-        responsiveAnimationDuration:500,
+        responsiveAnimationDuration: 500,
         legend: {
-            position: 'top',
+            position: "top",
         },
         scales: {
-            xAxes: [{
-                display: true,
-                gridLines: {
-                    color: "#f3f3f3",
-                    drawTicks: false,
-                },
-                scaleLabel: {
+            xAxes: [
+                {
                     display: true,
-                }
-            }],
-            yAxes: [{
-                display: true,
-                gridLines: {
-                    color: "#f3f3f3",
-                    drawTicks: false,
+                    gridLines: {
+                        color: "#f3f3f3",
+                        drawTicks: false,
+                    },
+                    scaleLabel: {
+                        display: true,
+                    },
                 },
-                scaleLabel: {
+            ],
+            yAxes: [
+                {
                     display: true,
-                }
-            }]
+                    gridLines: {
+                        color: "#f3f3f3",
+                        drawTicks: false,
+                    },
+                    scaleLabel: {
+                        display: true,
+                    },
+                },
+            ],
         },
         title: {
             display: false,
-            text: 'Chart.js Horizontal Bar Chart'
-        }
+            text: "Chart.js Horizontal Bar Chart",
+        },
     };
 
     // Chart Data
     var chartData = {
         labels: ["January", "February", "March", "April"],
-        datasets: [{
-            label: "My First dataset",
-            data: [65, 59, 80, 81],
-            backgroundColor: "#16D39A",
-            hoverBackgroundColor: "rgba(22,211,154,.9)",
-            borderColor: "transparent"
-        }, {
-            label: "My Second dataset",
-            data: [28, 48, 40, 19],
-            backgroundColor: "#F98E76",
-            hoverBackgroundColor: "rgba(249,142,118,.9)",
-            borderColor: "transparent"
-        }]
+        datasets: [
+            {
+                label: "My First dataset",
+                data: [65, 59, 80, 81],
+                backgroundColor: "#acc937",
+                hoverBackgroundColor: "rgba(22,211,154,.9)",
+                borderColor: "transparent",
+            },
+            {
+                label: "My Second dataset",
+                data: [28, 48, 40, 19],
+                backgroundColor: "#F98E76",
+                hoverBackgroundColor: "rgba(249,142,118,.9)",
+                borderColor: "transparent",
+            },
+        ],
     };
 
     var config = {
-        type: 'horizontalBar',
+        type: "horizontalBar",
 
         // Chart Options
-        options : chartOptions,
+        options: chartOptions,
 
-        data : chartData
+        data: chartData,
     };
 
     // Create the chart

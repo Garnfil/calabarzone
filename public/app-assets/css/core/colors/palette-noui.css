@@ -23,16 +23,16 @@
   background: #000000 !important; }
 
 .slider-primary .noUi-connect {
-  background: #00b5b8 !important; }
+  background: #acc937 !important; }
 
 .slider-primary.noUi-connect {
-  background: #00b5b8 !important; }
+  background: #acc937 !important; }
 
 .slider-primary .noUi-handle {
-  border-color: #00b5b8 !important; }
+  border-color: #acc937 !important; }
 
 .slider-primary.circle-filled .noUi-handle, .slider-primary.square .noUi-handle {
-  background: #00b5b8 !important; }
+  background: #acc937 !important; }
 
 .slider-secondary .noUi-connect {
   background: #404e67 !important; }
@@ -47,16 +47,16 @@
   background: #404e67 !important; }
 
 .slider-success .noUi-connect {
-  background: #16d39a !important; }
+  background: #acc937 !important; }
 
 .slider-success.noUi-connect {
-  background: #16d39a !important; }
+  background: #acc937 !important; }
 
 .slider-success .noUi-handle {
-  border-color: #16d39a !important; }
+  border-color: #acc937 !important; }
 
 .slider-success.circle-filled .noUi-handle, .slider-success.square .noUi-handle {
-  background: #16d39a !important; }
+  background: #acc937 !important; }
 
 .slider-info .noUi-connect {
   background: #2dcee3 !important; }

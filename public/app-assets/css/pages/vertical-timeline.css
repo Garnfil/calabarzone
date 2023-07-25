@@ -9,7 +9,7 @@
   position: relative; }
   .widget-timeline .timeline-items .timeline-title {
     line-height: 1.2;
-    font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+    font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
     font-weight: 500; }
   .widget-timeline .timeline-items .timeline-subtitle {
     margin-bottom: .5rem;
@@ -36,7 +36,7 @@
     top: 17px;
     box-shadow: 1px 2px 6px 0 rgba(25, 42, 70, 0.3);
     border-radius: 50%;
-    background-color: #00b5b8;
+    background-color: #acc937;
     height: 13px;
     width: 13px;
     z-index: 2; }

@@ -456,10 +456,10 @@ input:focus ~ .bg-primary {
   background-color: #00ced2; }
 
 .primary {
-  color: #00b5b8 !important; }
+  color: #acc937 !important; }
 
 .bg-primary {
-  background-color: #00b5b8 !important; }
+  background-color: #acc937 !important; }
   .bg-primary .card-header,
   .bg-primary .card-footer {
     background-color: transparent; }
@@ -472,20 +472,20 @@ input:focus ~ .bg-primary {
     color: black !important; }
 
 .bullet.bullet-primary {
-  background-color: #00b5b8; }
+  background-color: #acc937; }
 
 .bg-light-primary {
   background-color: rgba(0, 181, 184, 0.15); }
 
 .border-primary {
-  border-color: #00b5b8; }
+  border-color: #acc937; }
 
 .bg-primary.badge-glow,
 .border-primary.badge-glow {
-  box-shadow: 0px 0px 10px #00b5b8; }
+  box-shadow: 0px 0px 10px #acc937; }
 
 .overlay-primary {
-  background: #00b5b8;
+  background: #acc937;
   /* The Fallback */
   background: rgba(0, 181, 184, 0.8); }
 
@@ -499,57 +499,57 @@ input:focus ~ .bg-primary {
         }
       } */
 .btn-primary {
-  border-color: !important;
-  background-color: #00b5b8 !important;
+  border-color: #16468a !important;
+  background-color: #16468a !important;
   color: #FFFFFF; }
   .btn-primary:hover {
-    border-color: #009c9f !important;
-    background-color: #00ced2 !important;
+    border-color: #16468a !important;
+    background-color: #0a254a !important;
     color: #FFF !important; }
   .btn-primary:focus, .btn-primary:active {
-    border-color: #008385 !important;
-    background-color: #006a6c !important;
+    border-color: #0a254a !important;
+    background-color: #0a254a !important;
     color: #FFF !important; }
 
 .btn-outline-primary {
-  border-color: #00b5b8;
+  border-color: #acc937;
   background-color: transparent;
-  color: #00b5b8; }
+  color: #acc937; }
   .btn-outline-primary:hover {
-    background-color: #00b5b8;
+    background-color: #acc937;
     color: #FFF !important; }
 
 .widget-timeline .timeline-items.timeline-icon-primary:before {
-  background-color: #00b5b8; }
+  background-color: #acc937; }
 
 input[type="checkbox"].bg-primary + .custom-control-label:before, input[type="radio"].bg-primary + .custom-control-label:before {
-  background-color: #00b5b8 !important; }
+  background-color: #acc937 !important; }
 
 input:focus ~ .bg-primary {
-  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.21rem #00b5b8 !important; }
+  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.21rem #acc937 !important; }
 
 .border-primary {
-  border: 1px solid #00b5b8 !important; }
+  border: 1px solid #acc937 !important; }
 
 .border-top-primary {
-  border-top: 1px solid #00b5b8; }
+  border-top: 1px solid #acc937; }
 
 .border-bottom-primary {
-  border-bottom: 1px solid #00b5b8; }
+  border-bottom: 1px solid #acc937; }
 
 .border-left-primary {
-  border-left: 1px solid #00b5b8; }
+  border-left: 1px solid #acc937; }
 
 .border-right-primary {
-  border-right: 1px solid #00b5b8; }
+  border-right: 1px solid #acc937; }
 
 /* Scrumboard Application - kanban-item with coloured border */
 /* --------------------------------------------------------- */
 .kanban-container .kanban-board .kanban-item[data-border=primary]:before {
-  background-color: #00b5b8; }
+  background-color: #acc937; }
 
 .edit-kanban-item select option.bg-color_name {
-  background-color: #00b5b8; }
+  background-color: #acc937; }
 
 .primary.darken-1 {
   color: #009c9f !important; }
@@ -1814,10 +1814,10 @@ input:focus ~ .bg-success {
   background-color: #1be7aa; }
 
 .success {
-  color: #16d39a !important; }
+  color: #acc937 !important; }
 
 .bg-success {
-  background-color: #16d39a !important; }
+  background-color: #acc937 !important; }
   .bg-success .card-header,
   .bg-success .card-footer {
     background-color: transparent; }
@@ -1830,20 +1830,20 @@ input:focus ~ .bg-success {
     color: #010c09 !important; }
 
 .bullet.bullet-success {
-  background-color: #16d39a; }
+  background-color: #acc937; }
 
 .bg-light-success {
   background-color: rgba(22, 211, 154, 0.15); }
 
 .border-success {
-  border-color: #16d39a; }
+  border-color: #acc937; }
 
 .bg-success.badge-glow,
 .border-success.badge-glow {
-  box-shadow: 0px 0px 10px #16d39a; }
+  box-shadow: 0px 0px 10px #acc937; }
 
 .overlay-success {
-  background: #16d39a;
+  background: #acc937;
   /* The Fallback */
   background: rgba(22, 211, 154, 0.8); }
 
@@ -1858,7 +1858,7 @@ input:focus ~ .bg-success {
       } */
 .btn-success {
   border-color: !important;
-  background-color: #16d39a !important;
+  background-color: #acc937 !important;
   color: #FFFFFF; }
   .btn-success:hover {
     border-color: #14bc89 !important;
@@ -1870,44 +1870,44 @@ input:focus ~ .bg-success {
     color: #FFF !important; }
 
 .btn-outline-success {
-  border-color: #16d39a;
+  border-color: #acc937;
   background-color: transparent;
-  color: #16d39a; }
+  color: #acc937; }
   .btn-outline-success:hover {
-    background-color: #16d39a;
+    background-color: #acc937;
     color: #FFF !important; }
 
 .widget-timeline .timeline-items.timeline-icon-success:before {
-  background-color: #16d39a; }
+  background-color: #acc937; }
 
 input[type="checkbox"].bg-success + .custom-control-label:before, input[type="radio"].bg-success + .custom-control-label:before {
-  background-color: #16d39a !important; }
+  background-color: #acc937 !important; }
 
 input:focus ~ .bg-success {
-  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.21rem #16d39a !important; }
+  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.21rem #acc937 !important; }
 
 .border-success {
-  border: 1px solid #16d39a !important; }
+  border: 1px solid #acc937 !important; }
 
 .border-top-success {
-  border-top: 1px solid #16d39a; }
+  border-top: 1px solid #acc937; }
 
 .border-bottom-success {
-  border-bottom: 1px solid #16d39a; }
+  border-bottom: 1px solid #acc937; }
 
 .border-left-success {
-  border-left: 1px solid #16d39a; }
+  border-left: 1px solid #acc937; }
 
 .border-right-success {
-  border-right: 1px solid #16d39a; }
+  border-right: 1px solid #acc937; }
 
 /* Scrumboard Application - kanban-item with coloured border */
 /* --------------------------------------------------------- */
 .kanban-container .kanban-board .kanban-item[data-border=success]:before {
-  background-color: #16d39a; }
+  background-color: #acc937; }
 
 .edit-kanban-item select option.bg-color_name {
-  background-color: #16d39a; }
+  background-color: #acc937; }
 
 .success.darken-1 {
   color: #14bc89 !important; }

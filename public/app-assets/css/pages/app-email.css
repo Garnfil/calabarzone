@@ -57,7 +57,7 @@
           border: none;
           box-shadow: none; }
           .email-application .app-content .sidebar .email-app-sidebar .email-app-menu .list-group .list-group-item.active {
-            background-color: #00b5b8; }
+            background-color: #acc937; }
         .email-application .app-content .sidebar .email-app-sidebar .email-app-menu i {
           font-size: 1.3rem;
           vertical-align: middle; }
@@ -10278,7 +10278,7 @@
                 .email-application .app-content .content-right .email-app-details .email-scroll-area .email-detail-head .collapse-header .card-header .information .dropdown-menu .dropdown-item {
                   margin-right: 0.5rem; }
   .email-application .app-content .sidebar-label {
-    font-family: "Montserrat", Georgia, "Times New Roman", Times, serif;
+    font-family: "Poppins", Georgia, "Times New Roman", Times, serif;
     letter-spacing: 1px;
     color: #98a4b8;
     margin: 1.8rem 0 0.5rem 1rem; }

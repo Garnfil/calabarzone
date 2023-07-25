@@ -9,8 +9,7 @@
 
 // Pie chart
 // ------------------------------
-$(window).on("load", function(){
-
+$(window).on("load", function () {
     //Get the context of the Chart canvas element we want to select
     var ctx = $("#simple-pie-chart");
 
@@ -18,26 +17,34 @@ $(window).on("load", function(){
     var chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
-        responsiveAnimationDuration:500,
+        responsiveAnimationDuration: 500,
     };
 
     // Chart Data
     var chartData = {
         labels: ["January", "February", "March", "April", "May"],
-        datasets: [{
-            label: "My First dataset",
-            data: [85, 65, 34, 45, 35],
-            backgroundColor: ['#00A5A8', '#626E82', '#FF7D4D','#FF4558', '#16D39A'],
-        }]
+        datasets: [
+            {
+                label: "My First dataset",
+                data: [85, 65, 34, 45, 35],
+                backgroundColor: [
+                    "#00A5A8",
+                    "#626E82",
+                    "#FF7D4D",
+                    "#FF4558",
+                    "#acc937",
+                ],
+            },
+        ],
     };
 
     var config = {
-        type: 'pie',
+        type: "pie",
 
         // Chart Options
-        options : chartOptions,
+        options: chartOptions,
 
-        data : chartData
+        data: chartData,
     };
 
     // Create the chart

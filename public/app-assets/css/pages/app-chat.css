@@ -79,7 +79,7 @@
         cursor: pointer;
         background: #f2f4f4; }
       .chat-application .chat-sidebar .chat-sidebar-list-wrapper li.active {
-        background: #00b5b8; }
+        background: #acc937; }
         .chat-application .chat-sidebar .chat-sidebar-list-wrapper li.active h6,
         .chat-application .chat-sidebar .chat-sidebar-list-wrapper li.active span {
           color: #fff !important; }
@@ -146,7 +146,7 @@
     clear: both;
     word-break: break-word;
     color: #fff;
-    background: #00b5b8;
+    background: #acc937;
     border-radius: 0.25rem;
     box-shadow: 0 2px 4px 0 rgba(0, 181, 184, 0.6); }
     .chat-application .chat-content .chat-body .chat-message p {

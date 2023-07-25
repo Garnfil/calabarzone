@@ -135,56 +135,56 @@
 }
 
 .loader-primary div {
-  background-color : #00B5B8 !important;
+  background-color : #acc937 !important;
 }
 
 .loader-primary.ball-clip-rotate div {
-  border-color : #00B5B8 !important;
+  border-color : #acc937 !important;
   border-bottom-color : transparent !important;
   background-color : transparent !important;
 }
 
 .loader-primary.ball-clip-rotate-pulse div:first-child {
-  background : #00B5B8 !important;
+  background : #acc937 !important;
 }
 
 .loader-primary.ball-clip-rotate-pulse div:last-child {
   background : transparent !important;
-  border-color : #00B5B8 transparent #00B5B8 transparent !important;
+  border-color : #acc937 transparent #acc937 transparent !important;
 }
 
 .loader-primary.ball-clip-rotate-multiple div {
   background-color : transparent !important;
-  border-color : transparent #00B5B8 transparent #00B5B8 !important;
+  border-color : transparent #acc937 transparent #acc937 !important;
 }
 
 .loader-primary.ball-rotate div:before, .loader-primary.ball-rotate div:after {
-  background-color : #00B5B8 !important;
+  background-color : #acc937 !important;
 }
 
 .loader-primary.ball-triangle-path div {
   background-color : transparent !important;
-  border-color : #00B5B8 !important;
+  border-color : #acc937 !important;
 }
 
 .loader-primary.ball-scale-ripple div {
   background-color : transparent !important;
-  border-color : #00B5B8 !important;
+  border-color : #acc937 !important;
 }
 
 .loader-primary.ball-scale-ripple-multiple div {
   background-color : transparent !important;
-  border-color : #00B5B8 !important;
+  border-color : #acc937 !important;
 }
 
 .loader-primary.triangle-skew-spin div {
   background-color : transparent !important;
-  border-bottom-color : #00B5B8 !important;
+  border-bottom-color : #acc937 !important;
 }
 
 .loader-primary.semi-circle-spin div {
-  background-image : -webkit-linear-gradient(transparent 0%, transparent 70%, #00B5B8 30%, #00B5B8 100%);
-  background-image :         linear-gradient(transparent 0%, transparent 70%, #00B5B8 30%, #00B5B8 100%);
+  background-image : -webkit-linear-gradient(transparent 0%, transparent 70%, #acc937 30%, #acc937 100%);
+  background-image :         linear-gradient(transparent 0%, transparent 70%, #acc937 30%, #acc937 100%);
   background-color : transparent !important;
 }
 
@@ -192,14 +192,14 @@
   background-color : transparent !important;
 }
 .loader-primary.fading-circle div:before {
-  background-color : #00B5B8 !important;
+  background-color : #acc937 !important;
 }
 
 .loader-primary.folding-cube div {
   background-color : transparent !important;
 }
 .loader-primary.folding-cube div:before {
-  background-color : #00B5B8 !important;
+  background-color : #acc937 !important;
 }
 
 .loader-secondary div {
@@ -271,56 +271,56 @@
 }
 
 .loader-success div {
-  background-color : #16D39A !important;
+  background-color : #acc937 !important;
 }
 
 .loader-success.ball-clip-rotate div {
-  border-color : #16D39A !important;
+  border-color : #acc937 !important;
   border-bottom-color : transparent !important;
   background-color : transparent !important;
 }
 
 .loader-success.ball-clip-rotate-pulse div:first-child {
-  background : #16D39A !important;
+  background : #acc937 !important;
 }
 
 .loader-success.ball-clip-rotate-pulse div:last-child {
   background : transparent !important;
-  border-color : #16D39A transparent #16D39A transparent !important;
+  border-color : #acc937 transparent #acc937 transparent !important;
 }
 
 .loader-success.ball-clip-rotate-multiple div {
   background-color : transparent !important;
-  border-color : transparent #16D39A transparent #16D39A !important;
+  border-color : transparent #acc937 transparent #acc937 !important;
 }
 
 .loader-success.ball-rotate div:before, .loader-success.ball-rotate div:after {
-  background-color : #16D39A !important;
+  background-color : #acc937 !important;
 }
 
 .loader-success.ball-triangle-path div {
   background-color : transparent !important;
-  border-color : #16D39A !important;
+  border-color : #acc937 !important;
 }
 
 .loader-success.ball-scale-ripple div {
   background-color : transparent !important;
-  border-color : #16D39A !important;
+  border-color : #acc937 !important;
 }
 
 .loader-success.ball-scale-ripple-multiple div {
   background-color : transparent !important;
-  border-color : #16D39A !important;
+  border-color : #acc937 !important;
 }
 
 .loader-success.triangle-skew-spin div {
   background-color : transparent !important;
-  border-bottom-color : #16D39A !important;
+  border-bottom-color : #acc937 !important;
 }
 
 .loader-success.semi-circle-spin div {
-  background-image : -webkit-linear-gradient(transparent 0%, transparent 70%, #16D39A 30%, #16D39A 100%);
-  background-image :         linear-gradient(transparent 0%, transparent 70%, #16D39A 30%, #16D39A 100%);
+  background-image : -webkit-linear-gradient(transparent 0%, transparent 70%, #acc937 30%, #acc937 100%);
+  background-image :         linear-gradient(transparent 0%, transparent 70%, #acc937 30%, #acc937 100%);
   background-color : transparent !important;
 }
 
@@ -328,14 +328,14 @@
   background-color : transparent !important;
 }
 .loader-success.fading-circle div:before {
-  background-color : #16D39A !important;
+  background-color : #acc937 !important;
 }
 
 .loader-success.folding-cube div {
   background-color : transparent !important;
 }
 .loader-success.folding-cube div:before {
-  background-color : #16D39A !important;
+  background-color : #acc937 !important;
 }
 
 .loader-info div {
