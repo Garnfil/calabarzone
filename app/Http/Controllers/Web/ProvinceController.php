@@ -16,22 +16,17 @@ class ProvinceController extends Controller
     {
         if ($request->ajax()) {
             $data = Province::latest();
-            return Datatables::of($data)
+            return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('featured_image', function ($row) {
                     return '<img src="" />';
                 })
-                ->addColumn('action', function ($row) {
-                    $btn =
-                        '<a href="/admin/vicariate/edit/' .
-                        $row->id .
-                        '" class="btn btn-primary btn-sm"><i class="ti ti-edit"></i></a>
-                                <a id="' .
-                        $row->id .
-                        '" class="btn btn-danger btn-sm remove-btn"><i class="ti ti-trash"></i></a>';
+                ->addColumn('actions', function ($row) {
+                    $btn = '<a href="/admin/vicariate/edit/' . $row->id . '" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                <button id="' . $row->id . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>';
                     return $btn;
                 })
-                ->rawColumns(['action', 'featured_image'])
+                ->rawColumns(['actions', 'featured_image'])
                 ->make(true);
         }
         return view('admin-page.provinces.list');

@@ -8,6 +8,13 @@
         <div class="content-wrapper">
             <div class="content-header row">
             </div>
+            @if (Session::get('success'))
+                @push('scripts')
+                    <script>
+                        toastr.success("{{ Session::get('success') }}", 'Success', 'positionclass = "toast-bottom-full-width"')
+                    </script>
+                @endpush
+            @endif
             <div class="content-body">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
@@ -69,5 +76,6 @@
                 ]
             })
         }
+        loadTable();
     </script>
 @endpush
