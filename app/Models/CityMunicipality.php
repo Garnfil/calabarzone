@@ -10,4 +10,8 @@ class CityMunicipality extends Model
     use HasFactory;
     protected $table = 'cities_municipalities';
     protected $fillable = ['name', 'featured_image', 'images', 'type', 'description', 'province_id'];
+
+    public function province() {
+        return $this->hasOne(Province::class, 'id', 'province_id');
+    }
 }

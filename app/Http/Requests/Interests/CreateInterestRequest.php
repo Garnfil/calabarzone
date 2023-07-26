@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Province;
+namespace App\Http\Requests\Interests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateProvinceRequest extends FormRequest
+class CreateInterestRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class CreateProvinceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:20',
-            'featured_image' => "required|image",
-            'description' => 'required|max:500',
-            'tagline' => 'required'
+            'interest_name' => 'required',
+            'featured_image' => 'nullable|image',
+            'icon' => 'required|image',
+            'description' => 'nullable'
         ];
     }
 }

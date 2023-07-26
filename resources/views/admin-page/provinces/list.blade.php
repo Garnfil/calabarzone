@@ -23,14 +23,15 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered data-table">
+                            <table class="table table-striped data-table">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Image</th>
+                                        <th width="20">Id</th>
+                                        <th width="75">Image</th>
                                         <th>Name</th>
                                         <th>Transportations</th>
-                                        <th>Actions</th>
+                                        <th>Tagline</th>
+                                        <th width="100">Actions</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -68,6 +69,10 @@
                     {
                         data: 'transportations',
                         name: 'transportations'
+                    },
+                    {
+                        data: 'tagline',
+                        name: 'tagline'
                     },
                     {
                         data: 'actions',

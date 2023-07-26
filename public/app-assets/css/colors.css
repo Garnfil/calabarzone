@@ -1857,12 +1857,12 @@ input:focus ~ .bg-success {
         }
       } */
 .btn-success {
-  border-color: !important;
+  border-color: #acc937 !important;
   background-color: #acc937 !important;
   color: #FFFFFF; }
   .btn-success:hover {
-    border-color: #14bc89 !important;
-    background-color: #1be7aa !important;
+    border-color: #acc937 !important;
+    background-color: #acc937 !important;
     color: #FFF !important; }
   .btn-success:focus, .btn-success:active {
     border-color: #11a578 !important;

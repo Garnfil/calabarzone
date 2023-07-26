@@ -4,7 +4,7 @@ namespace App\Http\Requests\Province;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateProvinceRequest extends FormRequest
+class UpdateProvinceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class CreateProvinceRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'featured_image' => "required|image",
             'description' => 'required|max:500',
             'tagline' => 'required'
         ];

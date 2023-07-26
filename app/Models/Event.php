@@ -12,6 +12,7 @@ class Event extends Model
     protected $fillable = [
         'province_id',
         'city_id',
+        'featured_image',
         'event_name',
         'interest_type',
         'event_date',
@@ -22,4 +23,12 @@ class Event extends Model
         'contact_person',
         'contact_number'
     ];
+
+    public function province() {
+        return $this->hasOne(Province::class, 'id', 'province_id');
+    }
+
+    public function city_municipality() {
+        return $this->hasOne(CityMunicipality::class, 'id', 'city_id');
+    }
 }

@@ -73,10 +73,15 @@
                                                 @enderror
                                             </span>
                                         </div>
+                                        <div class="col-md-6 my-1">
+                                            <label for="tagline" class="form-label">Province Tagline</label>
+                                            <input type="text" class="form-control" name="tagline"
+                                                id="tagline" value="{{ old('tagline') }}">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <img class="img-responsive" style="width: 100% !important;"
+                                    <img class="img-responsive" id="previewImage" style="width: 100% !important;"
                                         src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
                                 </div>
                             </div>
@@ -90,3 +95,27 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        // Function to handle file selection and display preview image
+        function handleFileSelect(event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = event.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+        }
+
+        // Attach the 'handleFileSelect' function to the file input's change event
+        document.getElementById('featured_image').addEventListener('change', handleFileSelect);
+
+    </script>
+@endpush

@@ -11,8 +11,9 @@
         content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>@yield('title')</title>
-    <link rel="apple-touch-icon" href="{{ URL::asset('app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('app-assets/images/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ URL::asset('app-assets/images/logo/calabarzone(32x32).png') }}">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="{{ URL::asset('app-assets/images/logo/calabarzone(32x32).png') }}">
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
         rel="stylesheet">
@@ -26,6 +27,9 @@
     <link rel="stylesheet" type="text/css"
         href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/icheck.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -38,9 +42,11 @@
     <link rel="stylesheet" type="text/css"
         href="{{ URL::asset('app-assets/fonts/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/plugins/forms/switch.css') }}">
     <!-- END: Theme CSS-->
 
-
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/css/plugins/forms/checkboxes-radios.css') }}">
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/style.css') }}">
     <!-- END: Custom CSS-->
@@ -113,20 +119,22 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item"><a href="#"><i class="feather icon-home"></i><span class="menu-title"
-                            data-i18n="Overview">Overview</span></a>
+                <li class="{{ Request::path() == 'admin/overview' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.overview') }}"><i class="feather icon-home"></i><span
+                            class="menu-title" data-i18n="Overview">Overview</span></a>
                 </li>
 
                 <!------ Start: Destination ------->
                 <li class=" navigation-header"><span>Destination</span><i class=" feather icon-pointer"
                         data-toggle="tooltip" data-placement="right" data-original-title="General"></i>
                 </li>
-                <li class="nav-item"><a href="{{ route('admin.provinces') }}"><i
-                            class="feather icon-map-pin"></i><span class="menu-title"
-                            data-i18n="Provinces">Provinces</span></a>
+                <li class="{{ Request::path() == 'admin/provinces' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.provinces') }}"><i class="feather icon-map-pin"></i><span
+                            class="menu-title" data-i18n="Provinces">Provinces</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-map-pin"></i><span class="menu-title"
-                            data-i18n="Cities/Municipalities">Cities/Municipalities</span></a>
+                <li class="{{ Request::path() == 'admin/cities_municipalities' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.cities_municipalities') }}"><i class="feather icon-map-pin"></i><span
+                            class="menu-title" data-i18n="Cities/Municipalities">Cities/Municipalities</span></a>
                 </li>
                 <!------ End: Destination ------->
 
@@ -134,13 +142,14 @@
                 <li class=" navigation-header"><span>Interests</span><i class=" feather icon-minus"
                         data-toggle="tooltip" data-placement="right" data-original-title="Apps"></i>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-box"></i><span class="menu-title"
-                            data-i18n="Interests">Interests</span></a>
+                <li class="{{ Request::path() == 'admin/interests' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.interests') }}"><i class="feather icon-box"></i><span
+                            class="menu-title" data-i18n="Interests">Interests</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-grid"></i><span class="menu-title"
+                <li class="{{ Request::path() == 'admin/attractions' ? 'active' : '' }} nav-item"><a href="{{ route('admin.attractions') }}"><i class="feather icon-grid"></i><span class="menu-title"
                             data-i18n="Attractions">Attractions</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-calendar"></i><span
+                <li class="{{ Request::path() == 'admin/events' ? 'active' : '' }} nav-item"><a href="{{ route('admin.events') }}"><i class="feather icon-calendar"></i><span
                             class="menu-title" data-i18n="Events">Events</span></a>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-activity"></i><span
@@ -148,6 +157,15 @@
                 </li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-globe"></i><span class="menu-title"
                             data-i18n="Accomodations">Accomodations</span></a>
+                </li>
+                <!------ End: Interests ------->
+
+                <li class="navigation-header"><span>Users</span><i class=" feather icon-minus"
+                    data-toggle="tooltip" data-placement="right" data-original-title="Apps"></i>
+                </li>
+                <li class="{{ Request::path() == 'admin/interests' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.users') }}"><i class="feather icon-box"></i><span
+                            class="menu-title" data-i18n="Users">Users</span></a>
                 </li>
             </ul>
         </div>
@@ -164,10 +182,9 @@
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light navbar-border">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span
-                class="float-md-left d-block d-md-inline-block">Copyright &copy; 2020 <a
+                class="float-md-left d-block d-md-inline-block">Copyright &copy; 2023 <a
                     class="text-bold-800 grey darken-2" href="https://1.envato.market/pixinvent_portfolio"
-                    target="_blank">CALABARZONE </a></span><span class="float-md-right d-none d-lg-block">Hand-crafted
-                & Made with <i class="feather icon-heart pink"></i></span></p>
+                    target="_blank">CALABARZONE </a></span></p>
     </footer>
     <!-- END: Footer-->
 
@@ -177,9 +194,12 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/toggle/switchery.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -188,7 +208,8 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="../../../app-assets/js/scripts/forms/select/form-select2.js"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/switch.js') }}"></script>
     @stack('scripts')
     <!-- END: Page JS-->
 </body>

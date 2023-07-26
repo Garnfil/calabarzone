@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Province;
+namespace App\Http\Requests\CityMunicipality;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateProvinceRequest extends FormRequest
+class CreateCityMunicipalityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class CreateProvinceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:20',
-            'featured_image' => "required|image",
-            'description' => 'required|max:500',
-            'tagline' => 'required'
+            'name' => 'required',
+            'featured_image' => 'required|image',
+            'type' => 'required|in:city,municipality',
+            'description' => 'required',
+            'province_id' => 'required'
         ];
     }
 }
