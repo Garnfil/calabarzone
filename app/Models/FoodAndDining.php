@@ -27,4 +27,12 @@ class FoodAndDining extends Model
         'service_options',
         'is_open_for_reservation'
     ];
+
+    public function province() {
+        return $this->hasOne(Province::class, 'id', 'province_id');
+    }
+
+    public function city_municipality() {
+        return $this->hasOne(CityMunicipality::class, 'id', 'city_id');
+    }
 }

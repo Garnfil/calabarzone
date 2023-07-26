@@ -29,7 +29,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/icheck.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/custom.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -146,26 +147,34 @@
                         href="{{ route('admin.interests') }}"><i class="feather icon-box"></i><span
                             class="menu-title" data-i18n="Interests">Interests</span></a>
                 </li>
-                <li class="{{ Request::path() == 'admin/attractions' ? 'active' : '' }} nav-item"><a href="{{ route('admin.attractions') }}"><i class="feather icon-grid"></i><span class="menu-title"
-                            data-i18n="Attractions">Attractions</span></a>
+                <li class="{{ Request::path() == 'admin/attractions' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.attractions') }}"><i class="feather icon-grid"></i><span
+                            class="menu-title" data-i18n="Attractions">Attractions</span></a>
                 </li>
-                <li class="{{ Request::path() == 'admin/events' ? 'active' : '' }} nav-item"><a href="{{ route('admin.events') }}"><i class="feather icon-calendar"></i><span
+                <li class="{{ Request::path() == 'admin/events' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.events') }}"><i class="feather icon-calendar"></i><span
                             class="menu-title" data-i18n="Events">Events</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-activity"></i><span
+                <li class="{{ Request::path() == 'admin/activities' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.activities') }}"><i class="feather icon-activity"></i><span
                             class="menu-title" data-i18n="Activities">Activities</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-globe"></i><span class="menu-title"
-                            data-i18n="Accomodations">Accomodations</span></a>
+                <li class="{{ Request::path() == 'admin/accomodations' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.accomodations') }}"><i class="feather icon-globe"></i><span
+                            class="menu-title" data-i18n="Accomodations">Accomodations</span></a>
+                </li>
+                <li class="{{ Request::path() == 'admin/food_dinings' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.food_dinings') }}"><i class="feather icon-globe"></i><span
+                            class="menu-title" data-i18n="Food & Dinings">Food & Dinings</span></a>
                 </li>
                 <!------ End: Interests ------->
 
-                <li class="navigation-header"><span>Users</span><i class=" feather icon-minus"
-                    data-toggle="tooltip" data-placement="right" data-original-title="Apps"></i>
+                <li class="navigation-header"><span>Users</span><i class=" feather icon-minus" data-toggle="tooltip"
+                        data-placement="right" data-original-title="Apps"></i>
                 </li>
                 <li class="{{ Request::path() == 'admin/interests' ? 'active' : '' }} nav-item"><a
-                        href="{{ route('admin.users') }}"><i class="feather icon-box"></i><span
-                            class="menu-title" data-i18n="Users">Users</span></a>
+                        href="{{ route('admin.users') }}"><i class="feather icon-users"></i><span class="menu-title"
+                            data-i18n="Users">Users</span></a>
                 </li>
             </ul>
         </div>

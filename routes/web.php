@@ -9,6 +9,9 @@ use App\Http\Controllers\Web\CityMunicipalityController;
 use App\Http\Controllers\Web\InterestController;
 use App\Http\Controllers\Web\AttractionController;
 use App\Http\Controllers\Web\EventController;
+use App\Http\Controllers\Web\ActivityController;
+use App\Http\Controllers\Web\AccomodationController;
+use App\Http\Controllers\Web\FoodAndDiningController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +66,24 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
     Route::post('event/store', [EventController::class, 'store'])->name('event.store');
     Route::get('event/edit/{id}',[EventController::class, 'edit'])->name('event.edit');
     Route::put('event/update/{id}',[EventController::class, 'update'])->name('event.update');
+
+    Route::get('activities', [ActivityController::class, 'list'])->name('activities');
+    Route::get('activity/create', [ActivityController::class, 'create'])->name('activity.create');
+    Route::post('activity/store', [ActivityController::class, 'store'])->name('activity.store');
+    Route::get('activity/edit/{id}',[ActivityController::class, 'edit'])->name('activity.edit');
+    Route::put('activity/update/{id}',[ActivityController::class, 'update'])->name('activity.update');
+
+    Route::get('accomodations', [AccomodationController::class, 'list'])->name('accomodations');
+    Route::get('accomodation/create', [AccomodationController::class, 'create'])->name('accomodation.create');
+    Route::post('accomodation/store', [AccomodationController::class, 'store'])->name('accomodation.store');
+    Route::get('accomodation/edit/{id}',[AccomodationController::class, 'edit'])->name('accomodation.edit');
+    Route::put('accomodation/update/{id}',[AccomodationController::class, 'update'])->name('accomodation.update');
+
+    Route::get('food_dinings', [FoodAndDiningController::class, 'list'])->name('food_dinings');
+    Route::get('food_dining/create', [FoodAndDiningController::class, 'create'])->name('food_dining.create');
+    Route::post('food_dining/store', [FoodAndDiningController::class, 'store'])->name('food_dining.store');
+    Route::get('food_dining/edit/{id}',[FoodAndDiningController::class, 'edit'])->name('food_dining.edit');
+    Route::put('food_dining/update/{id}',[FoodAndDiningController::class, 'update'])->name('food_dining.update');
 
     Route::get('users', [UserController::class, 'list'])->name('users');
     Route::get('user/create', [UserController::class, 'create'])->name('user.create');
