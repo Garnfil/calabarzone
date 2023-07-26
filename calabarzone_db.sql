@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 26, 2023 at 08:52 AM
--- Server version: 5.7.36
--- PHP Version: 7.4.26
+-- Generation Time: Jul 26, 2023 at 11:10 PM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,10 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `accomodations`;
 CREATE TABLE IF NOT EXISTS `accomodations` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` bigint(20) NOT NULL,
-  `city_id` bigint(20) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` bigint NOT NULL,
+  `city_id` bigint NOT NULL,
+  `featured_image` varchar(255) DEFAULT NULL,
   `merchant_code` varchar(255) DEFAULT NULL,
   `business_name` text,
   `classification` varchar(255) DEFAULT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `accomodations` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -52,9 +53,10 @@ CREATE TABLE IF NOT EXISTS `accomodations` (
 
 DROP TABLE IF EXISTS `activities`;
 CREATE TABLE IF NOT EXISTS `activities` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` int(11) NOT NULL,
-  `city_id` int(11) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` int NOT NULL,
+  `city_id` int NOT NULL,
+  `featured_image` varchar(255) DEFAULT NULL,
   `activity_name` varchar(255) DEFAULT NULL,
   `interest_type` text,
   `description` text,
@@ -63,9 +65,16 @@ CREATE TABLE IF NOT EXISTS `activities` (
   `operational_hours` text,
   `best_time_to_visit` text,
   `created_at` timestamp NOT NULL,
-  `updated_at` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`id`, `province_id`, `city_id`, `featured_image`, `activity_name`, `interest_type`, `description`, `things_todo`, `what_to_wear`, `operational_hours`, `best_time_to_visit`, `created_at`, `updated_at`) VALUES
+(2, 2, 3, 'walk_the_angono_mural_street.jpg', 'WALK THE ANGONO MURAL STREET', '2', 'THE ANGONO MURAL STREET IS AN ARRAY OF MURAL/SCULPTURED WALLS DEPICTING THE FAMOUS PAINTINGS OF NATIONAL ARTIST CARLOS “BOTONG” V. FRANCISCO. MOST OF THE MURALS ARE REPRESENTATIONS OF RURAL LIFE SEEN ALONG DOÑA AURORA STREET OF BARANGAY POBLACION ITAAS, ANGONO, RIZAL.', 'WALK THE ANGONO MURAL STREET', 'COMFORTABLE CLOTHES', '8:00 AM to 5:00 PM', 'YEARROUND', '2023-07-26 04:50:38', '2023-07-26 05:28:54');
 
 -- --------------------------------------------------------
 
@@ -75,10 +84,10 @@ CREATE TABLE IF NOT EXISTS `activities` (
 
 DROP TABLE IF EXISTS `attractions`;
 CREATE TABLE IF NOT EXISTS `attractions` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` int(11) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` int NOT NULL,
   `featured_image` varchar(255) DEFAULT NULL,
-  `city_id` int(11) NOT NULL,
+  `city_id` int NOT NULL,
   `how_to_get_there` mediumtext,
   `interest_type` text,
   `attraction_name` text,
@@ -94,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `attractions` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `attractions`
@@ -111,18 +120,18 @@ INSERT INTO `attractions` (`id`, `province_id`, `featured_image`, `city_id`, `ho
 
 DROP TABLE IF EXISTS `cities_municipalities`;
 CREATE TABLE IF NOT EXISTS `cities_municipalities` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `featured_image` varchar(255) NOT NULL,
   `images` text,
   `type` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
-  `province_id` int(11) NOT NULL,
+  `province_id` int NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cities_municipalities_province_id_foreign` (`province_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `cities_municipalities`
@@ -130,7 +139,8 @@ CREATE TABLE IF NOT EXISTS `cities_municipalities` (
 
 INSERT INTO `cities_municipalities` (`id`, `name`, `featured_image`, `images`, `type`, `description`, `province_id`, `created_at`, `updated_at`) VALUES
 (1, 'Tagaytay', 'tagaytay.jpg', NULL, 'city', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake. Overlooking the area, People’s Park in the Sky occupies the grounds of a never-finished presidential mansion. Picnic Grove is a recreation area with trails and a zip line.', 3, '2023-07-25 18:38:42', '2023-07-25 18:38:42'),
-(2, 'Kawit', 'kawit.jpeg', NULL, 'municipality', 'Kawit, officially the Municipality of Kawit, is a first-class municipality in the province of Cavite, Philippines. According to the 2020 census, it has a population of 107,535. It is one of the notable places that had a major role in the country\'s history during the 1800s and 1900s.', 3, '2023-07-25 21:45:18', '2023-07-25 21:45:18');
+(2, 'Kawit', 'kawit.jpeg', NULL, 'municipality', 'Kawit, officially the Municipality of Kawit, is a first-class municipality in the province of Cavite, Philippines. According to the 2020 census, it has a population of 107,535. It is one of the notable places that had a major role in the country\'s history during the 1800s and 1900s.', 3, '2023-07-25 21:45:18', '2023-07-25 21:45:18'),
+(3, 'Angono', 'angono.png', NULL, 'municipality', 'Angono, officially the Municipality of Angono, is a 1st class municipality in the province of Rizal, Philippines. According to the 2020 census, it has a population of 130,494 people.', 2, '2023-07-26 04:37:58', '2023-07-26 04:37:58');
 
 -- --------------------------------------------------------
 
@@ -140,9 +150,9 @@ INSERT INTO `cities_municipalities` (`id`, `name`, `featured_image`, `images`, `
 
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE IF NOT EXISTS `events` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` bigint(20) NOT NULL,
-  `city_id` bigint(20) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` bigint NOT NULL,
+  `city_id` bigint NOT NULL,
   `featured_image` varchar(255) NOT NULL,
   `event_name` varchar(255) DEFAULT NULL,
   `interest_type` varchar(255) DEFAULT NULL,
@@ -150,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `description` text,
   `what_to_wear` varchar(255) DEFAULT NULL,
   `travel_tips` text,
-  `department_id` int(11) DEFAULT NULL,
+  `department_id` int DEFAULT NULL,
   `contact_person` varchar(255) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -158,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   PRIMARY KEY (`id`),
   KEY `events_province_id_foreign` (`province_id`),
   KEY `events_city_id_foreign` (`city_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `events`
@@ -175,9 +185,9 @@ INSERT INTO `events` (`id`, `province_id`, `city_id`, `featured_image`, `event_n
 
 DROP TABLE IF EXISTS `food_and_dining`;
 CREATE TABLE IF NOT EXISTS `food_and_dining` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` int(11) NOT NULL,
-  `city_id` int(11) NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` int NOT NULL,
+  `city_id` int NOT NULL,
   `merchant_code` varchar(255) DEFAULT NULL,
   `business_name` varchar(255) DEFAULT NULL,
   `interest_type` text,
@@ -195,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `food_and_dining` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -205,14 +215,14 @@ CREATE TABLE IF NOT EXISTS `food_and_dining` (
 
 DROP TABLE IF EXISTS `gci_tours`;
 CREATE TABLE IF NOT EXISTS `gci_tours` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `tour_name` varchar(255) DEFAULT NULL,
   `tour_type` text,
   `what_to_wear` varchar(255) DEFAULT NULL,
   `best_time` varchar(255) DEFAULT NULL,
-  `operation_hours` bigint(20) DEFAULT NULL,
+  `operation_hours` bigint DEFAULT NULL,
   `inclusions` text,
-  `province` int(11) DEFAULT NULL,
+  `province` int DEFAULT NULL,
   `inclusion_details` text,
   `cities` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -220,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `gci_tours` (
   PRIMARY KEY (`id`),
   KEY `gci_tours_cities_foreign` (`cities`(250)),
   KEY `gci_tours_province_foreign` (`province`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -230,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `gci_tours` (
 
 DROP TABLE IF EXISTS `interests`;
 CREATE TABLE IF NOT EXISTS `interests` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `interest_name` varchar(255) NOT NULL,
   `featured_image` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT NULL,
@@ -238,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `interests` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `interests`
@@ -260,7 +270,7 @@ INSERT INTO `interests` (`id`, `interest_name`, `featured_image`, `icon`, `descr
 
 DROP TABLE IF EXISTS `provinces`;
 CREATE TABLE IF NOT EXISTS `provinces` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `featured_image` varchar(255) NOT NULL,
   `images` varchar(255) DEFAULT NULL,
@@ -271,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `provinces` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `provinces`
@@ -289,7 +299,7 @@ INSERT INTO `provinces` (`id`, `name`, `featured_image`, `images`, `description`
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -297,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
