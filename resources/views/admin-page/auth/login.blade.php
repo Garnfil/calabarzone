@@ -63,8 +63,8 @@
                                 <div class="card-header border-0">
                                     <div class="card-title text-center">
                                         <div class="p-1"><img
-                                                src="{{ URL::asset('app-assets/images/logo/calabarzone(32x32).png') }}"
-                                                alt="branding logo"></div>
+                                                src="{{ URL::asset('app-assets/images/logo/logo_zone.png') }}"
+                                                alt="branding logo" width="200"></div>
                                     </div>
                                     <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
                                         <span>Login with Calarbarzone</span>
