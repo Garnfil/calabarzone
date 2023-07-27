@@ -91,6 +91,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::post('activity/store', [ActivityController::class, 'store'])->name('activity.store');
     Route::get('activity/edit/{id}',[ActivityController::class, 'edit'])->name('activity.edit');
     Route::put('activity/update/{id}',[ActivityController::class, 'update'])->name('activity.update');
+    Route::delete('activity/delete', [ActivityController::class, 'destroy'])->name('activity.destroy');
 
     Route::get('accomodations', [AccommodationController::class, 'list'])->name('accomodations');
     Route::get('accomodation/create', [AccommodationController::class, 'create'])->name('accomodation.create');

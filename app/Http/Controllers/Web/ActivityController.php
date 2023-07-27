@@ -34,7 +34,7 @@ class ActivityController extends Controller
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/activity/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['featured_image', 'actions'])
@@ -79,11 +79,11 @@ class ActivityController extends Controller
         $featured_image_name = $request->old_image;
 
         if($request->hasFile('featured_image')) {
-            $old_upload_image = public_path('/app-assets/images/activities') . $request->old_image;
+            $old_upload_image = public_path('/app-assets/images/activities/') . $request->old_image;
             $remove_image = @unlink($old_upload_image);
 
             $featured_image = $request->file('featured_image');
-            $featured_image_name = Str::snake($request->activity_name) . '.' . $featured_image->getClientOriginalExtension();
+            $featured_image_name = Str::snake(Str::lower($request->activity_name)) . '.' . $featured_image->getClientOriginalExtension();
 
             $save_file = $featured_image->move(public_path() . '/app-assets/images/activities', $featured_image_name);
         }
@@ -93,5 +93,22 @@ class ActivityController extends Controller
         ]));
 
         if($update) return back()->with('success', 'Activity Updated Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $activity = Activity::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/activities/') . $activity->featured_image;
+        $remove_image = @unlink($old_upload_image);
+
+        $delete = $activity->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }
