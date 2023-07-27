@@ -26,10 +26,10 @@ class AttractionController extends Controller
                         return '<img src="' . $featured_image . '" style="width: 75px;" />';
                     })
                     ->addColumn('province', function($row) {
-                        return $row->province->name;
+                        return optional($row->province)->name;
                     })
                     ->addColumn('city_municipality', function($row) {
-                        return $row->city_municipality->name;
+                        return optional($row->city_municipality)->name;
                     })
                     ->addColumn('is_featured', function($row) {
                        if($row->is_featured) {
@@ -40,7 +40,7 @@ class AttractionController extends Controller
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/attraction/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['featured_image', 'actions', 'is_featured'])
@@ -86,11 +86,11 @@ class AttractionController extends Controller
         $featured_image_name = $request->old_image;
 
         if($request->hasFile('featured_image')) {
-            $old_upload_image = public_path('/app-assets/images/attractions') . $request->old_image;
+            $old_upload_image = public_path('/app-assets/images/attractions/') . $request->old_image;
             $remove_image = @unlink($old_upload_image);
 
             $featured_image = $request->file('featured_image');
-            $featured_image_name = Str::snake($request->name) . '.' . $featured_image->getClientOriginalExtension();
+            $featured_image_name = Str::snake($request->attraction_name) . '.' . $featured_image->getClientOriginalExtension();
 
             $save_file = $featured_image->move(public_path() . '/app-assets/images/attractions', $featured_image_name);
         }
@@ -102,5 +102,22 @@ class AttractionController extends Controller
             ]));
 
         if($update) return back()->withSuccess('Attraction Updated Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $attraction = Attraction::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/attractions/') . $attraction->featured_image;
+        $remove_image = @unlink($old_upload_image);
+
+        $delete = $attraction->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }
