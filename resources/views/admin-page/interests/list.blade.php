@@ -3,36 +3,36 @@
 @section('title', 'Interests')
 
 @section('content')
-<div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
-        <div class="content-body">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                    <h2 class="card-title">Interests</h2>
-                    <a href="{{ route('admin.interest.create') }}" class="btn btn-primary">Create Interest</a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Interest Name</th>
-                                    <th>Featured Image</th>
-                                    <th>Icon</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                        </table>
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center border-bottom">
+                        <h2 class="card-title">Interests</h2>
+                        <a href="{{ route('admin.interest.create') }}" class="btn btn-primary">Create Interest</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Interest Name</th>
+                                        <th>Featured Image</th>
+                                        <th>Icon</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('scripts')
@@ -46,8 +46,7 @@
                 ajax: {
                     url: "{{ route('admin.interests') }}"
                 },
-                columns: [
-                    {
+                columns: [{
                         data: 'id',
                         name: 'id'
                     },
@@ -70,6 +69,41 @@
                 ]
             })
         }
+
+        $(document).on("click", ".remove-btn", function(e) {
+            let id = $(this).attr("id");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Remove interest from list",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('admin.interest.destroy') }}",
+                        method: "DELETE",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id: id
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.status) {
+                                Swal.fire('Removed!', response.message, 'success').then(
+                                    result => {
+                                        if (result.isConfirmed) {
+                                            location.reload();
+                                        }
+                                    })
+                            }
+                        }
+                    })
+                }
+            })
+        });
 
         loadTable();
     </script>

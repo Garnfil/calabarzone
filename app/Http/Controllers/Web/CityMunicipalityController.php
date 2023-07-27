@@ -31,7 +31,7 @@ class CityMunicipalityController extends Controller
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/city_municipality/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['actions', 'featured_image'])
@@ -94,5 +94,22 @@ class CityMunicipalityController extends Controller
         [ 'featured_image' => $featured_image_name]));
 
         if($update) return back()->with('success', 'City or Municipality Updated Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $city_municipality = CityMunicipality::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/city_municipality/') . $city_municipality->featured_image;
+        $remove_image = @unlink($old_upload_image);
+
+        $delete = $city_municipality->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }

@@ -54,6 +54,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::post('province/store', [ProvinceController::class, 'store'])->name('province.store');
     Route::get('province/edit/{id}',[ProvinceController::class, 'edit'])->name('province.edit');
     Route::put('province/update/{id}',[ProvinceController::class, 'update'])->name('province.update');
+    Route::delete('province/delete', [ProvinceController::class, 'destroy'])->name('province.destroy');
 
     Route::get('cities_municipalities', [CityMunicipalityController::class, 'list'])->name('cities_municipalities');
     Route::get('city_municipality/lookup', [CityMunicipalityController::class, 'lookup'])->name('city_municipality.lookup');
@@ -61,24 +62,28 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::post('city_municipality/store', [CityMunicipalityController::class, 'store'])->name('city_municipality.store');
     Route::get('city_municipality/edit/{id}',[CityMunicipalityController::class, 'edit'])->name('city_municipality.edit');
     Route::put('city_municipality/update/{id}',[CityMunicipalityController::class, 'update'])->name('city_municipality.update');
+    Route::delete('city_municipality/delete', [CityMunicipalityController::class, 'destroy'])->name('city_municipality.destroy');
 
     Route::get('interests', [InterestController::class, 'list'])->name('interests');
     Route::get('interest/create', [InterestController::class, 'create'])->name('interest.create');
     Route::post('interest/store', [InterestController::class, 'store'])->name('interest.store');
     Route::get('interest/edit/{id}',[InterestController::class, 'edit'])->name('interest.edit');
     Route::put('interest/update/{id}',[InterestController::class, 'update'])->name('interest.update');
+    Route::delete('interest/delete', [InterestController::class, 'destroy'])->name('interest.destroy');
 
     Route::get('attractions', [AttractionController::class, 'list'])->name('attractions');
     Route::get('attraction/create', [AttractionController::class, 'create'])->name('attraction.create');
     Route::post('attraction/store', [AttractionController::class, 'store'])->name('attraction.store');
     Route::get('attraction/edit/{id}',[AttractionController::class, 'edit'])->name('attraction.edit');
     Route::put('attraction/update/{id}',[AttractionController::class, 'update'])->name('attraction.update');
+    Route::delete('attraction/delete', [AttractionController::class, 'destroy'])->name('attraction.destroy');
 
     Route::get('events', [EventController::class, 'list'])->name('events');
     Route::get('event/create', [EventController::class, 'create'])->name('event.create');
     Route::post('event/store', [EventController::class, 'store'])->name('event.store');
     Route::get('event/edit/{id}',[EventController::class, 'edit'])->name('event.edit');
     Route::put('event/update/{id}',[EventController::class, 'update'])->name('event.update');
+    Route::delete('event/delete', [EventController::class, 'destroy'])->name('event.destroy');
 
     Route::get('activities', [ActivityController::class, 'list'])->name('activities');
     Route::get('activity/create', [ActivityController::class, 'create'])->name('activity.create');

@@ -98,11 +98,13 @@
                                 data-toggle="dropdown">
                                 <div class="avatar avatar-online"><img
                                         src="../../../app-assets/images/portrait/small/avatar-s-1.png"
-                                        alt="avatar"><i></i></div><span class="user-name">{{ auth()->user()->name }}</span>
+                                        alt="avatar"><i></i></div><span
+                                    class="user-name">{{ auth()->user()->name }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="login-with-bg-image.html"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                ><i class="feather icon-power"></i> Logout</a>
+                                <a class="dropdown-item" href="login-with-bg-image.html"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                        class="feather icon-power"></i> Logout</a>
                                 <form method="POST" action="{{ route('admin.logout') }}" id="logout-form"
                                     style="display: none;">
                                     @csrf
@@ -193,8 +195,7 @@
     <footer class="footer footer-static footer-light navbar-border">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span
                 class="float-md-left d-block d-md-inline-block">Copyright &copy; 2023 <a
-                    class="text-bold-800 grey darken-2" href="https://1.envato.market/pixinvent_portfolio"
-                    target="_blank">CALABARZONE </a></span></p>
+                    class="text-bold-800 grey darken-2" href="#" target="_blank">CALABARZONE </a></span></p>
     </footer>
     <!-- END: Footer-->
 
@@ -221,6 +222,7 @@
     <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/switch.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @if (Session::get('success'))
         <script>

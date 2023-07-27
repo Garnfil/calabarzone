@@ -27,14 +27,14 @@ class ProvinceController extends Controller
                 })
                 ->addColumn('actions', function ($row) {
                     $btn = '<a href="/admin/province/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                     return $btn;
                 })
                 ->addColumn('transportations', function ($row) {
                    $transportations = json_decode($row->transportations);
                    $output = '';
                    foreach ($transportations as $key => $transportation) {
-                        $output .= '<div class="badge badge-primary p-75 mx-50">' .$transportation. '</div>';
+                        $output .= '<div class="badge badge-primary p-50 mx-50">' .$transportation. '</div>';
                    }
                    return $output;
                 })
@@ -78,7 +78,7 @@ class ProvinceController extends Controller
         $featured_image_name = $request->old_image;
 
         if($request->hasFile('featured_image')) {
-            $old_upload_image = public_path('/app-assets/images/provinces') . $request->old_image;
+            $old_upload_image = public_path('/app-assets/images/provinces/') . $request->old_image;
             $remove_image = @unlink($old_upload_image);
 
             $featured_image = $request->file('featured_image');
@@ -93,5 +93,22 @@ class ProvinceController extends Controller
         ));
 
         if($update) return back()->with('success', 'Province Updated Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $province = Province::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/provinces/') . $province->featured_image;
+        $remove_image = @unlink($old_upload_image);
+
+        $delete = $province->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }

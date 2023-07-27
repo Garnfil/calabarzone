@@ -33,7 +33,7 @@ class InterestController extends Controller
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/interest/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['actions', 'featured_image', 'icon'])
@@ -111,5 +111,25 @@ class InterestController extends Controller
         ]));
 
         if($update) return back()->withSuccess('Interest Update Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $interest = Interest::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/interests/') . $interest->featured_image;
+        $old_icon_image = public_path('/app-assets/images/interests_icons/') . $interest->icon;
+
+        $remove_featured_image = @unlink($old_upload_image);
+        $remove_icon_image = @unlink($old_icon_image);
+
+        $delete = $interest->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }
