@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 26, 2023 at 11:10 PM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Generation Time: Jul 27, 2023 at 09:01 AM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `accomodations`;
 CREATE TABLE IF NOT EXISTS `accomodations` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` bigint NOT NULL,
-  `city_id` bigint NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` bigint(20) NOT NULL,
+  `city_id` bigint(20) NOT NULL,
   `featured_image` varchar(255) DEFAULT NULL,
   `merchant_code` varchar(255) DEFAULT NULL,
   `business_name` text,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `accomodations` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `accomodations` (
 
 DROP TABLE IF EXISTS `activities`;
 CREATE TABLE IF NOT EXISTS `activities` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` int NOT NULL,
-  `city_id` int NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `featured_image` varchar(255) DEFAULT NULL,
   `activity_name` varchar(255) DEFAULT NULL,
   `interest_type` text,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `activities` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `activities`
@@ -79,15 +79,40 @@ INSERT INTO `activities` (`id`, `province_id`, `city_id`, `featured_image`, `act
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+DROP TABLE IF EXISTS `admins`;
+CREATE TABLE IF NOT EXISTS `admins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `email`, `password`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'godesq', 'james@godesq.com', '$2y$10$mZQCInLCs.xOEOMztNkB3u8Ko03hz6c4esU.MIdqUDgf64d7y5ep.', 'GodesQ Digital', '2023-07-27 00:52:32', '2023-07-27 00:52:32');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `attractions`
 --
 
 DROP TABLE IF EXISTS `attractions`;
 CREATE TABLE IF NOT EXISTS `attractions` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` int NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` int(11) NOT NULL,
   `featured_image` varchar(255) DEFAULT NULL,
-  `city_id` int NOT NULL,
+  `city_id` int(11) NOT NULL,
   `how_to_get_there` mediumtext,
   `interest_type` text,
   `attraction_name` text,
@@ -103,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `attractions` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `attractions`
@@ -120,18 +145,18 @@ INSERT INTO `attractions` (`id`, `province_id`, `featured_image`, `city_id`, `ho
 
 DROP TABLE IF EXISTS `cities_municipalities`;
 CREATE TABLE IF NOT EXISTS `cities_municipalities` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `featured_image` varchar(255) NOT NULL,
   `images` text,
   `type` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
-  `province_id` int NOT NULL,
+  `province_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cities_municipalities_province_id_foreign` (`province_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cities_municipalities`
@@ -150,9 +175,9 @@ INSERT INTO `cities_municipalities` (`id`, `name`, `featured_image`, `images`, `
 
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE IF NOT EXISTS `events` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` bigint NOT NULL,
-  `city_id` bigint NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` bigint(20) NOT NULL,
+  `city_id` bigint(20) NOT NULL,
   `featured_image` varchar(255) NOT NULL,
   `event_name` varchar(255) DEFAULT NULL,
   `interest_type` varchar(255) DEFAULT NULL,
@@ -160,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `description` text,
   `what_to_wear` varchar(255) DEFAULT NULL,
   `travel_tips` text,
-  `department_id` int DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL,
   `contact_person` varchar(255) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -168,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   PRIMARY KEY (`id`),
   KEY `events_province_id_foreign` (`province_id`),
   KEY `events_city_id_foreign` (`city_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
@@ -185,9 +210,10 @@ INSERT INTO `events` (`id`, `province_id`, `city_id`, `featured_image`, `event_n
 
 DROP TABLE IF EXISTS `food_and_dining`;
 CREATE TABLE IF NOT EXISTS `food_and_dining` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `province_id` int NOT NULL,
-  `city_id` int NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `province_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  `featured_image` varchar(255) DEFAULT NULL,
   `merchant_code` varchar(255) DEFAULT NULL,
   `business_name` varchar(255) DEFAULT NULL,
   `interest_type` text,
@@ -205,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `food_and_dining` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -215,14 +241,14 @@ CREATE TABLE IF NOT EXISTS `food_and_dining` (
 
 DROP TABLE IF EXISTS `gci_tours`;
 CREATE TABLE IF NOT EXISTS `gci_tours` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tour_name` varchar(255) DEFAULT NULL,
   `tour_type` text,
   `what_to_wear` varchar(255) DEFAULT NULL,
   `best_time` varchar(255) DEFAULT NULL,
-  `operation_hours` bigint DEFAULT NULL,
+  `operation_hours` bigint(20) DEFAULT NULL,
   `inclusions` text,
-  `province` int DEFAULT NULL,
+  `province` int(11) DEFAULT NULL,
   `inclusion_details` text,
   `cities` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -230,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `gci_tours` (
   PRIMARY KEY (`id`),
   KEY `gci_tours_cities_foreign` (`cities`(250)),
   KEY `gci_tours_province_foreign` (`province`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -240,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `gci_tours` (
 
 DROP TABLE IF EXISTS `interests`;
 CREATE TABLE IF NOT EXISTS `interests` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `interest_name` varchar(255) NOT NULL,
   `featured_image` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT NULL,
@@ -248,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `interests` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `interests`
@@ -260,7 +286,51 @@ INSERT INTO `interests` (`id`, `interest_name`, `featured_image`, `icon`, `descr
 (3, 'Events & Entertainment', NULL, 'events&_entertainment_icon.png', NULL, '2023-07-25 23:16:20', '2023-07-25 23:16:20'),
 (4, 'Sun & Beach', NULL, 'sun&_beach_icon.png', NULL, '2023-07-25 23:17:50', '2023-07-25 23:17:50'),
 (5, 'Health & Wellness', NULL, 'health&_wellness_icon.png', NULL, '2023-07-25 23:19:52', '2023-07-25 23:19:52'),
-(6, 'Farm & Food', NULL, 'farm&_food_icon.png', NULL, '2023-07-25 23:20:48', '2023-07-25 23:20:48');
+(6, 'Farm & Food', NULL, 'farm&_food_icon.png', NULL, '2023-07-25 23:20:48', '2023-07-25 23:20:48'),
+(7, 'Arts', NULL, 'arts_icon.png', NULL, '2023-07-26 19:57:33', '2023-07-26 21:57:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+DROP TABLE IF EXISTS `personal_access_tokens`;
+CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
+(3, 'App\\Models\\User', 1, 'API TOKEN', 'd96592d6a9a564f93b32b6fc07e4a5b3d107fdbe80cfdda526734cf456ea34db', '[\"*\"]', '2023-07-26 21:45:17', '2023-07-26 18:08:24', '2023-07-26 21:45:17'),
+(5, 'App\\Models\\User', 1, 'API TOKEN', '5fdc456a3bf531153f69611b605dfe7d0b11428b34b354993d67d80595d30c8c', '[\"*\"]', NULL, '2023-07-26 19:31:39', '2023-07-26 19:31:39'),
+(10, 'App\\Models\\User', 5, 'API TOKEN', '7b2aa4a394a7e0c9f04b48d0f4af609f33d414eb0ca6aaffc85f4ca0c7a4e710', '[\"*\"]', NULL, '2023-07-27 00:34:22', '2023-07-27 00:34:22');
 
 -- --------------------------------------------------------
 
@@ -270,7 +340,7 @@ INSERT INTO `interests` (`id`, `interest_name`, `featured_image`, `icon`, `descr
 
 DROP TABLE IF EXISTS `provinces`;
 CREATE TABLE IF NOT EXISTS `provinces` (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `featured_image` varchar(255) NOT NULL,
   `images` varchar(255) DEFAULT NULL,
@@ -281,15 +351,18 @@ CREATE TABLE IF NOT EXISTS `provinces` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `provinces`
 --
 
 INSERT INTO `provinces` (`id`, `name`, `featured_image`, `images`, `description`, `transportations`, `tagline`, `languages`, `created_at`, `updated_at`) VALUES
-(2, 'Rizal', 'rizal.jpg', NULL, 'Rizal, officially the Province of Rizal, is a province in the Philippines located in the Calabarzon region in Luzon. Its capital is the city of Antipolo. It is about 16 kilometres east of Manila. The province is named after José Rizal, one of the main national heroes of the Philippines.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'Cradle of Philippine Art', NULL, '2023-07-25 16:54:05', '2023-07-25 17:34:03'),
-(3, 'Cavite', 'cavite.jpg', NULL, 'Cavite, officially the Province of Cavite, is a province in the Philippines located in the Calabarzon region in Luzon. Located on the southern shores of Manila Bay and southwest of Manila, it is one of the most industrialized and fastest-growing provinces in the Philippines.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'TARA, CAVITE TAYO!', NULL, '2023-07-25 18:30:32', '2023-07-25 18:30:32');
+(2, 'Rizal', 'rizal.jpg', NULL, 'Rizal, officially the Province of Rizal, is a province in the Philippines located in the Calabarzon region in Luzon. Its capital is the city of Antipolo. It is about 16 kilometres east of Manila. The province is named after José Rizal, one of the main national heroes of the Philippines.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'PASYAL SA RIZAL', NULL, '2023-07-25 16:54:05', '2023-07-26 19:37:35'),
+(3, 'Cavite', 'cavite.jpg', NULL, 'Cavite, officially the Province of Cavite, is a province in the Philippines located in the Calabarzon region in Luzon. Located on the southern shores of Manila Bay and southwest of Manila, it is one of the most industrialized and fastest-growing provinces in the Philippines.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'TARA, CAVITE TAYO!', NULL, '2023-07-25 18:30:32', '2023-07-25 18:30:32'),
+(4, 'Batangas', 'batangas.png', NULL, 'Batangas, officially the Province of Batangas, is a province in the Philippines located in the Calabarzon region on Luzon. Its capital is the city of Batangas, and is bordered by the provinces of Cavite and Laguna to the north, and Quezon to the east.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'RICH BATANGAS!', NULL, '2023-07-26 19:34:04', '2023-07-26 19:34:04'),
+(5, 'Quezon', 'quezon.jpg', NULL, 'Quezon, officially the Province of Quezon, is a province in the Philippines located in the Calabarzon region on Luzon. Kaliraya/Kalilayan was the first known name of the province upon its creation in 1591. Around the middle of the 18th century, it was changed to Tayabas.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'TARA NA SA QUEZON', NULL, '2023-07-26 19:35:31', '2023-07-26 19:35:31'),
+(6, 'Laguna', 'laguna.jpg', NULL, 'Laguna is a province just southeast of Manila and Laguna de Bay, in the Philippines. In Calamba, the Jose Rizal Shrine is a reconstruction of the national hero\'s childhood home. To the south is Mount Makiling, a dormant volcano. The town of Pila has well-preserved Spanish colonial architecture. The crypt of Nagcarlan Underground Cemetery holds 19th-century graves. Boats travel over the rapids of Pagsanjan Falls.', '[\"Jeep\",\"Bus\",\"Tricycle\",\"Motorcycle\"]', 'LOVE LAGUNA', NULL, '2023-07-26 19:36:48', '2023-07-26 19:36:48');
 
 -- --------------------------------------------------------
 
@@ -299,22 +372,31 @@ INSERT INTO `provinces` (`id`, `name`, `featured_image`, `images`, `description`
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `interests` varchar(255) DEFAULT NULL,
+  `is_verify` tinyint(1) NOT NULL DEFAULT '1',
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'godesq', '$2y$10$mZQCInLCs.xOEOMztNkB3u8Ko03hz6c4esU.MIdqUDgf64d7y5ep.', 'james@godesq.com', 'GodesQ Digital', '2023-07-25 13:04:01', '2023-07-25 13:04:01');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `name`, `firstname`, `lastname`, `interests`, `is_verify`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'james.godesqq', '$2y$10$mZQCInLCs.xOEOMztNkB3u8Ko03hz6c4esU.MIdqUDgf64d7y5ep.', 'james@godesq.com', 'James GodesQ', 'James', 'GodesQ', NULL, 1, 0, '2023-07-25 13:04:01', '2023-07-26 21:22:47'),
+(4, 'jamesgarnfil', '$2y$10$H5etE.SL4T3Z.uE1zCVTl.fNiwhtOapnHgkwan4GNiQE5fvjfDfHS', 'jamesgarnfil15@gmail.com', NULL, NULL, NULL, NULL, 1, 0, '2023-07-26 19:32:50', '2023-07-26 19:33:46'),
+(5, 'jamisjoe', '$2y$10$8L.xPtdbPhhJSu36Gm3xX.AOSHU0fEiPyXYoitgkNTKGqJv/XHtUe', 'jamisjoecristian@gmail.com', NULL, NULL, NULL, NULL, 1, 0, '2023-07-26 19:35:28', '2023-07-26 19:36:53'),
+(6, 'jam', '$2y$10$IGX1BOygSJx9tmu8t47LsORW3EKa6ZJLDff6St8Kw3/FnD8xPim5C', 'jamisjoe@gmail.com', NULL, NULL, NULL, NULL, 0, 0, '2023-07-26 22:24:05', '2023-07-26 22:24:05'),
+(8, 'christian', '$2y$10$g6sYY1ZoFAdqGA2./TZAVudfmGe8FB0TniZsIvx/F6zuWtQPtxL7O', 'christianmarkvillasco@gmail.com', NULL, 'Christian', 'Villasco', '[\"1\",\"2\",\"4\"]', 1, 1, '2023-07-26 23:48:59', '2023-07-27 00:49:42');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
