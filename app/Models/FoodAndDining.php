@@ -12,6 +12,7 @@ class FoodAndDining extends Model
     protected $fillable = [
         'province_id',
         'city_id',
+        'featured_image',
         'merchant_code',
         'business_name',
         'interest_type',

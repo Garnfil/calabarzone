@@ -27,8 +27,11 @@
                                 </ul>
                             </div>
                         @endif
-                        <form method="POST" enctype="multipart/form-data" action="{{ route('admin.interest.store') }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('admin.interest.update', $interest->id) }}">
                             @csrf
+                            @method("PUT")
+                            <input type="hidden" name="old_icon_image" value="{{ $interest->icon }}">
+                            <input type="hidden" name="old_featured_image" value="{{ $interest->featured_image }}">
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="row">

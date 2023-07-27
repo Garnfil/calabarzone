@@ -11,65 +11,97 @@
             <div class="content-body">
                 <div class="row grouped-multiple-statistics-card">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div
-                                            class="d-flex align-items-start mb-sm-1 mb-xl-0 border-right-blue-grey border-right-lighten-5">
-                                            <span class="card-icon primary d-flex justify-content-center mr-3">
-                                                <i class="icon p-1 icon-bar-chart customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">$95k</h3>
-                                                <p class="sub-heading">Revenue</p>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row match-height">
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Recent Users</h4>
+                                                <a class="heading-elements-toggle"><i
+                                                        class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                                <div class="heading-elements">
+                                                    <ul class="list-inline mb-0">
+                                                        <li><a data-action="reload"><i
+                                                                    class="feather icon-rotate-cw"></i></a></li>
+                                                        <li><a data-action="expand"><i
+                                                                    class="feather icon-maximize"></i></a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="success"><i class="fa fa-long-arrow-up"></i> 5.2%</small>
-                                            </span>
+                                            <div class="card-content">
+                                                <div class="card-body p-0">
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table id="recent-orders"
+                                                        class="table table-hover mb-0 ps-container ps-theme-default">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Username</th>
+                                                                <th>Email</th>
+                                                                <th>Name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($users as $user)
+                                                                <tr>
+                                                                    <td class="text-truncate">{{ $user->id }}</td>
+                                                                    <td class="text-truncate">{{ $user->username }}</td>
+                                                                    <td class="text-truncate">{{ $user->email }}</td>
+                                                                    <td class="text-truncate">{{ $user->name }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div
-                                            class="d-flex align-items-start mb-sm-1 mb-xl-0 border-right-blue-grey border-right-lighten-5">
-                                            <span class="card-icon danger d-flex justify-content-center mr-3">
-                                                <i class="icon p-1 icon-pie-chart customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">18.63%</h3>
-                                                <p class="sub-heading">Growth Rate</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row match-height">
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Recent Interests</h4>
+                                                <a class="heading-elements-toggle"><i
+                                                        class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                                <div class="heading-elements">
+                                                    <ul class="list-inline mb-0">
+                                                        <li><a data-action="reload"><i
+                                                                    class="feather icon-rotate-cw"></i></a></li>
+                                                        <li><a data-action="expand"><i
+                                                                    class="feather icon-maximize"></i></a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="danger"><i class="fa fa-long-arrow-down"></i> 2.0%</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div class="d-flex align-items-start border-right-blue-grey border-right-lighten-5">
-                                            <span class="card-icon success d-flex justify-content-center mr-3">
-                                                <i class="icon p-1 icon-graph customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">$27k</h3>
-                                                <p class="sub-heading">Sales</p>
+                                            <div class="card-content">
+                                                <div class="card-body p-0">
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table id="recent-orders"
+                                                        class="table table-hover mb-0 ps-container ps-theme-default">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Interest Name</th>
+                                                                <th>Icon</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($interests as $interest)
+                                                                <tr>
+                                                                    <td class="text-truncate">{{ $interest->id }}</td>
+                                                                    <td class="text-truncate">{{ $interest->interest_name }}</td>
+                                                                    <td class="text-truncate"><img src="" alt=""></td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="success"><i class="fa fa-long-arrow-up"></i> 10.0%</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-xl-3 col-sm-6 col-12">
-                                        <div class="d-flex align-items-start">
-                                            <span class="card-icon warning d-flex justify-content-center mr-3">
-                                                <i class="icon p-1 icon-basket-loaded customize-icon font-large-2 p-1"></i>
-                                            </span>
-                                            <div class="stats-amount mr-3">
-                                                <h3 class="heading-text text-bold-600">13700</h3>
-                                                <p class="sub-heading">Orders</p>
-                                            </div>
-                                            <span class="inc-dec-percentage">
-                                                <small class="danger"><i class="fa fa-long-arrow-down"></i> 13.6%</small>
-                                            </span>
                                         </div>
                                     </div>
                                 </div>

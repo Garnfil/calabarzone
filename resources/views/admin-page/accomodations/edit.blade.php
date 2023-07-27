@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Create Accomodation')
+@section('title', 'Create Accommodation')
 
 @section('content')
     <div class="app-content content">
@@ -11,7 +11,7 @@
             <div class="content-body">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                        <h2 class="card-title">Edit Accomodation</h2>
+                        <h2 class="card-title">Edit Accommodation</h2>
                         <a href="{{ route('admin.accomodations') }}" class="btn btn-primary">Back to List</a>
                     </div>
                     <div class="card-body">
@@ -83,7 +83,7 @@
                                             <select name="classification" id="classification" class="select2 form-control">
                                                 <option value="Hotel">Hotel</option>
                                                 <option value="Resort">Resort</option>
-                                                <option value="Mabuhay Accomodation">MABUHAY ACCOMMODATION </option>
+                                                <option value="Mabuhay Accommodation">MABUHAY ACCOMMODATION </option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6 my-1">
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="form-footer border-top py-2">
-                                <button class="btn btn-success">Save Accomodation</button>
+                                <button class="btn btn-success">Save Accommodation</button>
                             </div>
                         </form>
                     </div>

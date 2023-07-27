@@ -10,7 +10,7 @@ use App\Models\Interest;
 use DataTables;
 
 use App\Http\Requests\Interests\CreateInterestRequest;
-
+use App\Http\Requests\Interests\UpdateInterestRequest;
 
 class InterestController extends Controller
 {
@@ -67,9 +67,6 @@ class InterestController extends Controller
             $save_file = $featured_icon->move(public_path() . '/app-assets/images/interests_icons', $featured_icon_name);
         }
 
-
-
-
         $create = Interest::create(array_merge($data, [
             'featured_image' => $featured_image_name,
             'icon' => $featured_icon_name
@@ -81,5 +78,38 @@ class InterestController extends Controller
     public function edit(Request $request) {
         $interest = Interest::where('id', $request->id)->firstOrFail();
         return view('admin-page.interests.edit', compact('interest'));
+    }
+
+    public function update(UpdateInterestRequest $request) {
+        $data = $request->validated();
+        $featured_image_name = $request->old_featured_image;
+        $featured_icon_name = $request->old_icon_image;
+
+        if($request->hasFile('featured_image')) {
+            $old_upload_image = public_path('/app-assets/images/interests') . $request->old_featured_image;
+            $remove_image = @unlink($old_upload_image);
+
+            $featured_image = $request->file('featured_image');
+            $featured_image_name = Str::snake($request->interest_name) . '.' . $featured_image->getClientOriginalExtension();
+
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/interests', $featured_image_interest_name);
+        }
+
+        if($request->hasFile('icon')) {
+            $old_upload_image = public_path('/app-assets/images/interests_icons') . $request->old_icon_image;
+            $remove_image = @unlink($old_upload_image);
+
+            $icon_image = $request->file('icon');
+            $featured_icon_name = Str::snake($request->interest_name) . '.' . $featured_image->getClientOriginalExtension();
+
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/interests_icons', $featured_icon_name);
+        }
+
+        $update = Interest::where('id', $request->id)->update(array_merge($data, [
+            'featured_image' => $featured_image_name,
+            'icon' => $featured_icon_name,
+        ]));
+
+        if($update) return back()->withSuccess('Interest Update Successfully');
     }
 }

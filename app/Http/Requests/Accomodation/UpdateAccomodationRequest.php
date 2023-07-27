@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Accomodation;
+namespace App\Http\Requests\Accommodation;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAccomodationRequest extends FormRequest
+class UpdateAccommodationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

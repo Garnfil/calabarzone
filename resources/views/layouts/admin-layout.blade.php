@@ -51,6 +51,8 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
 
 </head>
 
@@ -96,16 +98,15 @@
                                 data-toggle="dropdown">
                                 <div class="avatar avatar-online"><img
                                         src="../../../app-assets/images/portrait/small/avatar-s-1.png"
-                                        alt="avatar"><i></i></div><span class="user-name">John Doe</span>
+                                        alt="avatar"><i></i></div><span class="user-name">{{ auth()->user()->name }}</span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                    href="user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a
-                                    class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My
-                                    Inbox</a><a class="dropdown-item" href="user-cards.html"><i
-                                        class="feather icon-check-square"></i> Task</a><a class="dropdown-item"
-                                    href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item"
-                                    href="login-with-bg-image.html"><i class="feather icon-power"></i> Logout</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="login-with-bg-image.html"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                ><i class="feather icon-power"></i> Logout</a>
+                                <form method="POST" action="{{ route('admin.logout') }}" id="logout-form"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                     </ul>
@@ -161,7 +162,7 @@
                 </li>
                 <li class="{{ Request::path() == 'admin/accomodations' ? 'active' : '' }} nav-item"><a
                         href="{{ route('admin.accomodations') }}"><i class="feather icon-globe"></i><span
-                            class="menu-title" data-i18n="Accomodations">Accomodations</span></a>
+                            class="menu-title" data-i18n="Accommodations">Accommodations</span></a>
                 </li>
                 <li class="{{ Request::path() == 'admin/food_dinings' ? 'active' : '' }} nav-item"><a
                         href="{{ route('admin.food_dinings') }}"><i class="feather icon-globe"></i><span
@@ -172,7 +173,7 @@
                 <li class="navigation-header"><span>Users</span><i class=" feather icon-minus" data-toggle="tooltip"
                         data-placement="right" data-original-title="Apps"></i>
                 </li>
-                <li class="{{ Request::path() == 'admin/interests' ? 'active' : '' }} nav-item"><a
+                <li class="{{ Request::path() == 'admin/users' ? 'active' : '' }} nav-item"><a
                         href="{{ route('admin.users') }}"><i class="feather icon-users"></i><span class="menu-title"
                             data-i18n="Users">Users</span></a>
                 </li>
@@ -219,6 +220,28 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/switch.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    @if (Session::get('success'))
+        <script>
+            toastr.options = {
+                closeButton: true, // Add close button
+                timeOut: 2000
+            };
+            toastr.success("{{ Session::get('success') }}", "Success");
+        </script>
+    @endif
+
+    @if (Session::get('fail'))
+        <script>
+            toastr.options = {
+                closeButton: true, // Add close button
+                timeOut: 2000
+            };
+            toastr.error("{{ Session::get('fail') }}", 'Fail');
+        </script>
+    @endif
+
     @stack('scripts')
     <!-- END: Page JS-->
 </body>

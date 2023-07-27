@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title')
+@section('title', 'Food and Dinings')
 
 @section('content')
     <div class="app-content content">
@@ -65,8 +65,8 @@
                         name: "province",
                     },
                     {
-                        data: "city",
-                        name: "city",
+                        data: "city_municipality",
+                        name: "city_municipality",
                     },
                     {
                         data: "actions",

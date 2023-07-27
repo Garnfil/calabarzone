@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Accomodations')
+@section('title', 'Accommodations')
 
 @section('content')
     <div class="app-content content">
@@ -11,8 +11,8 @@
             <div class="content-body">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                        <h2 class="card-title">Accomodations</h2>
-                        <a href="{{ route('admin.accomodation.create') }}" class="btn btn-primary">Create Accomodation</a>
+                        <h2 class="card-title">Accommodations</h2>
+                        <a href="{{ route('admin.accomodation.create') }}" class="btn btn-primary">Create Accommodation</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

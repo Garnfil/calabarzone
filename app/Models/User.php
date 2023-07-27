@@ -20,28 +20,31 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['name', 'firstname', 'lastname', 'email', 'username', 'password', 'interests', 'is_verify', 'is_active'];
+
+    protected $appends = ['my_interests'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getMyInterestsAttribute()
+    {
+        $interests = json_decode($this->interests, true); // Passing true as the second argument to get an associative array
+
+        if (is_array($interests) && !empty($interests)) {
+            $data = Interest::whereIn('id', $interests)
+                ->get()
+                ->toArray();
+            if (!empty($data)) {
+                return $data;
+            }
+        }
+
+        // Return an empty array if there are no interests or if an error occurred
+        return [];
+    }
 }

@@ -63,7 +63,7 @@
                                 <div class="card-header border-0">
                                     <div class="card-title text-center">
                                         <div class="p-1"><img
-                                                src="../../../app-assets/images/logo/stack-logo-dark.png"
+                                                src="{{ URL::asset('app-assets/images/logo/calabarzone(32x32).png') }}"
                                                 alt="branding logo"></div>
                                     </div>
                                     <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
@@ -72,23 +72,35 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
+                                        @if (Session::get('fail'))
+                                            <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                                        @endif
                                         <form class="form-horizontal form-simple"
-                                            action="{{ route('admin.login.post') }}" method="POST">
+                                            action="{{ route('admin.login.post') }}" method="POST" novalidate>
                                             @csrf
                                             <fieldset class="form-group position-relative has-icon-left mb-0">
                                                 <input type="text" class="form-control form-control-lg"
-                                                    id="user-name" placeholder="Your Username" name="username" required>
+                                                    id="user-name" placeholder="Your Username" name="username">
                                                 <div class="form-control-position">
                                                     <i class="feather icon-user"></i>
                                                 </div>
+                                                <span class="danger text-danger">
+                                                    @error('username')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
                                                 <input type="password" class="form-control form-control-lg"
-                                                    id="user-password" placeholder="Enter Password" name="password"
-                                                    required>
+                                                    id="user-password" placeholder="Enter Password" name="password">
                                                 <div class="form-control-position">
                                                     <i class="fa fa-key"></i>
                                                 </div>
+                                                <span class="danger text-danger">
+                                                    @error('username')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
                                             </fieldset>
                                             <div class="form-group row">
                                                 <div class="col-sm-6 col-12 text-center text-sm-left"></div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Web\Auth\AdminAuthController;
+use App\Http\Controllers\Web\Auth\UserAuthController;
 use App\Http\Controllers\Web\OverviewController;
 use App\Http\Controllers\Web\ProvinceController;
 use App\Http\Controllers\Web\CityMunicipalityController;
@@ -10,8 +11,11 @@ use App\Http\Controllers\Web\InterestController;
 use App\Http\Controllers\Web\AttractionController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\ActivityController;
-use App\Http\Controllers\Web\AccomodationController;
+use App\Http\Controllers\Web\AccommodationController;
 use App\Http\Controllers\Web\FoodAndDiningController;
+use App\Http\Controllers\Web\UserController;
+
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,15 +29,24 @@ use App\Http\Controllers\Web\FoodAndDiningController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    if(Auth::guard('admin')->check()) {
+        return redirect()->route('admin.overview');
+    } else {
+        return redirect()->route('admin.login');
+
+    }
+})->name('home');
 
 Route::get('admin/login', [AdminAuthController::class, 'viewLogin'])->name('admin.login');
 Route::post('admin/login', [AdminAuthController::class, 'saveLogin'])->name('admin.login.post');
 
 Route::get('admin/forgot_password', [AdminAuthController::class, 'viewForgotPasswordPage']);
 
-Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
+Route::view('user/success_verification_message', 'misc.success_verification_message')->name('user.success_verification_message');
+Route::get('/user/verify_email', [UserAuthController::class, 'verifyEmail']);
+
+Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin', 'auth:admin']], function(){
+    Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
     Route::get('overview', [OverviewController::class, 'viewOverview'])->name('overview');
 
     Route::get('provinces', [ProvinceController::class, 'list'])->name('provinces');
@@ -73,11 +86,11 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
     Route::get('activity/edit/{id}',[ActivityController::class, 'edit'])->name('activity.edit');
     Route::put('activity/update/{id}',[ActivityController::class, 'update'])->name('activity.update');
 
-    Route::get('accomodations', [AccomodationController::class, 'list'])->name('accomodations');
-    Route::get('accomodation/create', [AccomodationController::class, 'create'])->name('accomodation.create');
-    Route::post('accomodation/store', [AccomodationController::class, 'store'])->name('accomodation.store');
-    Route::get('accomodation/edit/{id}',[AccomodationController::class, 'edit'])->name('accomodation.edit');
-    Route::put('accomodation/update/{id}',[AccomodationController::class, 'update'])->name('accomodation.update');
+    Route::get('accomodations', [AccommodationController::class, 'list'])->name('accomodations');
+    Route::get('accomodation/create', [AccommodationController::class, 'create'])->name('accomodation.create');
+    Route::post('accomodation/store', [AccommodationController::class, 'store'])->name('accomodation.store');
+    Route::get('accomodation/edit/{id}',[AccommodationController::class, 'edit'])->name('accomodation.edit');
+    Route::put('accomodation/update/{id}',[AccommodationController::class, 'update'])->name('accomodation.update');
 
     Route::get('food_dinings', [FoodAndDiningController::class, 'list'])->name('food_dinings');
     Route::get('food_dining/create', [FoodAndDiningController::class, 'create'])->name('food_dining.create');

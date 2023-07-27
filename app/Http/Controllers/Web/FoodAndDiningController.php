@@ -10,8 +10,8 @@ use App\Models\FoodAndDining;
 use App\Models\Province;
 use App\Models\Interest;
 
-use App\Http\Requests\Activity\CreateActivityRequest;
-use App\Http\Requests\Activity\UpdateActivityRequest;
+use App\Http\Requests\FoodAndDining\CreateFoodAndDiningRequest;
+use App\Http\Requests\FoodAndDining\UpdateFoodAndDiningRequest;
 
 use DataTables;
 
@@ -45,18 +45,53 @@ class FoodAndDiningController extends Controller
     }
 
     public function create(Request $request) {
-
+        $provinces = Province::get();
+        $interests = Interest::get();
+        return view('admin-page.food_dinings.create', compact('provinces', 'interests'));
     }
 
-    public function store(Request $request) {
+    public function store(CreateFoodAndDiningRequest $request) {
+        $data = $request->validated();
 
+        $featured_image = $request->file('featured_image');
+        $file_name = Str::snake(Str::lower($request->business_name));
+        $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
+        $save_file = $featured_image->move(public_path() . '/app-assets/images/food_dinings', $featured_image_name);
+
+        $create = FoodAndDining::create(array_merge($data, [
+            'featured_image' => $featured_image_name,
+        ]));
+
+        if($create) return redirect()->route('admin.food_dinings')->with('success', 'Food & Dinings Created Successfully');
     }
 
     public function edit(Request $request) {
+        $food_dining = FoodAndDining::find($request->id);
+        $provinces = Province::get();
+        $interests = Interest::get();
 
+        return view('admin-page.food_dinings.edit', compact('food_dining', 'provinces', 'interests'));
     }
 
-    public function update(Request $request) {
+    public function update(UpdateFoodAndDiningRequest $request) {
+        $data = $request->validated();
+        $food_dining = FoodAndDining::where('id', $request->id)->firstOrFail();
+        $featured_image_name = $request->old_image;
 
+        if($request->hasFile('featured_image')) {
+            $old_upload_image = public_path('/app-assets/images/food_dinings') . $request->old_image;
+            $remove_image = @unlink($old_upload_image);
+
+            $featured_image = $request->file('featured_image');
+            $featured_image_name = Str::snake($request->business_name) . '.' . $featured_image->getClientOriginalExtension();
+
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/food_dinings', $featured_image_name);
+        }
+
+        $update = $food_dining->update(array_merge($data, [
+            'featured_image' => $featured_image_name
+        ]));
+
+        if($update) return back()->with('success', 'Accommodation Updated Successfully');
     }
 }
