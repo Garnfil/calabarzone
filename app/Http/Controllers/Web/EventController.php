@@ -34,7 +34,7 @@ class EventController extends Controller
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/event/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['actions', 'featured_image'])
@@ -80,11 +80,11 @@ class EventController extends Controller
         $featured_image_name = $request->old_image;
 
         if($request->hasFile('featured_image')) {
-            $old_upload_image = public_path('/app-assets/images/events') . $request->old_image;
+            $old_upload_image = public_path('/app-assets/images/events/') . $request->old_image;
             $remove_image = @unlink($old_upload_image);
 
             $featured_image = $request->file('featured_image');
-            $featured_image_name = Str::snake($request->name) . '.' . $featured_image->getClientOriginalExtension();
+            $featured_image_name = Str::snake(Str::lower($request->event_name)) . '.' . $featured_image->getClientOriginalExtension();
 
             $save_file = $featured_image->move(public_path() . '/app-assets/images/events', $featured_image_name);
         }
@@ -92,5 +92,22 @@ class EventController extends Controller
         $update = $event->update(array_merge($data, ['featured_image' => $featured_image_name]));
 
         return back()->withSuccess('Event Created Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $attraction = Event::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/events/') . $attraction->featured_image;
+        $remove_image = @unlink($old_upload_image);
+
+        $delete = $attraction->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }
