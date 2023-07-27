@@ -102,12 +102,6 @@
                                                     @enderror
                                                 </span>
                                             </fieldset>
-                                            <div class="form-group row">
-                                                <div class="col-sm-6 col-12 text-center text-sm-left"></div>
-                                                <div class="col-sm-6 col-12 text-center text-sm-right"><a
-                                                        href="recover-password.html" class="card-link">Forgot
-                                                        Password?</a></div>
-                                            </div>
                                             <button type="submit" class="btn btn-primary btn-lg btn-block"><i
                                                     class="feather icon-unlock"></i> Login</button>
                                         </form>

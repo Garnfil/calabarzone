@@ -179,6 +179,10 @@
                         href="{{ route('admin.users') }}"><i class="feather icon-users"></i><span class="menu-title"
                             data-i18n="Users">Users</span></a>
                 </li>
+                <li class="{{ Request::path() == 'admin/admins' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.admins') }}"><i class="feather icon-users"></i><span
+                            class="menu-title" data-i18n="Admins">Admins</span></a>
+                </li>
             </ul>
         </div>
     </div>

@@ -14,6 +14,7 @@ use App\Http\Controllers\Web\ActivityController;
 use App\Http\Controllers\Web\AccommodationController;
 use App\Http\Controllers\Web\FoodAndDiningController;
 use App\Http\Controllers\Web\UserController;
+use App\Http\Controllers\Web\AdminController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -108,6 +109,12 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::post('user/store', [UserController::class, 'store'])->name('user.store');
     Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('user.edit');
     Route::put('user/update/{id}',[UserController::class, 'update'])->name('user.update');
+
+    Route::get('admins', [AdminController::class, 'list'])->name('admins');
+    Route::get('admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('admin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('admin/edit/{id}',[AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('admin/update/{id}',[AdminController::class, 'update'])->name('admin.update');
 });
 
 
