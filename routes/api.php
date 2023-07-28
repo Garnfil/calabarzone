@@ -29,6 +29,7 @@ Route::post('register', [AuthController::class, 'register']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', [UserController::class, 'getUser']);
+    Route::delete('/user/delete_account', [UserController::class, 'deleteAccount']);
     Route::post('/user/update_profile', [UserController::class, 'updateProfile']);
 
     Route::get('/interests', [InterestController::class, 'getAllInterest']);

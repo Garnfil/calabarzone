@@ -46,7 +46,7 @@ Route::get('admin/forgot_password', [AdminAuthController::class, 'viewForgotPass
 Route::view('user/success_verification_message', 'misc.success_verification_message')->name('user.success_verification_message');
 Route::get('/user/verify_email', [UserAuthController::class, 'verifyEmail']);
 
-Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin', 'auth:admin']], function(){
+Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin', 'auth:admin', 'check.admin_exist']], function(){
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
     Route::get('overview', [OverviewController::class, 'viewOverview'])->name('overview');
 

@@ -38,4 +38,21 @@ class UserController extends Controller
             'message' => 'Your profile has been updated successfully',
         ], 200);
     }
+
+    public function deleteAccount(Request $request) {
+        $user = Auth::user();
+
+        $delete_all_tokens = $user->tokens()->delete();
+
+        // Removing user profile
+
+        $delete_user = $user->delete();
+
+        if($delete_user) {
+            return response([
+                'status' => true,
+                'message' => 'Delete user account successfully'
+            ], 200);
+        }
+    }
 }

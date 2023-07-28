@@ -21,8 +21,17 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/vendors/css/forms/selects/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/vendors/css/pickers/pickadate/pickadate.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/icheck.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/custom.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -30,18 +39,20 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/bootstrap-extended.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/colors.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/components.css') }}">
-    <!-- END: Theme CSS-->
-
-    <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
         href="{{ URL::asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/fonts/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/core/colors/palette-gradient.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/pages/login-register.css') }}">
-    <!-- END: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/plugins/forms/switch.css') }}">
+    <!-- END: Theme CSS-->
 
+    <link rel="stylesheet" type="text/css"
+        href="{{ URL::asset('app-assets/css/plugins/forms/checkboxes-radios.css') }}">
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
 
 </head>
 <!-- END: Head-->
@@ -76,6 +87,12 @@
                                         @if (Session::get('fail'))
                                             <div class="alert alert-danger">{{ Session::get('fail') }}</div>
                                         @endif
+
+                                        <!---- This message is for admin that removed in the system ---->
+                                        @if (Session::get('removed-admin'))
+                                            <div class="alert alert-danger">{{ Session::get('removed-admin') }}</div>
+                                        @endif
+
                                         <form class="form-horizontal form-simple"
                                             action="{{ route('admin.login.post') }}" method="POST" novalidate>
                                             @csrf
@@ -127,22 +144,39 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+    <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="../../../app-assets/vendors/js/forms/icheck/icheck.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/toggle/switchery.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="../../../app-assets/js/core/app-menu.js"></script>
-    <script src="../../../app-assets/js/core/app.js"></script>
+    <script src="{{ asset('app-assets/js/core/app-menu.js') }}"></script>
+    <script src="{{ asset('app-assets/js/core/app.js') }}"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="../../../app-assets/js/scripts/forms/form-login-register.js"></script>
-    <!-- END: Page JS-->
+    <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/switch.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (Session::get('removed-admin'))
+        <script>
+            toastr.options = {
+                closeButton: true, // Add close button
+                timeOut: 2000
+            };
+            toastr.success("{{ Session::get('success') }}", "Success");
+        </script>
+    @endif
 
 </body>
 <!-- END: Body-->
