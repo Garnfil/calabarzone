@@ -34,7 +34,7 @@ class FoodAndDiningController extends Controller
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/food_dining/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['featured_image', 'actions'])
@@ -93,5 +93,22 @@ class FoodAndDiningController extends Controller
         ]));
 
         if($update) return back()->with('success', 'Accommodation Updated Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $food_dining = FoodAndDining::where('id', $request->id)->firstOrFail();
+
+        $old_upload_image = public_path('/app-assets/images/food_dinings/') . $food_dining->featured_image;
+        $remove_image = @unlink($old_upload_image);
+
+        $delete = $food_dining->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }

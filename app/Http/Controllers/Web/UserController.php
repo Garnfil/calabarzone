@@ -47,7 +47,7 @@ class UserController extends Controller
                      })
                     ->addColumn('actions', function ($row) {
                         $btn = '<a href="/admin/user/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <button id="' . $row->id . '" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                    <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
                     ->rawColumns(['interests', 'actions', 'verify_email'])
@@ -115,5 +115,19 @@ class UserController extends Controller
         }
 
         if($user) return back()->withSuccess('Update User Successfully.');
+    }
+
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $accommodation = User::where('id', $request->id)->firstOrFail();
+
+        $delete = $accommodation->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }
