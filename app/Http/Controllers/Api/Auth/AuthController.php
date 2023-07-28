@@ -85,7 +85,7 @@ class AuthController extends Controller
         $user = Auth::user();
 
         # delete token
-        $user->tokens()->delete();
+        $user->currentAccessToken()->delete();
 
         return response()->json([
             'status' => true,

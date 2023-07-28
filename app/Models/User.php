@@ -36,7 +36,7 @@ class User extends Authenticatable
         $interests = json_decode($this->interests, true); // Passing true as the second argument to get an associative array
 
         if (is_array($interests) && !empty($interests)) {
-            $data = Interest::whereIn('id', $interests)
+            $data = Interest::select('id', 'interest_name', 'featured_image', 'icon')->whereIn('id', $interests)
                 ->get()
                 ->toArray();
             if (!empty($data)) {

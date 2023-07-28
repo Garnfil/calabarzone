@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\InterestController;
-
+use App\Http\Controllers\Api\ZoneController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -33,8 +33,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/interests', [InterestController::class, 'getAllInterest']);
 
-    Route::get('interests/type/{id}', [InterestController::class, 'getAllDataByInterestType']);
-    Route::get('interests/type/first/{id}/{type}', [InterestController::class, 'getDataByInterestType']);
+    Route::get('my_zones', [ZoneController::class, 'getAllZones']);
+    Route::get('zones/type/{id}', [ZoneController::class, 'getAllDataByZoneType']);
+    Route::get('zones/type/first/{id}/{type}', [ZoneController::class, 'getDataByZoneType']);
+    Route::get('zones/for_you/{limit}', [ZoneController::class, 'getForYou']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
