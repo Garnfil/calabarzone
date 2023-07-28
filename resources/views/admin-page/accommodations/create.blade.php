@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                             <div class="form-footer border-top py-2">
-                                <button class="btn btn-success">Save Accoomodation</button>
+                                <button class="btn btn-success">Save Accommodation</button>
                             </div>
                         </form>
                     </div>

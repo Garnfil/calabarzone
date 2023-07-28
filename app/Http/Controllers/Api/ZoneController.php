@@ -11,6 +11,7 @@ use App\Models\Accommodation;
 use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Attraction;
+use App\Models\FoodAndDining;
 
 class ZoneController extends Controller
 {
@@ -32,6 +33,7 @@ class ZoneController extends Controller
             Event::class => 'events',
             Activity::class => 'activities',
             Accommodation::class => 'accommodations',
+            FoodAndDining::class => 'food_dinings',
         ];
 
         // Loop through the models, retrieve the data, and add the "type" key
@@ -70,6 +72,10 @@ class ZoneController extends Controller
                 $data = Accommodation::find($id);
                 break;
 
+            case 'food_dinings':
+                $data = FoodAndDining::find($id);
+                break;
+
             // Optionally, you can add more cases for other types if needed
             default:
                 break;
@@ -79,6 +85,59 @@ class ZoneController extends Controller
     }
 
     public function getForYou(Request $request) {
+
         $limit = $request->limit;
+
+         // Define the models and their corresponding types
+        $models = [
+            [Attraction::class, 'attractions'],
+            [Event::class, 'events'],
+            [Activity::class, 'activities'],
+            [Accommodation::class, 'accommodations'],
+            [FoodAndDining::class, 'food_dinings'],
+        ];
+
+        $user = Auth::user();
+
+        $interest_ids = json_decode($user->interests);
+        $results = $this->getForYouResult($limit, $models, $interest_ids);
+
+        return response($results);
+    }
+
+    private function getForYouResult($limit, $models, $interest_ids) {
+        $results = [];
+
+        for ($i=0; $i < $limit; $i++) {
+            $model_index = 0;
+
+            $model = new $models[$model_index][0];
+
+            $data = $model->whereIn('interest_type', $interest_ids)->first();
+            $data['type'] = $models[$model_index][1];
+            $results[] = $data;
+
+            $model_index++;
+        }
+
+        return $results;
+        // return $models[0];
+
+        // foreach ($models as $modelClass => $modelName) {
+        //     // Get the model instance from the class name
+        //     $model = new $modelClass;
+
+        //     // Retrieve data based on the interest_ids and limit
+        //     $data = $model->whereIn('interest_type', $interest_ids)->get();
+        //     foreach ($data as $result) {
+        //         $result['type'] = $modelName;
+        //         if() {
+
+        //         }
+        //         $results[] = $result;
+        //     }
+        // }
+
+        return $results;
     }
 }

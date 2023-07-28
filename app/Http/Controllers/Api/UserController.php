@@ -39,6 +39,19 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function updateZone(Request $request) {
+        $my_interests = $request->interests;
+        $user = Auth::user();
+        $update_interest = $user->update([
+            'interests' => json_encode($my_interests)
+        ]);
+
+        if($update_interest) return response([
+            'status' => true,
+            'message' => 'Zone of user updated successfully'
+        ]);
+    }
+
     public function deleteAccount(Request $request) {
         $user = Auth::user();
 

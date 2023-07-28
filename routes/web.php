@@ -15,6 +15,7 @@ use App\Http\Controllers\Web\AccommodationController;
 use App\Http\Controllers\Web\FoodAndDiningController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\ForgotPasswordController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -43,8 +44,11 @@ Route::post('admin/login', [AdminAuthController::class, 'saveLogin'])->name('adm
 
 Route::get('admin/forgot_password', [AdminAuthController::class, 'viewForgotPasswordPage']);
 
+
 Route::view('user/success_verification_message', 'misc.success_verification_message')->name('user.success_verification_message');
 Route::get('/user/verify_email', [UserAuthController::class, 'verifyEmail']);
+
+Route::post('/forgot_password', [ForgotPasswordController::class, 'sendForgotPassword']);
 
 Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin', 'auth:admin', 'check.admin_exist']], function(){
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
