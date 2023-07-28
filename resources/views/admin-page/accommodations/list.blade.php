@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
                         <h2 class="card-title">Accommodations</h2>
-                        <a href="{{ route('admin.accomodation.create') }}" class="btn btn-primary">Create Accommodation</a>
+                        <a href="{{ route('admin.accommodation.create') }}" class="btn btn-primary">Create Accommodation</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -46,7 +46,7 @@
                 responsive: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.accomodations') }}"
+                    url: "{{ route('admin.accommodations') }}"
                 },
                 columns: [{
                         data: "id",
@@ -75,6 +75,40 @@
                 ]
             })
         }
+
+        $(document).on("click", ".remove-btn", function(e) {
+            let id = $(this).attr("id");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Remove accommodation from list",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('admin.accommodation.destroy') }}",
+                        method: "DELETE",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id: id
+                        },
+                        success: function(response) {
+                            if (response.status) {
+                                Swal.fire('Removed!', response.message, 'success').then(
+                                    result => {
+                                        if (result.isConfirmed) {
+                                            location.reload();
+                                        }
+                                    })
+                            }
+                        }
+                    })
+                }
+            })
+        });
         loadTable()
     </script>
 @endpush

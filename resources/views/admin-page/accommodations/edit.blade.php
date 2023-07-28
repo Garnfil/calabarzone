@@ -11,19 +11,23 @@
             <div class="content-body">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                        <h2 class="card-title">Create Accommodation</h2>
-                        <a href="{{ route('admin.accomodations') }}" class="btn btn-primary">Back to List</a>
+                        <h2 class="card-title">Edit Accommodation</h2>
+                        <a href="{{ route('admin.accommodations') }}" class="btn btn-primary">Back to List</a>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.accomodation.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.accommodation.update', $accommodation->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
+                            <input type="hidden" name="old_image" value="{{ $accommodation->featured_image }}">
+                            <input type="hidden" id="city_id_hidden" value="{{ $accommodation->city_id }}">
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="row">
                                         <div class="col-lg-6 my-1">
                                             <label for="business_name" class="form-label">Business Name</label>
                                             <input type="text" class="form-control" name="business_name"
-                                                id="business_name">
+                                                id="business_name" value="{{ $accommodation->business_name }}">
                                             <span class="text-danger danger">
                                                 @error('business_name')
                                                     {{ $message }}
@@ -46,7 +50,9 @@
                                                 onchange="getCities(this)">
                                                 <option value="">--- SELECT PROVINCE ---</option>
                                                 @foreach ($provinces as $province)
-                                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                                    <option
+                                                        {{ $province->id == $accommodation->province_id ? 'selected' : null }}
+                                                        value="{{ $province->id }}">{{ $province->name }}</option>
                                                 @endforeach
                                             </select>
                                             <span class="text-danger danger">
@@ -70,7 +76,7 @@
                                         <div class="col-lg-6 my-1">
                                             <label for="merchant_code" class="form-label">Merchant Code</label>
                                             <input type="text" class="form-control" name="merchant_code"
-                                                id="merchant_code">
+                                                id="merchant_code" value="{{ $accommodation->merchant_code }}">
                                         </div>
                                         <div class="col-lg-6 my-1">
                                             <label for="classification" class="form-label">Classification</label>
@@ -85,7 +91,9 @@
                                             <select name="interest_type" id="interest_type" class="select2 form-control">
                                                 <option value="">--- SELECT ACTIVITY TYPE ---</option>
                                                 @foreach ($interests as $interest)
-                                                    <option value="{{ $interest->id }}">{{ $interest->interest_name }}
+                                                    <option
+                                                        {{ $accommodation->interest_type == $interest->id ? 'selected' : null }}
+                                                        value="{{ $interest->id }}">{{ $interest->interest_name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -97,7 +105,7 @@
                                         </div>
                                         <div class="col-lg-6 my-1">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
+                                            <textarea name="description" id="description" cols="30" rows="5" class="form-control">{{ $accommodation->description }}</textarea>
                                             <span class="text-danger danger">
                                                 @error('description')
                                                     {{ $message }}
@@ -107,22 +115,23 @@
                                         <div class="col-lg-6 my-1">
                                             <label for="contact_number" class="form-label">Contact Number</label>
                                             <input type="text" class="form-control" name="contact_number"
-                                                id="contact_number">
+                                                id="contact_number" value="{{ $accommodation->contact_number }}">
                                         </div>
                                         <div class="col-lg-6 my-1">
                                             <label for="contact_email" class="form-label">Contact Email</label>
                                             <input type="text" class="form-control" name="contact_email"
-                                                id="contact_email">
+                                                id="contact_email" value="{{ $accommodation->contact_email }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <img class="img-responsive" id="previewImage" style="width: 100% !important;"
-                                        src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                        src="{{ URL::asset('app-assets/images/accommodations/' . $accommodation->featured_image) }}"
+                                        alt="">
                                 </div>
                             </div>
                             <div class="form-footer border-top py-2">
-                                <button class="btn btn-success">Save Accoomodation</button>
+                                <button class="btn btn-success">Save Accommodation</button>
                             </div>
                         </form>
                     </div>
@@ -153,6 +162,7 @@
         function getCities(event) {
             let value = event.value;
             let url = `{{ route('admin.city_municipality.lookup') }}?province_id=${value}`;
+            let city_id_hidden = document.querySelector('#city_id_hidden');
 
             $.ajax({
                 url: url,
@@ -161,7 +171,8 @@
                     $('#city option').remove();
                     if (data.length > 0) {
                         data.forEach(element => {
-                            $(`<option value=${element.id}>${element.name}</option>`).appendTo('#city');
+                            $(`<option ${element.id == city_id_hidden.value ? 'selected' : null} value=${element.id}>${element.name}</option>`)
+                                .appendTo('#city');
                         });
                     } else {
                         $(`<option value="">-- NO CITY FOUND --</option>`).appendTo('#city');
@@ -170,6 +181,11 @@
                 }
             });
         }
+
+        window.addEventListener('load', function() {
+            let province_select = document.querySelector('#province');
+            getCities(province_select);
+        });
 
         // Attach the 'handleFileSelect' function to the file input's change event
         document.getElementById('featured_image').addEventListener('change', handleFileSelect);

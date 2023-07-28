@@ -162,8 +162,8 @@
                         href="{{ route('admin.activities') }}"><i class="feather icon-activity"></i><span
                             class="menu-title" data-i18n="Activities">Activities</span></a>
                 </li>
-                <li class="{{ Request::path() == 'admin/accomodations' ? 'active' : '' }} nav-item"><a
-                        href="{{ route('admin.accomodations') }}"><i class="feather icon-globe"></i><span
+                <li class="{{ Request::path() == 'admin/accommodations' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.accommodations') }}"><i class="feather icon-globe"></i><span
                             class="menu-title" data-i18n="Accommodations">Accommodations</span></a>
                 </li>
                 <li class="{{ Request::path() == 'admin/food_dinings' ? 'active' : '' }} nav-item"><a

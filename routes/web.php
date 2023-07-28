@@ -93,29 +93,34 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::put('activity/update/{id}',[ActivityController::class, 'update'])->name('activity.update');
     Route::delete('activity/delete', [ActivityController::class, 'destroy'])->name('activity.destroy');
 
-    Route::get('accomodations', [AccommodationController::class, 'list'])->name('accomodations');
-    Route::get('accomodation/create', [AccommodationController::class, 'create'])->name('accomodation.create');
-    Route::post('accomodation/store', [AccommodationController::class, 'store'])->name('accomodation.store');
-    Route::get('accomodation/edit/{id}',[AccommodationController::class, 'edit'])->name('accomodation.edit');
-    Route::put('accomodation/update/{id}',[AccommodationController::class, 'update'])->name('accomodation.update');
+    Route::get('accommodations', [AccommodationController::class, 'list'])->name('accommodations');
+    Route::get('accommodation/create', [AccommodationController::class, 'create'])->name('accommodation.create');
+    Route::post('accommodation/store', [AccommodationController::class, 'store'])->name('accommodation.store');
+    Route::get('accommodation/edit/{id}',[AccommodationController::class, 'edit'])->name('accommodation.edit');
+    Route::put('accommodation/update/{id}',[AccommodationController::class, 'update'])->name('accommodation.update');
+    Route::delete('accommodation/delete', [AccommodationController::class, 'destroy'])->name('accommodation.destroy');
 
     Route::get('food_dinings', [FoodAndDiningController::class, 'list'])->name('food_dinings');
     Route::get('food_dining/create', [FoodAndDiningController::class, 'create'])->name('food_dining.create');
     Route::post('food_dining/store', [FoodAndDiningController::class, 'store'])->name('food_dining.store');
     Route::get('food_dining/edit/{id}',[FoodAndDiningController::class, 'edit'])->name('food_dining.edit');
     Route::put('food_dining/update/{id}',[FoodAndDiningController::class, 'update'])->name('food_dining.update');
+    Route::delete('food_dining/delete', [FoodAndDiningController::class, 'destroy'])->name('food_dining.destroy');
 
     Route::get('users', [UserController::class, 'list'])->name('users');
     Route::get('user/create', [UserController::class, 'create'])->name('user.create');
     Route::post('user/store', [UserController::class, 'store'])->name('user.store');
     Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('user.edit');
     Route::put('user/update/{id}',[UserController::class, 'update'])->name('user.update');
+    Route::delete('user/delete', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('admins', [AdminController::class, 'list'])->name('admins');
     Route::get('admin/create', [AdminController::class, 'create'])->name('admin.create');
     Route::post('admin/store', [AdminController::class, 'store'])->name('admin.store');
     Route::get('admin/edit/{id}',[AdminController::class, 'edit'])->name('admin.edit');
     Route::put('admin/update/{id}',[AdminController::class, 'update'])->name('admin.update');
+    Route::delete('admin/delete', [AdminController::class, 'destroy'])->name('admin.destroy');
+
 });
 
 
