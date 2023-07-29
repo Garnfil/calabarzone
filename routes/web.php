@@ -16,7 +16,7 @@ use App\Http\Controllers\Web\FoodAndDiningController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\ForgotPasswordController;
-use App\Http\Controller\Web\GCITourController;
+use App\Http\Controllers\Web\GCITourController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -69,7 +69,12 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::put('city_municipality/update/{id}',[CityMunicipalityController::class, 'update'])->name('city_municipality.update');
     Route::delete('city_municipality/delete', [CityMunicipalityController::class, 'destroy'])->name('city_municipality.destroy');
 
-    Route::get('gci_tours', []);
+    Route::get('gci_tours', [GCITourController::class, 'list'])->name('gci_tours');
+    Route::get('gci_tour/create', [GCITourController::class, 'create'])->name('gci_tour.create');
+    Route::post('gci_tour/store', [GCITourController::class, 'store'])->name('gci_tour.store');
+    Route::get('gci_tour/edit/{id}',[GCITourController::class, 'edit'])->name('gci_tour.edit');
+    Route::put('gci_tour/update/{id}',[GCITourController::class, 'update'])->name('gci_tour.update');
+    Route::delete('gci_tour/delete', [GCITourController::class, 'destroy'])->name('gci_tour.destroy');
 
     Route::get('interests', [InterestController::class, 'list'])->name('interests');
     Route::get('interest/create', [InterestController::class, 'create'])->name('interest.create');

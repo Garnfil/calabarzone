@@ -145,9 +145,9 @@
                 <li class=" navigation-header"><span>GCI Tours</span><i class=" feather icon-pointer"
                         data-toggle="tooltip" data-placement="right" data-original-title="General"></i>
                 </li>
-                <li class="{{ Request::path() == 'admin/provinces' ? 'active' : '' }} nav-item"><a
-                        href="{{ route('admin.provinces') }}"><i class="feather icon-map-pin"></i><span
-                            class="menu-title" data-i18n="Provinces">Provinces</span></a>
+                <li class="{{ Request::path() == 'admin/gci_tours' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.gci_tours') }}"><i class="feather icon-map"></i><span
+                            class="menu-title" data-i18n="Tours">Tours</span></a>
                 </li>
 
                 <!------ Start: Interests ------->
