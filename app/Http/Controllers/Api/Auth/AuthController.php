@@ -49,7 +49,8 @@ class AuthController extends Controller
             'username' => ['required', 'unique:users', 'max:15'],
             'email' => ['required', 'unique:users', 'email'],
             'password' => ['required', 'required_with:confirm_password', 'same:confirm_password'],
-            'confirm_password' => ['required', 'min:8']
+            'confirm_password' => ['required', 'min:8'],
+            'phone_number' => ['nullable', 'min:9']
         ]);
 
         # if the requested input have an error
@@ -61,6 +62,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number,
             'is_verify' => false,
         ]);
 
