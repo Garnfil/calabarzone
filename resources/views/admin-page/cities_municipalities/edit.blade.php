@@ -89,9 +89,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    @if ($province->featured_image)
+                                    @if ($data->featured_image)
                                         <img class="img-responsive" id="previewImage" style="width: 100% !important;"
-                                            src="{{ URL::asset('app-assets/images/city_municipality/' . $province->featured_image) }}"
+                                            src="{{ URL::asset('app-assets/images/city_municipality/' . $data->featured_image) }}"
                                             alt="">
                                     @endif
                                 </div>
