@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\InterestController;
 use App\Http\Controllers\Api\ZoneController;
 use App\Http\Controllers\Api\ProvinceController;
 use App\Http\Controllers\Api\ForgotPasswordController;
+use App\Http\Controllers\Api\AttractionController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('zones/for_you/{limit}', [ZoneController::class, 'getForYou']);
 
     Route::get('provinces', [ProvinceController::class, 'getProvinces']);
+
+    Route::get('/attractions/featured', [AttractionController::class, 'getFeaturedAttractions']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });

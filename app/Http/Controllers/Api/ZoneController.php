@@ -102,42 +102,52 @@ class ZoneController extends Controller
         $interest_ids = json_decode($user->interests);
         $results = $this->getForYouResult($limit, $models, $interest_ids);
 
-        return response($results);
+        return response([
+            "results" => $results,
+            "total" => count($results)
+        ]);
     }
 
     private function getForYouResult($limit, $models, $interest_ids) {
         $results = [];
+        $model_count = count($models);
+        $model_indexes = array_fill(0, $model_count, 0);
 
-        for ($i=0; $i < $limit; $i++) {
-            $model_index = 0;
+        $type_ids = array_fill_keys([
+            'attractions', 'events', 'activities', 'accommodations', 'food_dinings'
+        ], []);
 
-            $model = new $models[$model_index][0];
+        $iteration = 0;
+        $max_iterations = $limit * 2;
 
-            $data = $model->whereIn('interest_type', $interest_ids)->first();
-            $data['type'] = $models[$model_index][1];
-            $results[] = $data;
+        while ($limit > count($results) && $iteration < $max_iterations) {
+            foreach ($models as $index => $model_info) {
+                list($model_class, $type) = $model_info;
 
-            $model_index++;
+                $model = new $model_class;
+                if($limit > count($results)) {
+                    $data = $model->whereNotIn('id', $type_ids[$type])
+                    ->whereIn('interest_type', $interest_ids)
+                    ->first();
+
+                    if ($data) {
+                        $data['type'] = $type;
+                        $type_ids[$type][] = $data->id;
+                        $results[] = $data;
+                    }
+                }
+
+
+                // Increment the model index
+                $model_indexes[$index]++;
+                // Reset the model index if it exceeds the array length
+                if ($model_indexes[$index] >= count($models)) {
+                    $model_indexes[$index] = 0;
+                }
+            }
+            $iteration++;
         }
-
-        return $results;
-        // return $models[0];
-
-        // foreach ($models as $modelClass => $modelName) {
-        //     // Get the model instance from the class name
-        //     $model = new $modelClass;
-
-        //     // Retrieve data based on the interest_ids and limit
-        //     $data = $model->whereIn('interest_type', $interest_ids)->get();
-        //     foreach ($data as $result) {
-        //         $result['type'] = $modelName;
-        //         if() {
-
-        //         }
-        //         $results[] = $result;
-        //     }
-        // }
-
         return $results;
     }
+
 }
