@@ -46,9 +46,15 @@
                                             <select name="interests[]" id="interests" class="select2 form-control"
                                                 multiple="multiple">
                                                 @foreach ($interests as $interest)
-                                                    <option
-                                                        {{ in_array($interest->id, json_decode($user->interests)) ? 'selected' : null }}
-                                                        value="{{ $interest->id }}">{{ $interest->interest_name }}</option>
+                                                    @if (json_decode($user->interests))
+                                                        <option
+                                                            {{ in_array($interest->id, json_decode($user->interests)) ? 'selected' : null }}
+                                                            value="{{ $interest->id }}">{{ $interest->interest_name }}
+                                                        </option>
+                                                    @else
+                                                        <option value="{{ $interest->id }}">{{ $interest->interest_name }}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
