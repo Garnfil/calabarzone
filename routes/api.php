@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('zones/for_you/{limit}', [ZoneController::class, 'getForYou']);
 
     Route::get('provinces', [ProvinceController::class, 'getProvinces']);
+    Route::get('/province/{id}', [ProvinceController::class, 'getProvince']);
 
     Route::get('/attractions/featured', [AttractionController::class, 'getFeaturedAttractions']);
 

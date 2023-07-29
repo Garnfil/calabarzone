@@ -13,4 +13,12 @@ class ProvinceController extends Controller
         $provinces = Province::select('id', 'name', 'featured_image', 'tagline', 'transportations')->latest()->get();
         return response($provinces);
     }
+
+    public function getProvince(Request $request) {
+        return Province::where('id', $request->id)->firstOr(function() {
+            return response([
+                'message' => 'Province Not Found'
+            ]);
+        });
+    }
 }

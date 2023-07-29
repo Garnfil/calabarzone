@@ -16,7 +16,7 @@ use App\Http\Controllers\Web\FoodAndDiningController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\ForgotPasswordController;
-
+use App\Http\Controller\Web\GCITourController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -68,6 +68,8 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('city_municipality/edit/{id}',[CityMunicipalityController::class, 'edit'])->name('city_municipality.edit');
     Route::put('city_municipality/update/{id}',[CityMunicipalityController::class, 'update'])->name('city_municipality.update');
     Route::delete('city_municipality/delete', [CityMunicipalityController::class, 'destroy'])->name('city_municipality.destroy');
+
+    Route::get('gci_tours', []);
 
     Route::get('interests', [InterestController::class, 'list'])->name('interests');
     Route::get('interest/create', [InterestController::class, 'create'])->name('interest.create');

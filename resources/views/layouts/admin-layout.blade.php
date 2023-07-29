@@ -142,6 +142,14 @@
                 </li>
                 <!------ End: Destination ------->
 
+                <li class=" navigation-header"><span>GCI Tours</span><i class=" feather icon-pointer"
+                        data-toggle="tooltip" data-placement="right" data-original-title="General"></i>
+                </li>
+                <li class="{{ Request::path() == 'admin/provinces' ? 'active' : '' }} nav-item"><a
+                        href="{{ route('admin.provinces') }}"><i class="feather icon-map-pin"></i><span
+                            class="menu-title" data-i18n="Provinces">Provinces</span></a>
+                </li>
+
                 <!------ Start: Interests ------->
                 <li class=" navigation-header"><span>Interests</span><i class=" feather icon-minus"
                         data-toggle="tooltip" data-placement="right" data-original-title="Apps"></i>
