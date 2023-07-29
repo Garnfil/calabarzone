@@ -4,24 +4,30 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\GCITour;
+use App\Models\GCITourCity;
 use App\Models\Province;
+
+use App\Http\Requests\GCITour\CreateGCITourRequest;
+use App\Http\Requests\GCITour\UpdateGCITourRequest;
+
 
 use DataTables;
 
 class GCITourController extends Controller
 {
     public function list(Request $request) {
+        $data = GCITour::latest()->with('tour_province')->get();
         if($request->ajax()) {
-            $data = GCITour::latest()->with('province');
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('province', function($row) {
-                        return $row->province->name;
+                        return optional($row->tour_province)->name;
                     })
                     ->addColumn('actions', function($row) {
-                        $btn = '<a href="/admin/attraction/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                        $btn = '<a href="/admin/gci_tour/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                 <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
@@ -37,15 +43,65 @@ class GCITourController extends Controller
         return view('admin-page.gci_tours.create', compact('provinces'));
     }
 
-    public function store(Request $request) {
+    public function store(CreateGCITourRequest $request) {
+        $data = $request->validated();
 
+        $tour = GCITour::create(array_merge($data, [
+            'inclusions' => $request->has('inclusions') ? json_encode($request->inclusions) : null,
+            'is_featured' => $request->has('is_featured')
+        ]));
+
+        if(count($request->tour_cities) > 0) {
+            foreach ($request->tour_cities as $key => $city) {
+                $background_image = $city['background_image'];
+                $city_background_name = Str::snake(Str::lower($city['city'])) . '.' . $background_image->getClientOriginalExtension();
+                $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
+
+                $create_tour_city = GCITourCity::create([
+                    'main_id' => $tour->id,
+                    'city' => $city['city'],
+                    'description' => $city['description'],
+                    'background_image' => $city_background_name
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.gci_tours')->withSuccess('Tour Created Successfully');
     }
 
     public function edit(Request $request) {
-
+        $provinces = Province::get();
+        $tour = GCITour::where('id', $request->id)->with('tour_province', 'tour_cities')->firstOrFail();
+        return view('admin-page.gci_tours.edit', compact('tour', 'provinces'));
     }
 
-    public function update(Request $request) {
+    public function update(UpdateGCITourRequest $request) {
+        $data = $request->validated();
+        $tour = GCITour::where('id', $request->id)->first();
 
+        $update = $tour->update(array_merge($data, [
+            'inclusions' => $request->has('inclusions') ? json_encode($request->inclusions) : null,
+            'is_featured' => $request->has('is_featured')
+        ]));
+
+        if(count($request->tour_cities) > 0) {
+            foreach ($request->tour_cities as $key => $city) {
+                $city_background_name = $city['old_background_city_image'];
+
+                if(isset($city['background_image'])) {
+                    $city_background_name = Str::snake(Str::lower($city['city'])) . '.' . $background_image->getClientOriginalExtension();
+                    $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
+                }
+
+                $update_tour_city = GCITourCity::where('id', $city['city_id'])->update([
+                    'main_id' => $tour->id,
+                    'city' => $city['city'],
+                    'description' => $city['description'],
+                    'background_image' => $city_background_name
+                ]);
+            }
+        }
+
+        return back()->withSuccess('Tour Updated Successfully');
     }
 }

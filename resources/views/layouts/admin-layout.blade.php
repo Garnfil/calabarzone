@@ -223,6 +223,7 @@
     <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/toggle/switchery.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -233,6 +234,8 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/switch.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/form-repeater.js') }}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

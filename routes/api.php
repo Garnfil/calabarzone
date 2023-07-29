@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ZoneController;
 use App\Http\Controllers\Api\ProvinceController;
 use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\AttractionController;
+use App\Http\Controllers\Api\GCITourController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -50,6 +51,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/province/{id}', [ProvinceController::class, 'getProvince']);
 
     Route::get('/attractions/featured', [AttractionController::class, 'getFeaturedAttractions']);
+
+    Route::get('/gci_tours', [GCITourController::class, 'getGCITours']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
