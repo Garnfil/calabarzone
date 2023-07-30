@@ -14,4 +14,9 @@ class GCITourController extends Controller
         $gci_tours = GCITour::latest()->with('tour_province', 'tour_cities')->get();
         return response($gci_tours, 200);
     }
+
+    public function getTourProvince(Request $request) {
+        $gci_tour_province = GCITour::where('id', $request->id)->with('tour_province', 'tour_cities')->first();
+        return response($gci_tour_province);
+    }
 }

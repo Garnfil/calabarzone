@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/attractions/featured', [AttractionController::class, 'getFeaturedAttractions']);
 
     Route::get('/gci_tours', [GCITourController::class, 'getGCITours']);
+    Route::get('/gci_tours/province/{id}', [GCITourController::class, 'getTourProvince']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
