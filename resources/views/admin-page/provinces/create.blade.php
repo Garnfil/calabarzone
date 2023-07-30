@@ -59,6 +59,10 @@
                                             </span>
                                         </div>
                                         <div class="col-md-6 my-1">
+                                            <label for="delicacies" class="form-label">Delicacies</label>
+                                            <textarea name="delicacies" id="delicacies" cols="30" rows="5" class="form-control"></textarea>
+                                        </div>
+                                        <div class="col-md-6 my-1">
                                             <label for="transportations" class="form-label">Province Transportations</label>
                                             <select name="transportations[]" id="transportations"
                                                 class="select2 form-control" multiple="multiple">
@@ -75,8 +79,16 @@
                                         </div>
                                         <div class="col-md-6 my-1">
                                             <label for="tagline" class="form-label">Province Tagline</label>
-                                            <input type="text" class="form-control" name="tagline"
-                                                id="tagline" value="{{ old('tagline') }}">
+                                            <input type="text" class="form-control" name="tagline" id="tagline"
+                                                value="{{ old('tagline') }}">
+                                        </div>
+                                        <div class="col-md-6 my-1">
+                                            <label for="latitude" class="form-label">Latitude</label>
+                                            <input type="text" class="form-control" name="latitude" id="latitude">
+                                        </div>
+                                        <div class="col-md-6 my-1">
+                                            <label for="longitude" class="form-label">Longitude</label>
+                                            <input type="text" class="form-control" name="longitude" id="longitude">
                                         </div>
                                     </div>
                                 </div>
@@ -100,22 +112,21 @@
     <script>
         // Function to handle file selection and display preview image
         function handleFileSelect(event) {
-        const file = event.target.files[0];
+            const file = event.target.files[0];
 
-        if (file) {
-            const reader = new FileReader();
+            if (file) {
+                const reader = new FileReader();
 
-            reader.onload = function(event) {
-            const previewImage = document.getElementById('previewImage');
-            previewImage.src = event.target.result;
-            };
+                reader.onload = function(event) {
+                    const previewImage = document.getElementById('previewImage');
+                    previewImage.src = event.target.result;
+                };
 
-            reader.readAsDataURL(file);
-        }
+                reader.readAsDataURL(file);
+            }
         }
 
         // Attach the 'handleFileSelect' function to the file input's change event
         document.getElementById('featured_image').addEventListener('change', handleFileSelect);
-
     </script>
 @endpush

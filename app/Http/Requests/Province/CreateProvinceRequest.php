@@ -27,7 +27,10 @@ class CreateProvinceRequest extends FormRequest
             'name' => 'required|max:20',
             'featured_image' => "required|image",
             'description' => 'required|max:500',
-            'tagline' => 'required'
+            'tagline' => 'required',
+            'delicacies' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable'
         ];
     }
 }

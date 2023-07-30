@@ -26,7 +26,10 @@ class UpdateProvinceRequest extends FormRequest
         return [
             'name' => 'required|max:20',
             'description' => 'required|max:500',
-            'tagline' => 'required'
+            'tagline' => 'required',
+            'delicacies' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable'
         ];
     }
 }

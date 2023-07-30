@@ -27,7 +27,8 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('admin.province.update', $province->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.province.update', $province->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <input type="hidden" name="old_image" value="{{ $province->featured_image }}">
@@ -45,7 +46,9 @@
                                             </span>
                                         </div>
                                         <div class="col-md-6 my-1">
-                                            <label for="featured_image" class="form-label">Province Image <span class="text-primary primary" style="font-size: 10px;">Change it if needed.</span></label>
+                                            <label for="featured_image" class="form-label">Province Image <span
+                                                    class="text-primary primary" style="font-size: 10px;">Change it if
+                                                    needed.</span></label>
                                             <input type="file" class="form-control" name="featured_image"
                                                 id="featured_image" value="">
                                             <span class="danger text-danger">
@@ -64,13 +67,25 @@
                                             </span>
                                         </div>
                                         <div class="col-md-6 my-1">
+                                            <label for="delicacies" class="form-label">Delicacies</label>
+                                            <textarea name="delicacies" id="delicacies" cols="30" rows="5" class="form-control">{{ $province->delicacies }}</textarea>
+                                        </div>
+                                        <div class="col-md-6 my-1">
                                             <label for="transportations" class="form-label">Province Transportations</label>
                                             <select name="transportations[]" id="transportations"
                                                 class="select2 form-control" multiple="multiple">
-                                                <option {{in_array('Jeep', json_decode($province->transportations)) ? 'selected' : null}} value="Jeep">Jeep</option>
-                                                <option {{in_array('Bus', json_decode($province->transportations)) ? 'selected' : null}} value="Bus">Bus</option>
-                                                <option {{in_array('Tricycle', json_decode($province->transportations)) ? 'selected' : null}} value="Tricycle">Tricycle</option>
-                                                <option {{in_array('Motorcycle', json_decode($province->transportations)) ? 'selected' : null}} value="Motorcycle">Motorcycle</option>
+                                                <option
+                                                    {{ in_array('Jeep', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Jeep">Jeep</option>
+                                                <option
+                                                    {{ in_array('Bus', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Bus">Bus</option>
+                                                <option
+                                                    {{ in_array('Tricycle', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Tricycle">Tricycle</option>
+                                                <option
+                                                    {{ in_array('Motorcycle', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Motorcycle">Motorcycle</option>
                                             </select>
                                             <span class="danger text-danger">
                                                 @error('transportations')
@@ -80,15 +95,26 @@
                                         </div>
                                         <div class="col-md-6 my-1">
                                             <label for="tagline" class="form-label">Province Tagline</label>
-                                            <input type="text" class="form-control" name="tagline"
-                                                id="tagline" value="{{ $province->tagline }}">
+                                            <input type="text" class="form-control" name="tagline" id="tagline"
+                                                value="{{ $province->tagline }}">
+                                        </div>
+                                        <div class="col-md-6 my-1">
+                                            <label for="latitude" class="form-label">Latitude</label>
+                                            <input type="text" class="form-control" name="latitude" id="latitude"
+                                                value="{{ $province->latitude }}">
+                                        </div>
+                                        <div class="col-md-6 my-1">
+                                            <label for="longitude" class="form-label">Longitude</label>
+                                            <input type="text" class="form-control" name="longitude" id="longitude"
+                                                value="{{ $province->longitude }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    @if($province->featured_image)
+                                    @if ($province->featured_image)
                                         <img class="img-responsive" id="previewImage" style="width: 100% !important;"
-                                        src="{{ URL::asset('app-assets/images/provinces/' . $province->featured_image) }}" alt="">
+                                            src="{{ URL::asset('app-assets/images/provinces/' . $province->featured_image) }}"
+                                            alt="">
                                     @endif
                                 </div>
                             </div>
@@ -107,22 +133,21 @@
     <script>
         // Function to handle file selection and display preview image
         function handleFileSelect(event) {
-        const file = event.target.files[0];
+            const file = event.target.files[0];
 
-        if (file) {
-            const reader = new FileReader();
+            if (file) {
+                const reader = new FileReader();
 
-            reader.onload = function(event) {
-            const previewImage = document.getElementById('previewImage');
-            previewImage.src = event.target.result;
-            };
+                reader.onload = function(event) {
+                    const previewImage = document.getElementById('previewImage');
+                    previewImage.src = event.target.result;
+                };
 
-            reader.readAsDataURL(file);
-        }
+                reader.readAsDataURL(file);
+            }
         }
 
         // Attach the 'handleFileSelect' function to the file input's change event
         document.getElementById('featured_image').addEventListener('change', handleFileSelect);
-
     </script>
 @endpush
