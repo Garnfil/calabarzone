@@ -95,7 +95,7 @@
                                                                 <tr>
                                                                     <td class="text-truncate">{{ $interest->id }}</td>
                                                                     <td class="text-truncate">{{ $interest->interest_name }}</td>
-                                                                    <td class="text-truncate"><img src="" alt=""></td>
+                                                                    <td class="text-truncate"><img width="50px" height="50px" src="{{ URL::asset('app-assets/images/interests_icons/' . $interest->icon) }}" alt=""></td>
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>

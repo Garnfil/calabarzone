@@ -61,12 +61,12 @@
                         name: "business_name",
                     },
                     {
-                        data: "merchant_code",
-                        name: "merchant_code",
+                        data: "province",
+                        name: "province",
                     },
                     {
-                        data: "classification",
-                        name: "classification",
+                        data: "city_municipality",
+                        name: "city_municipality",
                     },
                     {
                         data: "actions",
