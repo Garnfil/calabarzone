@@ -102,7 +102,7 @@ class InterestController extends Controller
             $icon_image = $request->file('icon');
             $featured_icon_name = Str::snake($request->interest_name) . '.' . $icon_image->getClientOriginalExtension();
 
-            $save_file = $featured_image->move(public_path() . '/app-assets/images/interests_icons', $featured_icon_name);
+            $save_file = $icon_image->move(public_path() . '/app-assets/images/interests_icons', $featured_icon_name);
         }
 
         $update = Interest::where('id', $request->id)->update(array_merge($data, [
