@@ -54,6 +54,19 @@ class AdminController extends Controller
             'name' => $request->name
         ]);
         if($update) return back()->withSuccess('Admin Updated Successfully');
+    }
 
+    public function destroy(Request $request) {
+        $id = $request->id;
+        $admin = Admin::where('id', $request->id)->firstOrFail();
+
+        $delete = $admin->delete();
+
+        if($delete) {
+            return response([
+                'status' => true,
+                'message' => 'Deleted Successfully'
+            ], 200);
+        }
     }
 }
