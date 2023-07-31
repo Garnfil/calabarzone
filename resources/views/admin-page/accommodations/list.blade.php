@@ -22,8 +22,8 @@
                                         <th>Id</th>
                                         <th>Featured Image</th>
                                         <th>Business Name</th>
-                                        <th>Merchant Code</th>
-                                        <th>Classification</th>
+                                        <th>Province</th>
+                                        <th>City</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
