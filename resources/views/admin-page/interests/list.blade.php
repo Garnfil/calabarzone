@@ -21,7 +21,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Interest Name</th>
-                                        <th>Featured Image</th>
+                                        <th>Background Color</th>
                                         <th>Icon</th>
                                         <th>Actions</th>
                                     </tr>

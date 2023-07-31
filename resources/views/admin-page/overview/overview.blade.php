@@ -8,107 +8,12 @@
         <div class="content-wrapper">
             <div class="content-header row">
             </div>
-            <div class="content-body">
-                <div class="row grouped-multiple-statistics-card">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="row match-height">
-                                    <div class="col-xl-12 col-lg-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Recent Users</h4>
-                                                <a class="heading-elements-toggle"><i
-                                                        class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                                <div class="heading-elements">
-                                                    <ul class="list-inline mb-0">
-                                                        <li><a data-action="reload"><i
-                                                                    class="feather icon-rotate-cw"></i></a></li>
-                                                        <li><a data-action="expand"><i
-                                                                    class="feather icon-maximize"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body p-0">
-                                                </div>
-                                                <div class="table-responsive">
-                                                    <table id="recent-orders"
-                                                        class="table table-hover mb-0 ps-container ps-theme-default">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Id</th>
-                                                                <th>Username</th>
-                                                                <th>Email</th>
-                                                                <th>Name</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($users as $user)
-                                                                <tr>
-                                                                    <td class="text-truncate">{{ $user->id }}</td>
-                                                                    <td class="text-truncate">{{ $user->username }}</td>
-                                                                    <td class="text-truncate">{{ $user->email }}</td>
-                                                                    <td class="text-truncate">{{ $user->name }}</td>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="row match-height">
-                                    <div class="col-xl-12 col-lg-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Recent Interests</h4>
-                                                <a class="heading-elements-toggle"><i
-                                                        class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                                <div class="heading-elements">
-                                                    <ul class="list-inline mb-0">
-                                                        <li><a data-action="reload"><i
-                                                                    class="feather icon-rotate-cw"></i></a></li>
-                                                        <li><a data-action="expand"><i
-                                                                    class="feather icon-maximize"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body p-0">
-                                                </div>
-                                                <div class="table-responsive">
-                                                    <table id="recent-orders"
-                                                        class="table table-hover mb-0 ps-container ps-theme-default">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Id</th>
-                                                                <th>Interest Name</th>
-                                                                <th>Icon</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($interests as $interest)
-                                                                <tr>
-                                                                    <td class="text-truncate">{{ $interest->id }}</td>
-                                                                    <td class="text-truncate">{{ $interest->interest_name }}</td>
-                                                                    <td class="text-truncate"><img width="50px" height="50px" src="{{ URL::asset('app-assets/images/interests_icons/' . $interest->icon) }}" alt=""></td>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="content-body d-flex justify-content-center align-items-center flex-column"
+                style="height: 80vh; gap: 40px;">
+                <img src="{{ URL::asset('app-assets/images/logo/logo_zone.png') }}" alt="" width="650px">
+                <h2 style="font-size: 60px; font-weight: 600; color: #000;">Welcome to
+                    <span style="color: #18519f;">CAL</span><span style="color: #acc837;">ABA</span><span style="color: #f18e2a;">RZO</span><span style="color: #e23b30;">NE</span>
+                </h2>
             </div>
         </div>
     </div>

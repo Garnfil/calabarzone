@@ -20,12 +20,7 @@ class InterestController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('featured_image', function ($row) {
-                        $featured_image = "../app-assets/images/interests/" . $row->featured_image;
-                        if($row->featured_image) {
-                            return '<img src="' . $featured_image . '" style="width: 75px;" />';
-                        } else {
-                            return '<img src="../app-assets/images/default-image.jpg" style="width: 75px;" />';
-                        }
+                        return '<div class="rounded" style="background-color: '. $row->background_color .'; width: 75px; height: 75px;"></div>';
                     })
                     ->addColumn('icon', function ($row) {
                         $icon = "../app-assets/images/interests_icons/" . $row->icon;

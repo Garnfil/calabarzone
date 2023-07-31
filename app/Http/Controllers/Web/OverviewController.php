@@ -11,8 +11,6 @@ use App\Models\Interest;
 class OverviewController extends Controller
 {
     public function viewOverview(Request $request) {
-        $interests = Interest::limit(5)->latest()->get();
-        $users = User::limit(5)->latest()->get();
-        return view('admin-page.overview.overview', compact('interests', 'users'));
+        return view('admin-page.overview.overview');
     }
 }
