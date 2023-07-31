@@ -29,11 +29,11 @@ class UpdateActivityRequest extends FormRequest
             'activity_name' => 'required',
             'featured_image' => 'image',
             'interest_type' => 'required',
-            'description' => 'required',
-            'things_todo' => 'required',
-            'what_to_wear' => 'required',
-            'operational_hours' => 'required',
-            'best_time_to_visit' => 'required'
+            'description' => 'nullable',
+            'things_todo' => 'nullable',
+            'what_to_wear' => 'nullable',
+            'operational_hours' => 'nullable',
+            'best_time_to_visit' => 'nullable'
         ];
     }
 }
