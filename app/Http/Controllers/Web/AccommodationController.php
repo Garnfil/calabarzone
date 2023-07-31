@@ -28,7 +28,7 @@ class AccommodationController extends Controller
                     ->addColumn('province', function($row) {
                         return $row->province->name;
                     })
-                    ->addColumn('city_municipality', function($row) {
+                    ->addColumn(' ', function($row) {
                         return $row->city_municipality->name;
                     })
                     ->addColumn('actions', function($row) {

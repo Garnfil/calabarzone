@@ -97,7 +97,7 @@
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#"
                                 data-toggle="dropdown">
                                 <div class="avatar avatar-online"><img
-                                        src="../../../app-assets/images/portrait/small/avatar-s-1.png"
+                                        src="{{ URL::asset('app-assets/images/default.jpg') }}"
                                         alt="avatar"><i></i></div><span
                                     class="user-name">{{ auth()->user()->name }}</span>
                             </a>
