@@ -28,12 +28,12 @@ class UpdateAttractionRequest extends FormRequest
             'featured_image' => 'image',
             'province_id' => 'required',
             'city_id' => 'required',
-            'how_to_get_there' => 'required',
-            'interest_type' => 'required',
-            'description' => 'required',
-            'things_todo' => 'required',
-            'operational_hours' => 'required',
-            'best_time_to_visit' => 'required',
+            'how_to_get_there' => 'nullable',
+            'interest_type' => 'nullable',
+            'description' => 'nullable',
+            'things_todo' => 'nullable',
+            'operational_hours' => 'nullable',
+            'best_time_to_visit' => 'nullable',
             'contact_number' => 'nullable',
             'mobile_number' => 'nullable'
         ];
