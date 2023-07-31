@@ -9,5 +9,5 @@ class Interest extends Model
 {
     use HasFactory;
     protected $table = 'interests';
-    protected $fillable = ['interest_name', 'featured_image', 'icon', 'description'];
+    protected $fillable = ['interest_name', 'featured_image', 'icon', 'description', 'background_color'];
 }

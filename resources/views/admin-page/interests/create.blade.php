@@ -58,6 +58,11 @@
                                                 @enderror
                                             </span>
                                         </div>
+                                        <div class="col-lg-6 my-1">
+                                            <label for="background_color" class="form-label">Background Color</label>
+                                            <input type="color" name="background_color" id="background_color" class="form-control" oninput="getBackgroundColorValue(this)">
+                                            <input type="text" class="form-control" id="background_color_hex" readonly>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 d-flex justify-content-between" style="gap: 10px">

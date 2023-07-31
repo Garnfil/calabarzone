@@ -27,7 +27,8 @@ class CreateInterestRequest extends FormRequest
             'interest_name' => 'required',
             'featured_image' => 'nullable|image',
             'icon' => 'required|image',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'background_color' => 'nullable'
         ];
     }
 }

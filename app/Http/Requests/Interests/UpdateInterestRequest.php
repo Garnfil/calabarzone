@@ -27,7 +27,8 @@ class UpdateInterestRequest extends FormRequest
             'interest_name' => 'required',
             'featured_image' => 'nullable|image',
             'icon' => 'nullable|image',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'background_color' => 'nullable'
         ];
     }
 }
