@@ -100,7 +100,7 @@ class InterestController extends Controller
             $remove_image = @unlink($old_upload_image);
 
             $icon_image = $request->file('icon');
-            $featured_icon_name = Str::snake($request->interest_name) . '.' . $featured_image->getClientOriginalExtension();
+            $featured_icon_name = Str::snake($request->interest_name) . '.' . $icon_image->getClientOriginalExtension();
 
             $save_file = $featured_image->move(public_path() . '/app-assets/images/interests_icons', $featured_icon_name);
         }
