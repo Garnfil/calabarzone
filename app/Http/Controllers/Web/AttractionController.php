@@ -18,7 +18,7 @@ class AttractionController extends Controller
 {
     public function list(Request $request) {
         if($request->ajax()) {
-            $data = Attraction::latest()->with('province', 'city_municipality');
+            $data = Attraction::latest()->where('is_active', 1)->with('province', 'city_municipality');
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('featured_image', function ($row) {
