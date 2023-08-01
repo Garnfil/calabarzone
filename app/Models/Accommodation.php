@@ -9,7 +9,7 @@ class Accommodation extends Model
 {
     use HasFactory;
     protected $table = 'accomodations';
-    protected $fillable = ['province_id', 'city_id', 'featured_image', 'merchant_code', 'business_name', 'classification', 'description', 'interest_type', 'contact_number', 'contact_email'];
+    protected $fillable = ['province_id', 'city_id', 'featured_image', 'merchant_code', 'business_name', 'classification', 'description', 'interest_type', 'contact_number', 'contact_email', 'is_active'];
 
     public function province() {
         return $this->hasOne(Province::class, 'id', 'province_id');

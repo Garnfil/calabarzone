@@ -18,7 +18,7 @@ class AccommodationController extends Controller
 {
     public function list(Request $request) {
         if($request->ajax()) {
-            $data = Accommodation::latest()->with('province', 'city_municipality');
+            $data = Accommodation::where('is_active', 1)->latest()->with('province', 'city_municipality');
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('featured_image', function ($row) {
@@ -59,6 +59,7 @@ class AccommodationController extends Controller
 
         $create = Accommodation::create(array_merge($data, [
             'featured_image' => $featured_image_name,
+            'is_active' => $request->has('is_active')
         ]));
 
         if($create) return redirect()->route('admin.accommodations')->with('success', 'Accommodation Created Successfully');
@@ -87,7 +88,8 @@ class AccommodationController extends Controller
         }
 
         $update = $accommodation->update(array_merge($data, [
-            'featured_image' => $featured_image_name
+            'featured_image' => $featured_image_name,
+            'is_active' => $request->has('is_active')
         ]));
 
         if($update) return back()->with('success', 'Accommodation Updated Successfully');

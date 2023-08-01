@@ -114,6 +114,14 @@
                                             <input type="text" class="form-control" name="contact_email"
                                                 id="contact_email">
                                         </div>
+                                        <div class="col-lg-6 my-1">
+                                            <label for="mobile_number" class="form-label">Is Active?</label>
+                                            <fieldset>
+                                                <div class="float-left">
+                                                    <input type="checkbox" class="switch" id="is_active" name="is_active" data-group-cls="btn-group-sm" />
+                                                </div>
+                                            </fieldset>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">

@@ -25,11 +25,6 @@ class ProvinceController extends Controller
                     $featured_image = "../app-assets/images/provinces/" . $row->featured_image;
                     return '<img src="' . $featured_image . '" style="width: 75px;" />';
                 })
-                ->addColumn('actions', function ($row) {
-                    $btn = '<a href="/admin/province/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
-                    return $btn;
-                })
                 ->addColumn('transportations', function ($row) {
                    $transportations = json_decode($row->transportations);
                    $output = '';
@@ -37,6 +32,11 @@ class ProvinceController extends Controller
                         $output .= '<div class="badge badge-primary p-50 mx-50">' .$transportation. '</div>';
                    }
                    return $output;
+                })
+                ->addColumn('actions', function ($row) {
+                    $btn = '<a href="/admin/province/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
+                    return $btn;
                 })
                 ->rawColumns(['actions', 'featured_image', 'transportations'])
                 ->make(true);
