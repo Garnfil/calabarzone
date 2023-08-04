@@ -102,7 +102,10 @@
                                     class="user-name">{{ auth()->user()->name }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="login-with-bg-image.html"
+                                <a class="dropdown-item" href="{{ route('admin.change_password') }}">
+                                    <i class="feather icon-unlock"></i> Change Password
+                                </a>
+                                <a class="dropdown-item" href="#"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                         class="feather icon-power"></i> Logout</a>
                                 <form method="POST" action="{{ route('admin.logout') }}" id="logout-form"

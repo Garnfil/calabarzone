@@ -52,6 +52,8 @@ Route::post('/forgot_password', [ForgotPasswordController::class, 'sendForgotPas
 
 Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin', 'auth:admin', 'check.admin_exist']], function(){
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
+    Route::get('change_password', [AdminAuthController::class, 'changePassword'])->name('change_password');
+    Route::post('change_password', [AdminAuthController::class, 'saveChangePassword'])->name('save_change_password');
     Route::get('overview', [OverviewController::class, 'viewOverview'])->name('overview');
 
     Route::get('provinces', [ProvinceController::class, 'list'])->name('provinces');
@@ -131,7 +133,6 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('admin/edit/{id}',[AdminController::class, 'edit'])->name('admin.edit');
     Route::put('admin/update/{id}',[AdminController::class, 'update'])->name('admin.update');
     Route::delete('admin/delete', [AdminController::class, 'destroy'])->name('admin.destroy');
-
 });
 
 
