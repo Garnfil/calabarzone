@@ -20,8 +20,7 @@ class AdminController extends Controller
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('actions', function ($row) {
-                        $btn = '<a href="/admin/admin/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
+                        $btn = '<a href="/admin/admin/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>';
                         return $btn;
                     })
                     ->rawColumns(['actions'])

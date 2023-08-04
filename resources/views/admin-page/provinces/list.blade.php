@@ -27,7 +27,6 @@
                                 <thead>
                                     <tr>
                                         <th width="20">Id</th>
-                                        <th width="75">Image</th>
                                         <th>Name</th>
                                         <th>Transportations</th>
                                         <th>Tagline</th>
@@ -57,10 +56,6 @@
                 columns: [{
                         data: 'id',
                         name: 'id',
-                    },
-                    {
-                        data: 'featured_image',
-                        name: 'featured_image,',
                     },
                     {
                         data: 'name',

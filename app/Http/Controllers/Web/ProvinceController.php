@@ -21,10 +21,6 @@ class ProvinceController extends Controller
             $data = Province::latest();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('featured_image', function ($row) {
-                    $featured_image = "../app-assets/images/provinces/" . $row->featured_image;
-                    return '<img src="' . $featured_image . '" style="width: 75px;" />';
-                })
                 ->addColumn('transportations', function ($row) {
                    $transportations = json_decode($row->transportations);
                    $output = '';
