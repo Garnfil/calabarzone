@@ -29,7 +29,7 @@ class UpdateProvinceRequest extends FormRequest
             'tagline' => 'required',
             'delicacies' => 'nullable',
             'latitude' => 'nullable',
-            'longitude' => 'nullable'
+            'longitude' => 'nullable',
         ];
     }
 }

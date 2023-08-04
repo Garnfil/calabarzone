@@ -9,5 +9,5 @@ class Province extends Model
 {
     use HasFactory;
     protected $table = 'provinces';
-    protected $fillable = ['name', 'featured_image', 'images', 'description', 'transportations', 'tagline', 'languages', 'delicacies', 'latitude', 'longitude'];
+    protected $fillable = ['name', 'featured_image', 'images', 'description', 'transportations', 'tagline', 'languages', 'delicacies', 'latitude', 'longitude', 'youtube_link'];
 }
