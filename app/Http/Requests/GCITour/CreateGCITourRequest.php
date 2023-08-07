@@ -30,6 +30,7 @@ class CreateGCITourRequest extends FormRequest
             'best_time' => 'nullable',
             'operation_hours' => 'nullable',
             'youtube' => 'nullable',
+            'tour_cover' => 'required',
             'tour_cities' => 'required|array|min:1', // Make sure tour_cities is an array and has at least one element
             'tour_cities.*.city' => 'required',
             'tour_cities.*.description' => 'required',

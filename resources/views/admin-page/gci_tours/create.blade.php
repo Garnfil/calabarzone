@@ -159,6 +159,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6 my-1">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <label for="tour_cover" class="form-label">Tour Cover</label>
+                                            <input type="file" class="form-control" name="tour_cover"
+                                                id="tour_cover" value="">
+                                        </div>
+                                        <div class="col-lg-4">
+                                                <img src="{{ URL::asset('app-assets/images/default-image.jpg')}}" alt="default" style="width: 100%;" id="previewImage">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 my-1">
+                                    <label for="tour_backgrounds" class="form-label">Tour Backgrounds</label>
+                                    <input type="file" class="form-control" id="tour_backgrounds" name="tour_backgrounds[]" multiple>
+                                </div>
                             </div>
                             <hr>
                             <div class="repeater-default">

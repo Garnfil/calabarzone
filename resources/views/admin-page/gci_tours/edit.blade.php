@@ -188,7 +188,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 my-1">
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <label for="tour_cover" class="form-label">Tour Cover</label>
@@ -197,29 +197,25 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     @if ($tour->tour_cover)
-                                                        <img src="{{ URL::asset('app-assets/images/tour_covers/' . $tour->tour_cover) }}" alt="">
+                                                        <img src="{{ URL::asset('app-assets/images/tour_covers/' . $tour->tour_cover) }}" style="width: 100%;" id="previewImage">
                                                     @else
-                                                        <img src="{{ URL::asset('app-assets/images/default-image.jpg')}}" alt="default" style="width: 100%;">
+                                                        <img src="{{ URL::asset('app-assets/images/default-image.jpg')}}" alt="default" style="width: 100%;" id="previewImage">
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <hr>
-                                            <div class="form-group col-12 mb-2 file-repeater">
-                                                <div data-repeater-list="repeater-group">
-                                                    <div class="input-group mb-1" data-repeater-item>
-                                                        <input type="file" class="form-control">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-btn" id="button-addon2">
-                                                                <button class="btn btn-danger" type="button" data-repeater-delete><i class="feather icon-x"></i></button>
-                                                            </span>
-                                                        </div>
+                                        <div class="col-lg-6 my-1">
+                                            <label for="tour_backgrounds" class="form-label">Tour Backgrounds</label>
+                                            <input type="file" class="form-control" id="tour_backgrounds" name="tour_backgrounds[]" multiple>
+                                            <div class="row my-2">
+                                                <?php $tour_backgrounds = json_decode($tour->tour_backgrounds) ?>
+                                                @forelse ($tour_backgrounds as $key => $tour_background)
+                                                    <div class="col-lg-2">
+                                                        <img src="{{ URL::asset('app-assets/images/tour_backgrounds/' . $tour_background) }}" style="width: 100%; height: 75px; object-fit: cover;" alt="">
                                                     </div>
-                                                </div>
-                                                <button type="button" data-repeater-create class="btn btn-primary">
-                                                    <i class="icon-plus4"></i> Add new file
-                                                </button>
+                                                @empty
+
+                                                @endforelse
                                             </div>
                                         </div>
                                     </div>
@@ -306,3 +302,26 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        // Function to handle file selection and display preview image
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const previewImage = document.getElementById('previewImage');
+                    previewImage.src = event.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Attach the 'handleFileSelect' function to the file input's change event
+        document.getElementById('tour_cover').addEventListener('change', handleFileSelect);
+    </script>
+@endpush
