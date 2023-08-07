@@ -79,14 +79,16 @@ class GCITourController extends Controller
         $data = $request->validated();
         $tour = GCITour::where('id', $request->id)->first();
 
-        $tour_backgrounds = [];
+        $tour_backgrounds = json_decode($request->current_tour_backgrounds);
 
         if($request->has('tour_backgrounds')) {
             foreach ($request->tour_backgrounds as $key => $tour_background) {
                 $file_name = Str::snake(Str::lower($request->tour_name)) . '_' . $key . '.' . $tour_background->getClientOriginalExtension();
                 $save_file = $tour_background->move(public_path() . '/app-assets/images/tour_backgrounds', $file_name);
 
-                array_push($tour_backgrounds, $file_name);
+                if(is_array($tour_backgrounds)) {
+                    array_push($tour_backgrounds, $file_name);
+                }
             }
         }
 

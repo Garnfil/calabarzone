@@ -208,6 +208,7 @@
                                         <div class="col-lg-6 my-1">
                                             <label for="tour_backgrounds" class="form-label">Tour Backgrounds</label>
                                             <input type="file" class="form-control" id="tour_backgrounds" name="tour_backgrounds[]" multiple>
+                                            <input type="hidden" name="current_tour_backgrounds" value="{{ $tour->tour_backgrounds }}">
                                             <div class="row my-2">
                                                 <?php $tour_backgrounds = json_decode($tour->tour_backgrounds) ?>
                                                 @if($tour_backgrounds)
@@ -216,7 +217,6 @@
                                                             <img src="{{ URL::asset('app-assets/images/tour_backgrounds/' . $tour_background) }}" style="width: 100%; height: 75px; object-fit: cover;" alt="">
                                                         </div>
                                                     @empty
-
                                                     @endforelse
                                                 @endif
                                             </div>
