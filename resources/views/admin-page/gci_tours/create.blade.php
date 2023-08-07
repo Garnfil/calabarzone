@@ -53,8 +53,8 @@
                                 <div class="col-lg-6 my-1">
                                     <label for="operation_hours" class="form-label">Operation Hours</label>
                                     <input type="text" class="form-control" name="operation_hours" id="operation_hours"> <br>
-                                    <label for="youtube_link" class="form-label">Youtube Link</label>
-                                    <input type="url" class="form-control" name="youtube_link" id="youtube_link">
+                                    <label for="youtube" class="form-label">Youtube</label>
+                                    <input type="url" class="form-control" name="youtube" id="youtube">
                                 </div>
                                 <div class="col-lg-6 my-1">
                                     <label for="inclusions" class="form-label">Inclusions</label>
