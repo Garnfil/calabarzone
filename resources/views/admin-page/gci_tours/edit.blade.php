@@ -193,7 +193,8 @@
                                                 <div class="col-lg-8">
                                                     <label for="tour_cover" class="form-label">Tour Cover</label>
                                                     <input type="file" class="form-control" name="tour_cover"
-                                                        id="tour_cover" value="{{ $tour->tour_cover }}">
+                                                        id="tour_cover" value="">
+                                                        <input type="hidden" name="current_tour_cover" value="{{ $tour->tour_cover }}">
                                                 </div>
                                                 <div class="col-lg-4">
                                                     @if ($tour->tour_cover)

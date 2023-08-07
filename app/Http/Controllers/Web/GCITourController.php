@@ -90,9 +90,14 @@ class GCITourController extends Controller
             }
         }
 
-        $tour_cover = $request->file('tour_cover');
-        $tour_cover_name = Str::snake(Str::lower($request->tour_name)) . '.' . $tour_cover->getClientOriginalExtension();
-        $save_file = $tour_cover->move(public_path() . '/app-assets/images/tour_covers', $tour_cover_name);
+        $tour_cover_name = $request->current_tour_cover;
+
+        if($request->hasFile('tour_cover')) {
+            $tour_cover = $request->file('tour_cover');
+            $tour_cover_name = Str::snake(Str::lower($request->tour_name)) . '.' . $tour_cover->getClientOriginalExtension();
+            $save_file = $tour_cover->move(public_path() . '/app-assets/images/tour_covers', $tour_cover_name);
+        }
+
 
         $update = $tour->update(array_merge($data, [
             'inclusions' => $request->has('inclusions') ? json_encode($request->inclusions) : null,
@@ -103,10 +108,10 @@ class GCITourController extends Controller
 
         if(count($request->tour_cities) > 0) {
             foreach ($request->tour_cities as $key => $city) {
-                $background_image = $city['background_image'];
                 $city_background_name = $city['old_background_city_image'];
 
                 if(isset($city['background_image'])) {
+                    $background_image = $city['background_image'];
                     $city_background_name = Str::snake(Str::lower($city['city'])) . '.' . $background_image->getClientOriginalExtension();
                     $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
                 }
@@ -119,7 +124,6 @@ class GCITourController extends Controller
                 ]);
             }
         }
-
         return back()->withSuccess('Tour Updated Successfully');
     }
 }

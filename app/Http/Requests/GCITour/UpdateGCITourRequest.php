@@ -34,7 +34,7 @@ class UpdateGCITourRequest extends FormRequest
             'tour_cities.*.city' => 'required',
             'tour_cities.*.description' => 'required',
             'tour_cities.*.background_image' => 'image',
-            'tour_cover' => 'required|image'
+            'tour_cover' => 'image'
         ];
     }
 
