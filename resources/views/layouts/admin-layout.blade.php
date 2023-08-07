@@ -103,7 +103,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="{{ route('admin.change_password') }}">
-                                    <i class="feather icon-unlock"></i> Change Password
+                                    <i class="feather icon-unlock"></i> Change Passwordd
                                 </a>
                                 <a class="dropdown-item" href="#"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
