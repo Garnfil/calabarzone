@@ -50,6 +50,10 @@ Route::get('/user/verify_email', [UserAuthController::class, 'verifyEmail']);
 
 Route::post('/forgot_password', [ForgotPasswordController::class, 'sendForgotPassword']);
 
+Route::get('/reset_password_form', [ForgotPasswordController::class, 'resetPasswordForm'])->name('reset_password_form');
+Route::post('reset_password_form', [ForgotPasswordController::class, 'saveResetPassword'])->name('reset_password.post');
+Route::view('success_reset_password', 'misc.forgot-password.message.success-reset-password')->name('success_reset_password');
+
 Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin', 'auth:admin', 'check.admin_exist']], function(){
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
     Route::get('change_password', [AdminAuthController::class, 'changePassword'])->name('change_password');

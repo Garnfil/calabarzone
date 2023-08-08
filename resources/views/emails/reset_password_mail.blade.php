@@ -79,7 +79,7 @@
     <!-- HIDDEN PREHEADER TEXT -->
     <div
         style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Google Sans', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-        We're thrilled to have you here! Get ready to dive into your new account.
+        We're thrilled to have you here! Get ready to change your password.
     </div>
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <!-- LOGO -->
@@ -87,7 +87,7 @@
             <td bgcolor="#16468a" align="center">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
-                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"></td>
+                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"> </td>
                     </tr>
                 </table>
             </td>
@@ -99,8 +99,7 @@
                         <td bgcolor="#ffffff" align="center" valign="top"
                             style="padding: 20px 20px 0px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Google Sans', Helvetica, Arial, sans-serif; font-size: 3px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
                             <img src="{{ URL::asset('app-assets/images/logo/logo_zone.png') }}" width="145" style="display: block; border: 0px;" />
-                            <h1 style="font-size: 32px; font-weight: 800; margin-bottom: 0;">Welcome to Calabarzone App!
-                            </h1>
+                            <h1 style="font-size: 32px; font-weight: 800; margin-bottom: 0;">Password Reset!</h1>
                         </td>
                     </tr>
                 </table>
@@ -114,9 +113,8 @@
                             style="padding: 20px 20px 0px 20px; color: #666666; font-family: 'Google Sans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
 
                             <p style="margin: 0;">
-                                Hello {{ $details['username'] }}, <br>
-                                We're excited to have you get started. First, you need to confirm your account. Just
-                                press the button below.</p>
+                                We're sending you this email because you requested a password reset. Click on this
+                                button to create new password.</p>
                         </td>
                     </tr>
                     <tr>
@@ -127,10 +125,14 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#16468a">
-                                                    <form action="{{ url('') }}/user/verify_email">
-                                                        <input type="hidden" value="{{ $details['email'] }}" name="email">
-                                                        <button href="" style="cursor: pointer; padding: 0.6rem 1rem 0.6rem 1rem; background-color: #000; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-family: 'Google Sans', Helvetica, Arial, sans-serif; font-size: 16px;">VERIFY
-                                                            EMAIL ADDRESS</button>
+                                                    <form action="{{ route('reset_password_form') }}">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $email }}"
+                                                            name="email">
+                                                        <button type="submit"
+                                                            style="padding: 0.6rem 1rem 0.6rem 1rem; background: #16468a; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-family: 'Google Sans', Helvetica, Arial, sans-serif; font-size: 16px;">
+                                                            RESET YOUR PASSWORD
+                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -140,6 +142,7 @@
                             </table>
                         </td>
                     </tr> <!-- COPY -->
+
                     <tr>
                         <td bgcolor="#ffffff" align="center"
                             style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Google Sans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
@@ -165,8 +168,7 @@
                             <h2 style="font-size: 20px; font-weight: 400; color: white; margin: 0;">Need more help?
                             </h2>
                             <p style="margin: 0;"><a href="" target="_blank" style="color: white;">We&rsquo;re
-                                    here
-                                    to help you out</a></p>
+                                    here to help you out</a></p>
                         </td>
                     </tr>
                 </table>
@@ -179,8 +181,8 @@
                         <td bgcolor="#f4f4f4" align="center"
                             style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Google Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">
                             <br>
-                            <p style="margin: 0;">Powered by: <a. href="#" target="_blank"
-                                    style="color: #16468a; font-weight: 700;"><strong>CALABARZONE APP</strong></a.>
+                            <p style="margin: 0;">Powered by: <a. href="{{ url('') }}" target="_blank"
+                                    style="color: #16468a; font-weight: 700;"><strong>CALABARZONE APP</strong></a>
                             </p>
                         </td>
                     </tr>

@@ -16,9 +16,9 @@ class ForgotPasswordMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($email)
     {
-        //
+        $this->email = $email;
     }
 
     /**
@@ -28,6 +28,7 @@ class ForgotPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $email = $this->email;
+        return $this->subject('Forgot Password')->view('emails.reset_password_mail', compact('email'));
     }
 }
