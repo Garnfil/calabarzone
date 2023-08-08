@@ -17,7 +17,7 @@ class UserController extends Controller
     public function updateProfile(Request $request) {
 
         $validator = \Validator::make($request->all(), [
-            'username' => ['required', 'unique:users', 'max:15'],
+            'username' => ['required', 'max:15'],
             'firstname' => ['required'],
             'lastname' => ['required'],
         ]);

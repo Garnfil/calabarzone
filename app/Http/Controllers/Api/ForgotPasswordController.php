@@ -13,8 +13,6 @@ class ForgotPasswordController extends Controller
         $user = User::where('email', $request->email)->first();
         if($user) {
 
-
-
         } else {
             return response([
                 'status' => false,
