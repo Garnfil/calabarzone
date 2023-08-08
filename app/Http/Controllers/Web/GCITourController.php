@@ -106,6 +106,8 @@ class GCITourController extends Controller
             'tour_cover' => $tour_cover_name
         ]));
 
+        dd($request->all());
+
         if(count($request->tour_cities) > 0) {
             foreach ($request->tour_cities as $key => $city) {
                 $city_background_name = $city['old_background_city_image'];
@@ -116,14 +118,18 @@ class GCITourController extends Controller
                     $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
                 }
 
-                $update_tour_city = GCITourCity::where('id', $city['city_id'])->update([
-                    'main_id' => $tour->id,
-                    'city' => $city['city'],
-                    'description' => $city['description'],
-                    'background_image' => $city_background_name
-                ]);
+                $update_tour_city = GCITourCity::updateOrCreate(
+                    ['id', $city['city_id']],
+                    [
+                        'main_id' => $tour->id,
+                        'city' => $city['city'],
+                        'description' => $city['description'],
+                        'background_image' => $city_background_name
+                    ]
+                );
             }
         }
+
         return back()->withSuccess('Tour Updated Successfully');
     }
 }
