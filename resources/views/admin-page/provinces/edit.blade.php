@@ -86,6 +86,18 @@
                                                 <option
                                                     {{ in_array('Motorcycle', json_decode($province->transportations)) ? 'selected' : null }}
                                                     value="Motorcycle">Motorcycle</option>
+                                                <option
+                                                    {{ in_array('Taxi', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Taxi">Taxi</option>
+                                                <option
+                                                    {{ in_array('Train', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Train">Train</option>
+                                                <option
+                                                    {{ in_array('Airplane', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Airplane">Airplane</option>
+                                                <option
+                                                    {{ in_array('Horse Carriage', json_decode($province->transportations)) ? 'selected' : null }}
+                                                    value="Horse Carriage">Horse Carriage</option>
                                             </select>
                                             <span class="danger text-danger">
                                                 @error('transportations')

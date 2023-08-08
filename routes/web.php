@@ -17,6 +17,7 @@ use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\ForgotPasswordController;
 use App\Http\Controllers\Web\GCITourController;
+use App\Http\Controllers\Web\FactTriviaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -123,6 +124,13 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('food_dining/edit/{id}',[FoodAndDiningController::class, 'edit'])->name('food_dining.edit');
     Route::put('food_dining/update/{id}',[FoodAndDiningController::class, 'update'])->name('food_dining.update');
     Route::delete('food_dining/delete', [FoodAndDiningController::class, 'destroy'])->name('food_dining.destroy');
+
+    Route::get('facts_trivias', [FactTriviaController::class, 'list'])->name('facts_trivias');
+    Route::get('fact_trivia/create', [FactTriviaController::class, 'create'])->name('fact_trivia.create');
+    Route::post('fact_trivia/store', [FactTriviaController::class, 'store'])->name('fact_trivia.store');
+    Route::get('fact_trivia/edit/{id}',[FactTriviaController::class, 'edit'])->name('fact_trivia.edit');
+    Route::put('fact_trivia/update/{id}',[FactTriviaController::class, 'update'])->name('fact_trivia.update');
+    Route::delete('fact_trivia/delete', [FactTriviaController::class, 'destroy'])->name('fact_trivia.destroy');
 
     Route::get('users', [UserController::class, 'list'])->name('users');
     Route::get('user/create', [UserController::class, 'create'])->name('user.create');

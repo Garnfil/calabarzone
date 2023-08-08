@@ -70,6 +70,10 @@
                                                 <option value="Bus">Bus</option>
                                                 <option value="Tricycle">Tricycle</option>
                                                 <option value="Motorcycle">Motorcycle</option>
+                                                <option value="Taxi">Taxi</option>
+                                                <option value="Train">Train</option>
+                                                <option value="Airplane">Airplane</option>
+                                                <option value="Horse Carriage">Horse Carriage</option>
                                             </select>
                                             <span class="danger text-danger">
                                                 @error('transportations')
