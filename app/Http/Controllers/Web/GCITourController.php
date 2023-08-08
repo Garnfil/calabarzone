@@ -106,8 +106,6 @@ class GCITourController extends Controller
             'tour_cover' => $tour_cover_name
         ]));
 
-        dd($request->all());
-
         if(count($request->tour_cities) > 0) {
             foreach ($request->tour_cities as $key => $city) {
                 $city_background_name = $city['old_background_city_image'];
