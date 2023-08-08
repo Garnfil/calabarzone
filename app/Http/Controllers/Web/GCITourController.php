@@ -117,7 +117,7 @@ class GCITourController extends Controller
                 }
 
                 $update_tour_city = GCITourCity::updateOrCreate(
-                    ['id', $city['city_id']],
+                    ['id' => $city['city_id']],
                     [
                         'main_id' => $tour->id,
                         'city' => $city['city'],
