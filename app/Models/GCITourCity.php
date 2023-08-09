@@ -9,5 +9,5 @@ class GCITourCity extends Model
 {
     use HasFactory;
     protected $table = 'gci_tours_cities';
-    protected $fillable = ['main_id', 'city', 'description', 'background_image'];
+    protected $fillable = ['main_id', 'city', 'tour_details', 'background_image'];
 }

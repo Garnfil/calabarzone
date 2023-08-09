@@ -26,8 +26,8 @@ class UpdateAttractionRequest extends FormRequest
         return [
             'attraction_name' => 'required',
             'featured_image' => 'image',
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'how_to_get_there' => 'nullable',
             'interest_type' => 'nullable',
             'description' => 'nullable',

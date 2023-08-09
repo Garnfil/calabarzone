@@ -26,12 +26,12 @@ class UpdateAccommodationRequest extends FormRequest
         return [
             'business_name' => 'required',
             'featured_image' => 'image',
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'merchant_code' => 'nullable',
             'classification' => 'nullable',
-            'description' => 'required',
-            'interest_type' => 'required',
+            'description' => 'nullable',
+            'interest_type' => 'nullable',
             'contact_number' => 'nullable',
             'contact_email' => 'nullable'
         ];

@@ -24,11 +24,11 @@ class UpdateActivityRequest extends FormRequest
     public function rules()
     {
         return [
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'activity_name' => 'required',
             'featured_image' => 'image',
-            'interest_type' => 'required',
+            'interest_type' => 'nullable',
             'description' => 'nullable',
             'things_todo' => 'nullable',
             'what_to_wear' => 'nullable',

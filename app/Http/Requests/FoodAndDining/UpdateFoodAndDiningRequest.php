@@ -24,13 +24,13 @@ class UpdateFoodAndDiningRequest extends FormRequest
     public function rules()
     {
         return [
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'featured_image' => 'image',
-            'merchant_code' => 'required',
-            'business_name' => 'required',
-            'interest_type' => 'required',
-            'cuisine' => 'required',
+            'merchant_code' => 'nullable',
+            'business_name' => 'nullable',
+            'interest_type' => 'nullable',
+            'cuisine' => 'nullable',
             'price_range' => 'nullable',
             'operation_hours' => 'nullable',
             'atmosphere' => 'nullable',

@@ -24,13 +24,13 @@ class CreateFoodAndDiningRequest extends FormRequest
     public function rules()
     {
         return [
-            'province_id' => 'required',
-            'city_id' => 'required',
-            'featured_image' => 'required|image',
-            'merchant_code' => 'required',
-            'business_name' => 'required',
-            'interest_type' => 'required',
-            'cuisine' => 'required',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
+            'featured_image' => 'nullable|image',
+            'merchant_code' => 'nullable',
+            'business_name' => 'nullable',
+            'interest_type' => 'nullable',
+            'cuisine' => 'nullable',
             'price_range' => 'nullable',
             'operation_hours' => 'nullable',
             'atmosphere' => 'nullable',

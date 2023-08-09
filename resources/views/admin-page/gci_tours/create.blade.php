@@ -51,8 +51,8 @@
                                     <input type="text" class="form-control" name="best_time" id="best_time">
                                 </div>
                                 <div class="col-lg-6 my-1">
-                                    <label for="operation_hours" class="form-label">Operation Hours</label>
-                                    <input type="text" class="form-control" name="operation_hours" id="operation_hours"> <br>
+                                    <label for="tour_duration" class="form-label">Tour Duration</label>
+                                    <input type="text" class="form-control" name="tour_duration" id="tour_duration"> <br>
                                     <label for="youtube" class="form-label">Youtube</label>
                                     <input type="url" class="form-control" name="youtube" id="youtube">
                                 </div>
@@ -171,10 +171,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 my-1">
+                                {{-- <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="Tour Type" class="form-label">Tour Type</label>
+                                        <select name="" id="" class="select2 form-control"></select>
+                                    </div>
+                                </div> --}}
+                                {{-- <div class="col-lg-6 my-1">
                                     <label for="tour_backgrounds" class="form-label">Tour Backgrounds</label>
                                     <input type="file" class="form-control" id="tour_backgrounds" name="tour_backgrounds[]" multiple>
-                                </div>
+                                </div> --}}
                             </div>
                             <hr>
                             <div class="repeater-default">
@@ -188,9 +194,9 @@
                                                     name="city">
                                             </div>
                                             <div class="form-group mb-1 col-sm-12 col-md-3">
-                                                <label for="description">Description</label>
+                                                <label for="tour_details">Tour Details</label>
                                                 <br>
-                                                <textarea class="form-control" id="description" rows="2" name="description"></textarea>
+                                                <textarea class="form-control" id="tour_details" rows="2" name="tour_details"></textarea>
                                             </div>
                                             <div class="form-group mb-1 col-sm-12 col-md-3">
                                                 <label for="background_image" class="cursor-pointer">Background

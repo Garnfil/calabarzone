@@ -9,7 +9,7 @@ class GCITour extends Model
 {
     use HasFactory;
     protected $table = 'gci_tours';
-    protected $fillable = ['tour_name', 'tour_type', 'tour_cover', 'tour_backgrounds', 'what_to_wear', 'best_time', 'operation_hours', 'inclusions', 'province', 'inclusion_details', 'youtube', 'cities', 'is_featured'];
+    protected $fillable = ['tour_name', 'tour_type', 'tour_cover', 'what_to_wear', 'best_time', 'tour_duration', 'inclusions', 'province', 'inclusion_details', 'youtube', 'cities', 'is_featured'];
 
     public function tour_province() {
         return $this->hasOne(Province::class, 'id', 'province');

@@ -27,8 +27,8 @@ class CreateUserRequest extends FormRequest
             'username' => 'required',
             'email' => 'required',
             'password' => 'required|min:8',
-            'firstname' => 'required',
-            'lastname' => 'required',
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',
             'interests' => 'nullable',
         ];
     }

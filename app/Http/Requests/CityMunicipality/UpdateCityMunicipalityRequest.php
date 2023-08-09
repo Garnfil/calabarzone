@@ -25,9 +25,9 @@ class UpdateCityMunicipalityRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'type' => 'required|in:city,municipality',
-            'description' => 'required',
-            'province_id' => 'required'
+            'type' => 'nullable|in:city,municipality',
+            'description' => 'nullable',
+            'province_id' => 'nullable'
         ];
     }
 }

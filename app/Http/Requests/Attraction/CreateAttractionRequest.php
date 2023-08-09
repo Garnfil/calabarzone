@@ -25,9 +25,9 @@ class CreateAttractionRequest extends FormRequest
     {
         return [
             'attraction_name' => 'required',
-            'featured_image' => 'required|image',
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'featured_image' => 'nullable|image',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'how_to_get_there' => 'nullable',
             'interest_type' => 'nullable',
             'description' => 'nullable',

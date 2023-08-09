@@ -22,7 +22,7 @@
                                         <th>Id</th>
                                         <th>Tour Name</th>
                                         <th>Province</th>
-                                        <th>Operation Hours</th>
+                                        <th>Tour Duration</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -60,8 +60,8 @@
                         name: 'province',
                     },
                     {
-                        data: 'operation_hours',
-                        name: 'operation_hours',
+                        data: 'tour_duration',
+                        name: 'tour_duration',
                     },
                     {
                         data: 'actions',

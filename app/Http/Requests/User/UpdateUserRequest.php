@@ -25,8 +25,8 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'username' => 'required',
-            'firstname' => 'required',
-            'lastname' => 'required',
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',
             'interests' => 'nullable',
         ];
     }

@@ -25,9 +25,9 @@ class CreateProvinceRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'featured_image' => "required|image",
-            'description' => 'required|max:500',
-            'tagline' => 'required',
+            'featured_image' => "nullable|image",
+            'description' => 'nullable|max:750',
+            'tagline' => 'nullable',
             'delicacies' => 'nullable',
             'latitude' => 'nullable',
             'longitude' => 'nullable',

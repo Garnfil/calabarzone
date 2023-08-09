@@ -25,13 +25,13 @@ class CreateAccommodationRequest extends FormRequest
     {
         return [
             'business_name' => 'required',
-            'featured_image' => 'required|image',
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'featured_image' => 'nullable|image',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'merchant_code' => 'nullable',
             'classification' => 'nullable',
-            'description' => 'required',
-            'interest_type' => 'required',
+            'description' => 'nullable',
+            'interest_type' => 'nullable',
             'contact_number' => 'nullable',
             'contact_email' => 'nullable'
         ];

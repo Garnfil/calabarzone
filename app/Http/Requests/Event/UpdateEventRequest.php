@@ -25,13 +25,13 @@ class UpdateEventRequest extends FormRequest
     {
         return [
             'event_name' => 'required',
-            'province_id' => 'required',
-            'city_id' => 'required',
+            'province_id' => 'nullable',
+            'city_id' => 'nullable',
             'featured_image' => 'image',
-            'interest_type' => 'required',
-            'event_date' => 'required',
-            'description' => 'required',
-            'what_to_wear' => 'required',
+            'interest_type' => 'nullable',
+            'event_date' => 'nullable',
+            'description' => 'nullable',
+            'what_to_wear' => 'nullable',
             'travel_tips' => 'nullable',
             'contact_person' => 'nullable',
             'contact_number' => 'nullable'

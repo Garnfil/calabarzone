@@ -25,10 +25,10 @@ class CreateCityMunicipalityRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'featured_image' => 'required|image',
-            'type' => 'required|in:city,municipality',
-            'description' => 'required',
-            'province_id' => 'required'
+            'featured_image' => 'nullable|image',
+            'type' => 'nullable|in:city,municipality',
+            'description' => 'nullable',
+            'province_id' => 'nullable'
         ];
     }
 }
