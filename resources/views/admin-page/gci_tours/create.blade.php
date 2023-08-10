@@ -177,10 +177,10 @@
                                         <select name="" id="" class="select2 form-control"></select>
                                     </div>
                                 </div> --}}
-                                {{-- <div class="col-lg-6 my-1">
-                                    <label for="tour_backgrounds" class="form-label">Tour Backgrounds</label>
-                                    <input type="file" class="form-control" id="tour_backgrounds" name="tour_backgrounds[]" multiple>
-                                </div> --}}
+                                <div class="col-lg-6 my-1">
+                                    <label for="flyers" class="form-label">Flyers</label>
+                                    <input type="file" class="form-control" id="flyers" name="flyers">
+                                </div>
                             </div>
                             <hr>
                             <div class="repeater-default">

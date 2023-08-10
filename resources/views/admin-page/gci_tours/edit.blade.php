@@ -205,6 +205,22 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-6 my-1">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <label for="flyers" class="form-label">Flyers</label>
+                                                    <input type="file" class="form-control" id="flyers" name="flyers">
+                                                    <input type="hidden" name="current_flyers" id="current_fylers" value="{{ $tour->flyers }}">
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    @if($tour->flyers)
+                                                        <iframe src="{{ URL::asset('app-assets/images/tour_flyers/' . $tour->flyers )}}" width="100%" height="400px"></iframe>
+                                                        @else
+
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
                                         {{-- <div class="col-lg-6 my-1">
                                             <label for="tour_backgrounds" class="form-label">Tour Backgrounds</label>
                                             <input type="file" class="form-control" id="tour_backgrounds" name="tour_backgrounds[]" multiple>

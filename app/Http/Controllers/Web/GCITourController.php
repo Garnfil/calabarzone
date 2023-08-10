@@ -98,11 +98,18 @@ class GCITourController extends Controller
             $save_file = $tour_cover->move(public_path() . '/app-assets/images/tour_covers', $tour_cover_name);
         }
 
+        if($request->hasFile('flyers')) {
+            $flyer = $request->file('flyers');
+            $flyer_name = Str::snake(Str::lower($request->tour_name)) . '.' . $flyer->getClientOriginalExtension();
+            $save_file = $flyer->move(public_path() . '/app-assets/images/tour_flyers', $flyer_name);
+        }
+
 
         $update = $tour->update(array_merge($data, [
             'inclusions' => $request->has('inclusions') ? json_encode($request->inclusions) : null,
             'is_featured' => $request->has('is_featured'),
-            'tour_cover' => $tour_cover_name
+            'tour_cover' => $tour_cover_name,
+            'flyers' => $flyer_name,
         ]));
 
         if(count($request->tour_cities) > 0) {
