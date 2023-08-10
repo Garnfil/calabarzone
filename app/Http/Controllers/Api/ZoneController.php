@@ -99,13 +99,23 @@ class ZoneController extends Controller
 
         $user = Auth::user();
 
-        $interest_ids = json_decode($user->interests);
-        $results = $this->getForYouResult($limit, $models, $interest_ids);
 
-        return response([
-            "results" => $results,
-            "total" => count($results)
-        ]);
+        $interest_ids = json_decode($user->interests);
+
+        if(is_array($interest_ids)) {
+            $results = $this->getForYouResult($limit, $models, $interest_ids);
+            return response([
+                "results" => $results,
+                "total" => count($results)
+            ]);
+        } else {
+            return response([
+                'results' => 'No Result Found',
+                'total' => 0
+            ], 400);
+        }
+
+
     }
 
     private function getForYouResult($limit, $models, $interest_ids) {
