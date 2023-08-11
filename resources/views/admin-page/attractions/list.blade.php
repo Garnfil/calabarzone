@@ -61,7 +61,7 @@
                     },
                     {
                         data: 'city_municipality',
-                        name: 'city_municipality,'
+                        name: 'city_municipality'
                     },
                     {
                         data: 'is_featured',
