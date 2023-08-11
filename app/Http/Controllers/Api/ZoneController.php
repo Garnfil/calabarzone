@@ -38,7 +38,11 @@ class ZoneController extends Controller
 
         // Loop through the models, retrieve the data, and add the "type" key
         foreach ($models as $modelClass => $type) {
-            $results = $modelClass::where('interest_type', $interest->id)->get()->toArray();
+            if($type == 'accommodations' || $type == 'attractions') {
+                $results = $modelClass::where('interest_type', $interest->id)->where('is_active', 1)->get()->toArray();
+            } else {
+                $results = $modelClass::where('interest_type', $interest->id)->get()->toArray();
+            }
             foreach ($results as $result) {
                 $result['type'] = $type;
                 $data[] = $result;
