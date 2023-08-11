@@ -24,7 +24,7 @@ class CreateCityMunicipalityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:cities_municipalities,name',
             'featured_image' => 'nullable|image',
             'type' => 'nullable|in:city,municipality',
             'description' => 'nullable',
