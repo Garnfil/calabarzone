@@ -140,6 +140,7 @@ class ZoneController extends Controller
 
                 $model = new $model_class;
                 if($limit > count($results)) {
+
                     $data = $model->whereNotIn('id', $type_ids[$type])
                     ->whereIn('interest_type', $interest_ids)
                     ->first();

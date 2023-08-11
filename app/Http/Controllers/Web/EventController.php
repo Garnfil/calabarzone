@@ -23,10 +23,10 @@ class EventController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('province', function($row) {
-                        return $row->province->name;
+                        return optional($row->province)->name;
                     })
                     ->addColumn('city_municipality', function($row) {
-                        return $row->city_municipality->name;
+                        return optional($row->city_municipality)->name;
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/event/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
