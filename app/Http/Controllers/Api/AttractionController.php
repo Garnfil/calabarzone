@@ -10,7 +10,7 @@ use App\Models\Attraction;
 class AttractionController extends Controller
 {
     public function getFeaturedAttractions(Request $request) {
-        $attractions = Attraction::where('is_featured', 1)->get();
+        $attractions = Attraction::where('is_featured', 1)->where('is_active', 1)->get();
         return response($attractions);
     }
 }

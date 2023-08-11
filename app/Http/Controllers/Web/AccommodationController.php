@@ -18,7 +18,7 @@ class AccommodationController extends Controller
 {
     public function list(Request $request) {
         if($request->ajax()) {
-            $data = Accommodation::where('is_active', 1)->latest()->with('province', 'city_municipality');
+            $data = Accommodation::latest()->with('province', 'city_municipality');
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('province', function($row) {
