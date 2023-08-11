@@ -41,7 +41,7 @@ class FoodAndDiningController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
         return view('admin-page.food_dinings.create', compact('provinces', 'interests'));
     }
@@ -63,7 +63,7 @@ class FoodAndDiningController extends Controller
 
     public function edit(Request $request) {
         $food_dining = FoodAndDining::find($request->id);
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
 
         return view('admin-page.food_dinings.edit', compact('food_dining', 'provinces', 'interests'));

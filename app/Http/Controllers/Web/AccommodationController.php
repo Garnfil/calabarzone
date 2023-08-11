@@ -28,7 +28,7 @@ class AccommodationController extends Controller
                         return optional($row->city_municipality)->name;
                     })
                     ->addColumn('actions', function($row) {
-                        $btn = '<a href="/admin/accommodation/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                        $btn = '<a href="/admin/accommodation/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-   "></i></a>
                                 <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
@@ -40,7 +40,7 @@ class AccommodationController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
         return view('admin-page.accommodations.create', compact('provinces', 'interests'));
     }
@@ -63,7 +63,7 @@ class AccommodationController extends Controller
 
     public function edit(Request $request) {
         $accommodation = Accommodation::where('id', $request->id)->firstOrFail();
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
         return view('admin-page.accommodations.edit', compact('accommodation', 'provinces', 'interests'));
     }

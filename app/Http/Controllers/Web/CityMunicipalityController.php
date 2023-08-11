@@ -49,7 +49,7 @@ class CityMunicipalityController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         return view('admin-page.cities_municipalities.create', compact('provinces'));
     }
 
@@ -72,7 +72,7 @@ class CityMunicipalityController extends Controller
 
     public function edit(Request $request) {
         $data = CityMunicipality::where('id', $request->id)->firstOrFail();
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         return view('admin-page.cities_municipalities.edit', compact('data', 'provinces'));
     }
 

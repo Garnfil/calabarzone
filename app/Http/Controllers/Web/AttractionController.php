@@ -47,7 +47,7 @@ class AttractionController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
         return view('admin-page.attractions.create', compact('provinces', 'interests'));
     }
@@ -71,7 +71,7 @@ class AttractionController extends Controller
 
     public function edit(Request $request) {
         $attraction = Attraction::where('id', $request->id)->firstOrFail();
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
         return view('admin-page.attractions.edit', compact('attraction', 'provinces', 'interests'));
     }

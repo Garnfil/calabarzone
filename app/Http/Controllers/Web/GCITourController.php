@@ -39,7 +39,7 @@ class GCITourController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         return view('admin-page.gci_tours.create', compact('provinces'));
     }
 
@@ -70,7 +70,7 @@ class GCITourController extends Controller
     }
 
     public function edit(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $tour = GCITour::where('id', $request->id)->with('tour_province', 'tour_cities')->firstOrFail();
         return view('admin-page.gci_tours.edit', compact('tour', 'provinces'));
     }

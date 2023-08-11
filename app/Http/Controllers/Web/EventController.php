@@ -41,7 +41,7 @@ class EventController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
 
         return view('admin-page.events.create', compact('provinces', 'interests'));
@@ -64,7 +64,7 @@ class EventController extends Controller
 
     public function edit(Request $request) {
         $event = Event::where('id', $request->id)->firstOrFail();
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
 
         return view('admin-page.events.edit', compact('provinces', 'interests', 'event'));

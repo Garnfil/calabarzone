@@ -41,7 +41,7 @@ class ActivityController extends Controller
     }
 
     public function create(Request $request) {
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
         return view('admin-page.activities.create', compact('provinces', 'interests'));
     }
@@ -63,7 +63,7 @@ class ActivityController extends Controller
 
     public function edit(Request $request) {
         $activity = Activity::where('id', $request->id)->firstOrFail();
-        $provinces = Province::get();
+        $provinces = Province::orderBy('order_id', 'asc')->get();
         $interests = Interest::get();
 
         return view("admin-page.activities.edit", compact('activity', 'provinces', 'interests'));
