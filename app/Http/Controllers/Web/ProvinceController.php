@@ -18,7 +18,7 @@ class ProvinceController extends Controller
     public function list(Request $request)
     {
         if ($request->ajax()) {
-            $data = Province::latest();
+            $data = Province::orderBy('order_id', 'asc');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('transportations', function ($row) {
