@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="col-md-6 my-1">
                                             <label for="description" class="form-label">Province Description</label>
-                                            <textarea type="text" class="form-control" rows="5" name="description" id="description">{{ $province->description }}</textarea>
+                                            <textarea type="text" class="form-control" rows="10" name="description" id="description">{{ $province->description }}</textarea>
                                             <span class="danger text-danger">
                                                 @error('description')
                                                     {{ $message }}
@@ -116,7 +116,7 @@
                                             <input type="text" class="form-control" name="longitude" id="longitude"
                                                 value="{{ $province->longitude }}">
                                         </div>
-                                        <div class="col-md-12 my-1">
+                                        {{-- <div class="col-md-12 my-1">
                                             <h4>Province Images</h4>
                                             <hr>
                                             <div class="row">
@@ -187,7 +187,7 @@
                                                     <img class="img-responsive previewImage" id="previewImageSix" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
