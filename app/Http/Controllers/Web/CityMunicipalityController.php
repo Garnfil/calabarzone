@@ -23,7 +23,7 @@ class CityMunicipalityController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('province', function ($row) {
-                        return $row->province->name;
+                        return optional($row->province)->name;
                     })
                     ->addColumn('actions', function($row) {
                         $btn = '<a href="/admin/city_municipality/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
