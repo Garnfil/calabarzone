@@ -20,7 +20,6 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Featured Image</th>
                                         <th>Attraction Name</th>
                                         <th>Province</th>
                                         <th>City/Municipality</th>
@@ -51,10 +50,6 @@
                 columns: [{
                         data: 'id',
                         name: 'id'
-                    },
-                    {
-                        data: 'featured_image',
-                        name: 'featured_image'
                     },
                     {
                         data: 'attraction_name',

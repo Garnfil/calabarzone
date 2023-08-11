@@ -21,10 +21,6 @@ class AttractionController extends Controller
             $data = Attraction::latest()->where('is_active', 1)->with('province', 'city_municipality');
             return DataTables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('featured_image', function ($row) {
-                        $featured_image = "../app-assets/images/attractions/" . $row->featured_image;
-                        return '<img src="' . $featured_image . '" style="width: 75px;" />';
-                    })
                     ->addColumn('province', function($row) {
                         return optional($row->province)->name;
                     })
@@ -43,7 +39,7 @@ class AttractionController extends Controller
                                 <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })
-                    ->rawColumns(['featured_image', 'actions', 'is_featured'])
+                    ->rawColumns(['actions', 'is_featured'])
                     ->make(true);
         }
 
