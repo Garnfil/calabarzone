@@ -41,6 +41,16 @@
                                                 value="{{ $data->name }}">
                                         </div>
                                         <div class="col-lg-6 my-1">
+                                            <label for="province" class="form-label">Province</label>
+                                            <select name="province_id" id="province" class="select2 form-control">
+                                                <option value="">--- SELECT PROVINCE ---</option>
+                                                @foreach ($provinces as $province)
+                                                    <option {{ $data->province_id == $province->id ? 'selected' : null }}
+                                                        value="{{ $province->id }}">{{ $province->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 my-1">
                                             <label for="featured_image" class="form-label">Featured Image <span
                                                     class="text-primary primary" style="font-size: 10px;">Change it if
                                                     needed.</span></label>
@@ -76,16 +86,7 @@
                                                 @enderror
                                             </span>
                                         </div>
-                                        <div class="col-lg-6 my-1">
-                                            <label for="province" class="form-label">Province</label>
-                                            <select name="province_id" id="province" class="select2 form-control">
-                                                <option value="">--- SELECT PROVINCE ---</option>
-                                                @foreach ($provinces as $province)
-                                                    <option {{ $data->province_id == $province->id ? 'selected' : null }}
-                                                        value="{{ $province->id }}">{{ $province->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
