@@ -191,7 +191,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <section id="component-swiper-autoplay">
+                                    {{-- <section id="component-swiper-autoplay">
                                         <div class="card ">
                                             <div class="card-header">
                                                 <h4 class="card-title">Featured Images</h4>
@@ -222,12 +222,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </section>
-                                    {{-- @if ($province->featured_image)
+                                    </section> --}}
+                                    @if ($province->featured_image)
                                         <img class="img-responsive" id="previewImage" style="width: 100% !important;"
                                             src="{{ URL::asset('app-assets/images/provinces/' . $province->featured_image) }}"
                                             alt="">
-                                    @endif --}}
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-footer">
