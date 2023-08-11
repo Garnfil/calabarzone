@@ -34,6 +34,15 @@
                                             <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                                         </div>
                                         <div class="col-lg-6 my-1">
+                                            <label for="province" class="form-label">Province</label>
+                                            <select name="province_id" id="province" class="select2 form-control">
+                                                <option value="">--- SELECT PROVINCE ---</option>
+                                                @foreach ($provinces as $province)
+                                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 my-1">
                                             <label for="featured_image" class="form-label">Featured Image</label>
                                             <input type="file" class="form-control" name="featured_image" id="featured_image" value="{{ old('featured_image') }}">
                                         </div>
@@ -60,15 +69,6 @@
                                                     {{ $message }}
                                                 @enderror
                                             </span>
-                                        </div>
-                                        <div class="col-lg-6 my-1">
-                                            <label for="province" class="form-label">Province</label>
-                                            <select name="province_id" id="province" class="select2 form-control">
-                                                <option value="">--- SELECT PROVINCE ---</option>
-                                                @foreach ($provinces as $province)
-                                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                                @endforeach
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
