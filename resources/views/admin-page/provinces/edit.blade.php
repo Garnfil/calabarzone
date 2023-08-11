@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Create Province')
+@section('title', 'Update Province')
 
 @section('content')
  <style>
