@@ -57,7 +57,7 @@
                     },
                     {
                         data: 'province',
-                        name: 'province,'
+                        name: 'province'
                     },
                     {
                         data: 'city_municipality',
