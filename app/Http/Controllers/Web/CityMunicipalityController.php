@@ -55,12 +55,13 @@ class CityMunicipalityController extends Controller
 
     public function store(CreateCityMunicipalityRequest $request) {
         $data = $request->validated();
+        $featured_image_name = null;
 
-        $featured_image = $request->file('featured_image');
-
-        $featured_image_name = Str::snake($request->name) . '.' . $featured_image->getClientOriginalExtension();
-
-        $save_file = $featured_image->move(public_path() . '/app-assets/images/city_municipality', $featured_image_name);
+        if($request->has('featured_image')) {
+            $featured_image = $request->file('featured_image');
+            $featured_image_name = Str::snake($request->name) . '.' . $featured_image->getClientOriginalExtension();
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/city_municipality', $featured_image_name);
+        }
 
         $create = CityMunicipality::create(array_merge($data, [
             'featured_image' => $featured_image_name

@@ -25,7 +25,7 @@ class UpdateProvinceRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'description' => 'nullable|max:750',
+            'description' => 'nullable|max:1000',
             'tagline' => 'nullable',
             'delicacies' => 'nullable',
             'latitude' => 'nullable',
