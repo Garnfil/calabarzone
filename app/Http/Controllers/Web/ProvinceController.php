@@ -73,6 +73,7 @@ class ProvinceController extends Controller
         $province = Province::where('id', $request->id)->firstOrFail();
         $featured_image_name = $request->old_image;
 
+
         if($request->hasFile('featured_image')) {
             $old_upload_image = public_path('/app-assets/images/provinces/') . $request->old_image;
             $remove_image = @unlink($old_upload_image);

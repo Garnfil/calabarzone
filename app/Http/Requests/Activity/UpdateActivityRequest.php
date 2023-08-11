@@ -33,7 +33,9 @@ class UpdateActivityRequest extends FormRequest
             'things_todo' => 'nullable',
             'what_to_wear' => 'nullable',
             'operational_hours' => 'nullable',
-            'best_time_to_visit' => 'nullable'
+            'best_time_to_visit' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable'
         ];
     }
 }

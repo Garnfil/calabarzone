@@ -23,6 +23,8 @@ class Attraction extends Model
         'contact_number',
         'mobile_number',
         'contact_email',
+        'latitude',
+        'longitude',
         'is_active',
         'is_featured'
     ];

@@ -33,7 +33,9 @@ class CreateAccommodationRequest extends FormRequest
             'description' => 'nullable',
             'interest_type' => 'nullable',
             'contact_number' => 'nullable',
-            'contact_email' => 'nullable'
+            'contact_email' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable'
         ];
     }
 }

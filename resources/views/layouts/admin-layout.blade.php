@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/forms/icheck/custom.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ URL::asset('app-assets/vendors/css/forms/toggle/switchery.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/vendors/css/extensions/swiper.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -46,8 +47,9 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/plugins/forms/switch.css') }}">
     <!-- END: Theme CSS-->
 
-    <link rel="stylesheet" type="text/css"
-        href="{{ URL::asset('app-assets/css/plugins/forms/checkboxes-radios.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/plugins/forms/checkboxes-radios.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('app-assets/css/plugins/extensions/ex-component-swiper.css') }}">
+
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/style.css') }}">
     <!-- END: Custom CSS-->
@@ -227,6 +229,7 @@
     <script src="{{ asset('app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/toggle/switchery.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/extensions/swiper.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -238,6 +241,7 @@
     <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/switch.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/form-repeater.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/extensions/ex-component-swiper.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

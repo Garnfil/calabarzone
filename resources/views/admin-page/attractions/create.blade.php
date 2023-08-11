@@ -141,6 +141,16 @@
                                         </span>
                                     </div>
                                     <div class="col-lg-6 my-1">
+                                        <label for="latitude" class="form-label">Latitude</label>
+                                        <input type="text" class="form-control" name="latitude"
+                                            id="latitude">
+                                    </div>
+                                    <div class="col-lg-6 my-1">
+                                        <label for="longitude" class="form-label">Longitude</label>
+                                        <input type="text" class="form-control" name="longitude"
+                                            id="longitude">
+                                    </div>
+                                    <div class="col-lg-6 my-1">
                                         <label for="mobile_number" class="form-label">Is Active?</label>
                                         <fieldset>
                                             <div class="float-left">

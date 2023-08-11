@@ -21,7 +21,9 @@ class Event extends Model
         'travel_tips',
         'department_id',
         'contact_person',
-        'contact_number'
+        'contact_number',
+        'latitude',
+        'longitude',
     ];
 
     public function province() {

@@ -35,7 +35,9 @@ class UpdateAttractionRequest extends FormRequest
             'operational_hours' => 'nullable',
             'best_time_to_visit' => 'nullable',
             'contact_number' => 'nullable',
-            'mobile_number' => 'nullable'
+            'mobile_number' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable'
         ];
     }
 }

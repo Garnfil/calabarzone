@@ -34,7 +34,9 @@ class CreateEventRequest extends FormRequest
             'what_to_wear' => 'nullable',
             'travel_tips' => 'nullable',
             'contact_person' => 'nullable',
-            'contact_number' => 'nullable'
+            'contact_number' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable'
         ];
     }
 }

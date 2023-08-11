@@ -3,6 +3,14 @@
 @section('title', 'Create Province')
 
 @section('content')
+ <style>
+    .previewImage {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+         border-radius: 5px;
+    }
+ </style>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
@@ -41,18 +49,6 @@
                                                 value="{{ $province->name }}">
                                             <span class="danger text-danger">
                                                 @error('name')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
-                                        </div>
-                                        <div class="col-md-6 my-1">
-                                            <label for="featured_image" class="form-label">Province Image <span
-                                                    class="text-primary primary" style="font-size: 10px;">Change it if
-                                                    needed.</span></label>
-                                            <input type="file" class="form-control" name="featured_image"
-                                                id="featured_image" value="">
-                                            <span class="danger text-danger">
-                                                @error('featured_image')
                                                     {{ $message }}
                                                 @enderror
                                             </span>
@@ -120,14 +116,118 @@
                                             <input type="text" class="form-control" name="longitude" id="longitude"
                                                 value="{{ $province->longitude }}">
                                         </div>
+                                        <div class="col-md-12 my-1">
+                                            <h4>Province Images</h4>
+                                            <hr>
+                                            <div class="row">
+                                                <div class=" col-lg-6 mb-1">
+                                                    <label for="featured_image_one" class="form-label">Province Image 1 <span class="text-primary primary" style="font-size: 10px;">Change it if  needed.</span></label>
+                                                    <input type="file" class="form-control" name="featured_image[0]"
+                                                        id="featured_image_one" onchange="handleFileSelect(this, 'previewImageOne')">
+                                                    <span class="danger text-danger">
+                                                        @error('featured_image')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </span> <br>
+                                                    <img class="img-responsive previewImage" id="previewImageOne" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                                </div>
+                                                <div class=" col-lg-6 mb-1">
+                                                    <label for="featured_image_two" class="form-label">Province Image 2 <span class="text-primary primary" style="font-size: 10px;">Change it if  needed.</span></label>
+                                                    <input type="file" class="form-control" name="featured_image[1]"
+                                                        id="featured_image_two" onchange="handleFileSelect(this, 'previewImageTwo')">
+                                                    <span class="danger text-danger">
+                                                        @error('featured_image')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </span> <br>
+                                                    <img class="img-responsive previewImage" id="previewImageTwo" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                                </div>
+                                                <div class=" col-lg-6 mb-1">
+                                                    <label for="featured_image_three" class="form-label">Province Image 3 <span class="text-primary primary" style="font-size: 10px;">Change it if  needed.</span></label>
+                                                    <input type="file" class="form-control" name="featured_image[2]"
+                                                        id="featured_image_three" onchange="handleFileSelect(this, 'previewImageThree')">
+                                                    <span class="danger text-danger">
+                                                        @error('featured_image')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </span> <br>
+                                                    <img class="img-responsive previewImage" id="previewImageThree" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                                </div>
+                                                <div class=" col-lg-6 mb-1">
+                                                    <label for="featured_image_four" class="form-label">Province Image 4 <span class="text-primary primary" style="font-size: 10px;">Change it if  needed.</span></label>
+                                                    <input type="file" class="form-control" name="featured_image[3]"
+                                                        id="featured_image_four" onchange="handleFileSelect(this, 'previewImageFour')">
+                                                    <span class="danger text-danger">
+                                                        @error('featured_image')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </span> <br>
+                                                    <img class="img-responsive previewImage" id="previewImageFour" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                                </div>
+                                                <div class=" col-lg-6 mb-1">
+                                                    <label for="featured_image_five" class="form-label">Province Image 5 <span class="text-primary primary" style="font-size: 10px;">Change it if  needed.</span></label>
+                                                    <input type="file" class="form-control" name="featured_image[4]"
+                                                        id="featured_image_five" onchange="handleFileSelect(this, 'previewImageFive')">
+                                                    <span class="danger text-danger">
+                                                        @error('featured_image')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </span> <br>
+                                                    <img class="img-responsive previewImage" id="previewImageFive" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                                </div>
+                                                <div class=" col-lg-6 mb-1">
+                                                    <label for="featured_image_six" class="form-label">Province Image 6 <span class="text-primary primary" style="font-size: 10px;">Change it if  needed.</span></label>
+                                                    <input type="file" class="form-control" name="featured_image[5]"
+                                                        id="featured_image_six" onchange="handleFileSelect(this, 'previewImageSix')">
+                                                    <span class="danger text-danger">
+                                                        @error('featured_image')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </span> <br>
+                                                    <img class="img-responsive previewImage" id="previewImageSix" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    @if ($province->featured_image)
+                                    <section id="component-swiper-autoplay">
+                                        <div class="card ">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Featured Images</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <div class="swiper-autoplay swiper-container">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide"> <img class="img-fluid" style="height: 250px !important; width: 100% !important; object-fit: cover; cursor: grab;" src="{{ URL::asset('app-assets/images/provinces/batangas.png') }}" alt="banner">
+                                                            </div>
+                                                            <div class="swiper-slide"> <img class="img-fluid" style="height: 250px !important; width: 100% !important; object-fit: cover; cursor: grab;" src="{{ URL::asset('app-assets/images/provinces/laguna.jpg') }}" alt="banner">
+                                                            </div>
+                                                            <div class="swiper-slide"> <img class="img-fluid" style="height: 250px !important; width: 100% !important; object-fit: cover; cursor: grab;" src="{{ URL::asset('app-assets/images/provinces/quezon.jpg') }}" alt="banner">
+                                                            </div>
+                                                            <div class="swiper-slide"> <img class="img-fluid" style="height: 250px !important; width: 100% !important; object-fit: cover; cursor: grab;" src="{{ URL::asset('app-assets/images/provinces/rizal.jpg') }}" alt="banner">
+                                                            </div>
+                                                            <div class="swiper-slide"> <img class="img-fluid" style="height: 250px !important; width: 100% !important; object-fit: cover; cursor: grab;" src="{{ URL::asset('app-assets/images/provinces/cavite.jpg') }}" alt="banner">
+                                                            </div>
+                                                            <div class="swiper-slide"> <img class="img-fluid" style="height: 250px !important; width: 100% !important; object-fit: cover; cursor: grab;" src="{{ URL::asset('app-assets/images/provinces/rizal.jpg') }}" alt="banner">
+                                                            </div>
+                                                        </div>
+                                                        <!-- Add Pagination -->
+                                                        <div class="swiper-pagination"></div>
+                                                        <!-- Add Arrows -->
+                                                        <div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    {{-- @if ($province->featured_image)
                                         <img class="img-responsive" id="previewImage" style="width: 100% !important;"
                                             src="{{ URL::asset('app-assets/images/provinces/' . $province->featured_image) }}"
                                             alt="">
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
                             <div class="form-footer">
@@ -144,14 +244,14 @@
 @push('scripts')
     <script>
         // Function to handle file selection and display preview image
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-
+        function handleFileSelect(event, previewImageId) {
+            const file = event.files[0];
+            console.log(event);
             if (file) {
                 const reader = new FileReader();
 
                 reader.onload = function(event) {
-                    const previewImage = document.getElementById('previewImage');
+                    const previewImage = document.getElementById(previewImageId);
                     previewImage.src = event.target.result;
                 };
 
@@ -160,6 +260,6 @@
         }
 
         // Attach the 'handleFileSelect' function to the file input's change event
-        document.getElementById('featured_image').addEventListener('change', handleFileSelect);
+        // document.getElementById('featured_image').addEventListener('change', handleFileSelect);
     </script>
 @endpush
