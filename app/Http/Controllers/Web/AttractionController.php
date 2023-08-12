@@ -55,13 +55,32 @@ class AttractionController extends Controller
     public function store(CreateAttractionRequest $request) {
         $data = $request->validated();
 
-        $featured_image = $request->file('featured_image');
-        $file_name = Str::snake(Str::lower($request->attraction_name));
-        $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
-        $save_file = $featured_image->move(public_path() . '/app-assets/images/attractions', $featured_image_name);
+        if($request->hasFile('featured_image')) {
+            $featured_image = $request->file('featured_image');
+            $file_name = Str::snake(Str::lower($request->attraction_name));
+            $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/attractions', $featured_image_name);
+        } else {
+            $featured_image_name = null;
+        }
+
+        $images = [];
+
+        if($request->has('attraction_images')) {
+            foreach ($request->attraction_images as $key => $attraction_image) {
+                $attraction_background_name = null;
+                $attraction_image_file = $attraction_image['attraction_images'];
+                if(isset($attraction_image_file)) {
+                    $attraction_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $attraction_image_file->getClientOriginalExtension();
+                    $save_file = $attraction_image_file->move(public_path() . '/app-assets/images/attractions_images', $attraction_background_name);
+                }
+                array_push($images, $attraction_background_name);
+            }
+        }
 
         $create = Attraction::create(array_merge($data, [
             'featured_image' => $featured_image_name,
+            'images' => json_encode($images),
             'is_active' => $request->has('is_active'),
             'is_featured' => $request->has('is_featured')
         ]));
@@ -91,8 +110,33 @@ class AttractionController extends Controller
             $save_file = $featured_image->move(public_path() . '/app-assets/images/attractions', $featured_image_name);
         }
 
+        $images = json_decode($attraction->images);
+
+        // dd($request->attraction_images);
+
+        if($request->has('attraction_images')) {
+
+            if($images == null || $images == '') {
+                $images = [];
+            }
+
+            foreach ($request->attraction_images as $key => $attraction_image) {
+                $attraction_background_name = null;
+                $attraction_image_file = $attraction_image['attraction_images'];
+                if(isset($attraction_image_file)) {
+                    $attraction_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $attraction_image_file->getClientOriginalExtension();
+                    $save_file = $attraction_image_file->move(public_path() . '/app-assets/images/attractions_images', $attraction_background_name);
+                }
+
+                if(is_array($images)) {
+                    array_push($images, $attraction_background_name);
+                }
+            }
+        }
+
         $update = $attraction->update(array_merge($data, [
                 'featured_image' => $featured_image_name,
+                'images' => json_encode($images),
                 'is_active' => $request->has('is_active'),
                 'is_featured' => $request->has('is_featured')
             ]));
@@ -107,6 +151,15 @@ class AttractionController extends Controller
         $old_upload_image = public_path('/app-assets/images/attractions/') . $attraction->featured_image;
         $remove_image = @unlink($old_upload_image);
 
+        $attraction_images = json_decode($attraction->images);
+
+        if($attraction_images || is_array($attraction_images)) {
+            foreach ($attraction_images as $key => $attraction_image) {
+                $old_upload_image = public_path('/app-assets/images/attractions_images/') . $attraction_image;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
         $delete = $attraction->delete();
 
         if($delete) {
@@ -115,5 +168,25 @@ class AttractionController extends Controller
                 'message' => 'Deleted Successfully'
             ], 200);
         }
+    }
+
+    public function destroyImage(Request $request) {
+        $attraction = Attraction::where('id', $request->id)->first();
+
+        $images = json_decode($attraction->images);
+        $image_path = $request->image_path;
+        if(is_array($images)) {
+            if (($key = array_search($image_path, $images)) !== false) {
+                unset($images[$key]);
+                $old_upload_image = public_path('/app-assets/images/attractions_images/') . $image_path;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
+        $attraction->update([
+            'images' => json_encode($images)
+        ]);
+
+        return back()->with('success', 'Remove Image Successfully');
     }
 }

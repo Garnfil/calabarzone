@@ -170,9 +170,53 @@
                                         </fieldset>
                                     </div>
                                 </div>
+                                <hr>
+                                <h3><i class="fa-fa-image"></i> Other Images</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-12 mb-2 file-repeater">
+                                        <div data-repeater-list="attraction_images">
+                                            <div data-repeater-item>
+                                                <div class="row mb-1">
+                                                    <div class="col-9 col-xl-10">
+                                                        <label class="file center-block">
+                                                            <input type="file" id="file" name="attraction_images" class="form-control">
+                                                            <span class="file-custom"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-2 col-xl-1">
+                                                        <button type="button" data-repeater-delete class="btn btn-icon btn-danger mr-1"><i class="feather icon-x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="button" data-repeater-create class="btn btn-primary">
+                                            <i class="icon-plus4"></i> Add new file
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-4">
-                                <img class="img-responsive" id="previewImage" style="width: 100% !important;" src="{{ URL::asset('app-assets/images/attractions/' . $attraction->featured_image) }}" alt="">
+                                @if($attraction->featured_image)
+                                    <img class="img-responsive" id="previewImage" style="width: 100% !important;"
+                                        src="{{ URL::asset('app-assets/images/attractions/' . $attraction->featured_image) }}"
+                                        alt="">
+                                @else
+                                    <img src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="Default Image" style="width: 100%;">
+                                @endif
+                                <div class="d-flex flex-wrap my-2" style="gap: 10px;">
+                                    <?php $images = json_decode($attraction->images) ?>
+                                    @if(is_array($images))
+                                        @forelse ($images as $image)
+                                            <div style="width: 100px; height: 100px;">
+                                                <img src="{{ URL::asset("app-assets/images/attractions_images/" . $image) }}" style="width: 100%; height: 70%; object-fit: cover;">
+                                                <a href="{{ route('admin.attraction.destroy_image', ['id' => $attraction->id, 'image_path' => $image]) }}" class="btn btn-danger btn-block">Remove</a>
+                                            </div>
+                                        @empty
+                                        @endforelse
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="form-footer border-top py-2">

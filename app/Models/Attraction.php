@@ -13,6 +13,7 @@ class Attraction extends Model
         'province_id',
         'city_id',
         'featured_image',
+        'images',
         'how_to_get_there',
         'interest_type',
         'attraction_name',

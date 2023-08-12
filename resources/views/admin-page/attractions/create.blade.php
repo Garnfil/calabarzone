@@ -167,6 +167,32 @@
                                         </fieldset>
                                     </div>
                                 </div>
+                                <hr>
+                                <h3><i class="fa-fa-image"></i> Other Images</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-12 mb-2 file-repeater">
+                                        <div data-repeater-list="attraction_images">
+                                            <div data-repeater-item>
+                                                <div class="row mb-1">
+                                                    <div class="col-9 col-xl-10">
+                                                        <label class="file center-block">
+                                                            <input type="file" id="file" name="attraction_images" class="form-control">
+                                                            <span class="file-custom"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-2 col-xl-1">
+                                                        <button type="button" data-repeater-delete class="btn btn-icon btn-danger mr-1"><i class="feather icon-x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="button" data-repeater-create class="btn btn-primary">
+                                            <i class="icon-plus4"></i> Add new file
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-4">
                                 <img class="img-responsive" id="previewImage" style="width: 100% !important;" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">

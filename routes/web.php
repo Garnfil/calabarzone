@@ -96,6 +96,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('attraction/edit/{id}',[AttractionController::class, 'edit'])->name('attraction.edit');
     Route::put('attraction/update/{id}',[AttractionController::class, 'update'])->name('attraction.update');
     Route::delete('attraction/delete', [AttractionController::class, 'destroy'])->name('attraction.destroy');
+    Route::get('attraction/delete/images/{id}/{image_path}', [AttractionController::class, 'destroyImage'])->name('attraction.destroy_image');
 
     Route::get('events', [EventController::class, 'list'])->name('events');
     Route::get('event/create', [EventController::class, 'create'])->name('event.create');
