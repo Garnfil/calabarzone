@@ -17,6 +17,7 @@ class UserController extends Controller
     public function updateProfile(Request $request) {
 
         $validator = \Validator::make($request->all(), [
+            'user_profile' => ['nullable', 'image'],
             'username' => ['required', 'max:15'],
             'firstname' => ['required'],
             'lastname' => ['required'],
@@ -27,8 +28,19 @@ class UserController extends Controller
             'message' => $validator->errors()
         ], 401);
 
+        $image_name = $request->firstname . '_' . $request->lastname;
+
+        if($request->hasFile('user_profile')) {
+            $file = $request->file('user_profile');
+            $file_name = Str::snake(Str::lower($image_name)) . '.' . $file->getClientOriginalExtension();
+            $save_file = $file->move(public_path() . '/app-assets/images/users_profile', $file_name);
+        } else {
+            $file_name = null;
+        }
+
         $user_update = Auth::user()->update([
             'username' => $request->username,
+            'user_profile' => $file_name,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'name' => $request->firstname . ' ' . $request->lastname,

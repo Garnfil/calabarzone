@@ -79,17 +79,6 @@ class GCITourController extends Controller
         $data = $request->validated();
         $tour = GCITour::where('id', $request->id)->first();
 
-        // $tour_backgrounds = !is_array(json_decode($request->current_tour_backgrounds)) ? [] : json_decode($request->current_tour_backgrounds);
-
-        // if($request->has('tour_backgrounds')) {
-        //     foreach ($request->tour_backgrounds as $key => $tour_background) {
-        //         $file_name = Str::snake(Str::lower($request->tour_name)) . '_' . $key . '.' . $tour_background->getClientOriginalExtension();
-        //         $save_file = $tour_background->move(public_path() . '/app-assets/images/tour_backgrounds', $file_name);
-
-        //         array_push($tour_backgrounds, $file_name);
-        //     }
-        // }
-
         $tour_cover_name = $request->current_tour_cover;
 
         if($request->hasFile('tour_cover')) {
@@ -138,5 +127,26 @@ class GCITourController extends Controller
         }
 
         return back()->withSuccess('Tour Updated Successfully');
+    }
+
+    public function destroy(Request $request) {
+        $tour = GCITour::where('id', $request->id)->first();
+
+        $gci_tour_cities = GCITourCity::where('main_id', $request->id)->get();
+
+        if($gci_tour_cities) {
+            foreach ($gci_tour_cities as $key => $gci_tour_city) {
+                $old_upload_image = public_path('/app-assets/images/gci_tour_cities_backgrounds/') . $food_dining_image;
+                // $remove_image = @unlink($old_upload_image);
+                $gci_tour_city->delete();
+            }
+        }
+
+        $tour->delete();
+
+        return response([
+            'status' => true,
+            'message' => 'Deleted Successfully'
+        ], 200);
     }
 }
