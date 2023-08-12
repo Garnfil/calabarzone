@@ -19,8 +19,8 @@ class UserController extends Controller
         $validator = \Validator::make($request->all(), [
             'user_profile' => ['nullable', 'image'],
             'username' => ['required', 'max:15'],
-            'firstname' => ['required'],
-            'lastname' => ['required'],
+            'firstname' => ['nullable'],
+            'lastname' => ['nullable'],
         ]);
 
         # if the requested input have an error
