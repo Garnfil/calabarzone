@@ -113,6 +113,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('activity/edit/{id}',[ActivityController::class, 'edit'])->name('activity.edit');
     Route::put('activity/update/{id}',[ActivityController::class, 'update'])->name('activity.update');
     Route::delete('activity/delete', [ActivityController::class, 'destroy'])->name('activity.destroy');
+    Route::get('activity/delete/images/{id}/{image_path}', [ActivityController::class, 'destroyImage'])->name('activity.destroy_image');
 
     Route::get('accommodations', [AccommodationController::class, 'list'])->name('accommodations');
     Route::get('accommodation/create', [AccommodationController::class, 'create'])->name('accommodation.create');

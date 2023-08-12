@@ -95,6 +95,7 @@ class GCITourController extends Controller
             $flyer_name = $tour->flyers;
         }
 
+
         $update = $tour->update(array_merge($data, [
             'inclusions' => $request->has('inclusions') ? json_encode($request->inclusions) : null,
             'is_featured' => $request->has('is_featured'),
