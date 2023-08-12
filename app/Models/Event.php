@@ -13,6 +13,7 @@ class Event extends Model
         'province_id',
         'city_id',
         'featured_image',
+        'images',
         'event_name',
         'interest_type',
         'event_date',

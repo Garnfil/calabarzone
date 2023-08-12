@@ -105,6 +105,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('event/edit/{id}',[EventController::class, 'edit'])->name('event.edit');
     Route::put('event/update/{id}',[EventController::class, 'update'])->name('event.update');
     Route::delete('event/delete', [EventController::class, 'destroy'])->name('event.destroy');
+    Route::get('event/delete/images/{id}/{image_path}', [EventController::class, 'destroyImage'])->name('event.destroy_image');
 
     Route::get('activities', [ActivityController::class, 'list'])->name('activities');
     Route::get('activity/create', [ActivityController::class, 'create'])->name('activity.create');

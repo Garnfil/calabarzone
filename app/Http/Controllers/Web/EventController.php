@@ -59,8 +59,23 @@ class EventController extends Controller
             $featured_image_name = null;
         }
 
+        $images = [];
+
+        if($request->has('event_images')) {
+            foreach ($request->event_images as $key => $event_image) {
+                $event_background_name = null;
+                $event_image_file = $event_image;
+                if(isset($event_image_file)) {
+                    $event_background_name = Str::snake(Str::lower($request->event_name)) . '_' . $key . '.' . $event_image_file->getClientOriginalExtension();
+                    $save_file = $event_image_file->move(public_path() . '/app-assets/images/events_images', $event_background_name);
+                }
+                array_push($images, $event_background_name);
+            }
+        }
+
         $create = Event::create(array_merge($data, [
-            'featured_image' => $featured_image_name
+            'featured_image' => $featured_image_name,
+            'images' => json_encode($images),
         ]));
 
         if($create) return redirect()->route('admin.events')->withSuccess('Event Created Successfully');
@@ -89,19 +104,58 @@ class EventController extends Controller
             $save_file = $featured_image->move(public_path() . '/app-assets/images/events', $featured_image_name);
         }
 
-        $update = $event->update(array_merge($data, ['featured_image' => $featured_image_name]));
+        $images = json_decode($event->images);
+
+        if($request->has('event_images')) {
+
+            if($images == null || $images == '') {
+                $images = [];
+                $count = 0;
+            } else {
+                $count = count($images);
+            }
+
+            foreach ($request->event_images as $key => $event_image) {
+                $event_background_name = null;
+                $event_image_file = $event_image;
+                if(isset($event_image_file)) {
+                    $event_background_name = Str::snake(Str::lower($request->event_name)) . '_' . $count . '.' . $event_image_file->getClientOriginalExtension();
+                    $save_file = $event_image_file->move(public_path() . '/app-assets/images/events_images', $event_background_name);
+                }
+
+                if(is_array($images)) {
+                    array_push($images, $event_background_name);
+                }
+
+                $count++;
+            }
+        }
+
+        $update = $event->update(array_merge($data, [
+                    'featured_image' => $featured_image_name,
+                    'images' => json_encode($images),
+                ]));
 
         return back()->withSuccess('Event Created Successfully');
     }
 
     public function destroy(Request $request) {
         $id = $request->id;
-        $attraction = Event::where('id', $request->id)->firstOrFail();
+        $event = Event::where('id', $request->id)->firstOrFail();
 
-        $old_upload_image = public_path('/app-assets/images/events/') . $attraction->featured_image;
+        $old_upload_image = public_path('/app-assets/images/events/') . $event->featured_image;
         $remove_image = @unlink($old_upload_image);
 
-        $delete = $attraction->delete();
+        $event_images = json_decode($event->images);
+
+        if($event_images || is_array($event_images)) {
+            foreach ($event_images as $key => $event_image) {
+                $old_upload_image = public_path('/app-assets/images/events_images/') . $event_image;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
+        $delete = $event->delete();
 
         if($delete) {
             return response([
@@ -109,5 +163,26 @@ class EventController extends Controller
                 'message' => 'Deleted Successfully'
             ], 200);
         }
+    }
+
+    public function destroyImage(Request $request) {
+        $event = Event::where('id', $request->id)->first();
+
+        $images = json_decode($event->images);
+        $image_path = $request->image_path;
+
+        if(is_array($images)) {
+            if (($key = array_search($image_path, $images)) !== false) {
+                unset($images[$key]);
+                $old_upload_image = public_path('/app-assets/images/events_images/') . $image_path;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
+        $event->update([
+            'images' => json_encode(array_values($images))
+        ]);
+
+        return back()->with('success', 'Remove Image Successfully');
     }
 }

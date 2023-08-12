@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Create Event')
+@section('title', 'Edit Event')
 
 @section('content')
 <div class="app-content content">
@@ -11,7 +11,7 @@
         <div class="content-body">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                    <h2 class="card-title">Create Event</h2>
+                    <h2 class="card-title">Edit Event</h2>
                     <a href="{{ route('admin.events') }}" class="btn btn-primary">Back to List</a>
                 </div>
                 <div class="card-body">
@@ -142,10 +142,36 @@
                                         <input type="text" class="form-control" name="longitude"
                                             id="longitude" value="{{ $event->longitude }}">
                                     </div>
+                                    <div class="col-lg-6 my-1">
+                                        <label for="mobile_number" class="form-label">Other Images</label>
+                                        <fieldset>
+                                            <div class="float-left">
+                                                <input type="file" class="form-control" id="event_images" multiple="multiple" name="event_images[]" data-group-cls="btn-group-sm" />
+                                            </div>
+                                        </fieldset>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <img class="img-responsive" id="previewImage" style="width: 100% !important;" src="{{ URL::asset('app-assets/images/events/' . $event->featured_image) }}" alt="">
+                                @if($event->featured_image)
+                                    <img class="img-responsive" id="previewImage" style="width: 100% !important;"
+                                        src="{{ URL::asset('app-assets/images/events/' . $event->featured_image) }}"
+                                        alt="">
+                                @else
+                                    <img src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="Default Image" style="width: 100%;">
+                                @endif
+                                <div class="d-flex flex-wrap my-2" style="gap: 10px;">
+                                    <?php $images = json_decode($event->images) ?>
+                                    @if(is_array($images))
+                                        @forelse ($images as $image)
+                                            <div style="width: 100px; height: 100px;">
+                                                <img src="{{ URL::asset("app-assets/images/events_images/" . $image) }}" style="width: 100%; height: 70%; object-fit: cover;">
+                                                <a href="{{ route('admin.event.destroy_image', ['id' => $event->id, 'image_path' => $image]) }}" class="btn btn-danger btn-block">Remove</a>
+                                            </div>
+                                        @empty
+                                        @endforelse
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="form-footer py-2 border-top">
