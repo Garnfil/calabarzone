@@ -84,7 +84,6 @@ class InterestController extends Controller
 
         if($request->hasFile('featured_image')) {
             $old_upload_image = public_path('/app-assets/images/interests') . $request->old_featured_image;
-            $remove_image = @unlink($old_upload_image);
 
             $featured_image = $request->file('featured_image');
             $featured_image_name = Str::snake($request->interest_name) . '.' . $featured_image->getClientOriginalExtension();
@@ -94,7 +93,6 @@ class InterestController extends Controller
 
         if($request->hasFile('icon')) {
             $old_upload_image = public_path('/app-assets/images/interests_icons') . $request->old_icon_image;
-            $remove_image = @unlink($old_upload_image);
 
             $icon_image = $request->file('icon');
             $featured_icon_name = Str::snake($request->interest_name) . '.' . $icon_image->getClientOriginalExtension();
