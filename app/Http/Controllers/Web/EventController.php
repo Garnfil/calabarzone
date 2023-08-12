@@ -50,10 +50,14 @@ class EventController extends Controller
     public function store(CreateEventRequest $request) {
         $data = $request->validated();
 
-        $featured_image = $request->file('featured_image');
-        $file_name = Str::snake(Str::lower($request->event_name));
-        $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
-        $save_file = $featured_image->move(public_path() . '/app-assets/images/events', $featured_image_name);
+        if($request->hasFile('featured_image')) {
+            $featured_image = $request->file('featured_image');
+            $file_name = Str::snake(Str::lower($request->event_name));
+            $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/events', $featured_image_name);
+        } else {
+            $featured_image_name = null;
+        }
 
         $create = Event::create(array_merge($data, [
             'featured_image' => $featured_image_name
