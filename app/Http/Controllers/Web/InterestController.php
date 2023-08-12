@@ -24,7 +24,7 @@ class InterestController extends Controller
                     })
                     ->addColumn('icon', function ($row) {
                         $icon = "../app-assets/images/interests_icons/" . $row->icon;
-                        return '<div style="width: 75px; height: 75px; padding: 1rem; background: #000; border-radius: 5px;">
+                        return '<div style="width: 75px; height: 75px; padding: 1rem; background: #0a254a; border-radius: 5px;">
                                     <img src="' . $icon . '" style="width: 100%; height: 100%; object-fit: cover;" />
                                 </div>';
                     })
