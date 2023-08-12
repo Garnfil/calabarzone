@@ -102,8 +102,9 @@ class GCITourController extends Controller
             $flyer = $request->file('flyers');
             $flyer_name = Str::snake(Str::lower($request->tour_name)) . '.' . $flyer->getClientOriginalExtension();
             $save_file = $flyer->move(public_path() . '/app-assets/images/tour_flyers', $flyer_name);
+        } else {
+            $flyer_name = $tour->flyers;
         }
-
 
         $update = $tour->update(array_merge($data, [
             'inclusions' => $request->has('inclusions') ? json_encode($request->inclusions) : null,
