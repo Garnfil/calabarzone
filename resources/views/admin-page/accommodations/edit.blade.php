@@ -81,9 +81,9 @@
                                         <div class="col-lg-6 my-1">
                                             <label for="classification" class="form-label">Classification</label>
                                             <select name="classification" id="classification" class="select2 form-control">
-                                                <option value="Hotel">Hotel</option>
-                                                <option value="Resort">Resort</option>
-                                                <option value="Mabuhay Accommodation">MABUHAY ACCOMMODATION </option>
+                                                <option {{ $accommodation->classification == 'Hotel' ? 'selected' : null }} value="Hotel">Hotel</option>
+                                                <option {{ $accommodation->classification == 'Resort' ? 'selected' : null }} value="Resort">Resort</option>
+                                                <option {{ $accommodation->classification == 'Mabuhay Accommodation' ? 'selected' : null }} value="Mabuhay Accommodation">MABUHAY ACCOMMODATION </option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6 my-1">
