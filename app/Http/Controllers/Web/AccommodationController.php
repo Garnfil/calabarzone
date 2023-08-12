@@ -107,6 +107,11 @@ class AccommodationController extends Controller
         // dd($request->accommodation_images);
 
         if($request->has('accommodation_images')) {
+
+            if($images == null || $images == '') {
+                $images = [];
+            }
+
             foreach ($request->accommodation_images as $key => $accommodation_image) {
                 $accommodation_background_name = null;
                 $accommodation_image_file = $accommodation_image['accommodation_images'];
