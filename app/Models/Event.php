@@ -17,6 +17,8 @@ class Event extends Model
         'interest_type',
         'event_date',
         'description',
+        'destination',
+        'what_to_bring',
         'what_to_wear',
         'travel_tips',
         'department_id',

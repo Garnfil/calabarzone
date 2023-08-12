@@ -77,10 +77,23 @@
                                         <input type="text" name="what_to_wear" id="what_to_wear" class="form-control">
                                     </div>
                                     <div class="col-lg-6 my-1">
+                                        <label for="destination" class="form-label">Destination</label>
+                                        <input type="text" name="destination" id="destination" class="form-control">
+                                    </div>
+                                    <div class="col-lg-6 my-1">
                                         <label for="travel_tips" class="form-label">Travel Tips</label>
                                         <textarea name="travel_tips" id="travel_tips" cols="30" rows="10" class="form-control"></textarea>
                                         <span class="text-danger danger">
                                             @error('travel_tips')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-6 my-1">
+                                        <label for="what_to_bring" class="form-label">What to Bring</label>
+                                        <textarea name="what_to_bring" id="what_to_bring" cols="30" rows="10" class="form-control"></textarea>
+                                        <span class="text-danger danger">
+                                            @error('what_to_bring')
                                                 {{ $message }}
                                             @enderror
                                         </span>

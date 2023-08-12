@@ -32,6 +32,8 @@ class CreateEventRequest extends FormRequest
             'event_date' => 'nullable',
             'description' => 'nullable',
             'what_to_wear' => 'nullable',
+            'destination' => 'nullable',
+            'what_to_bring' => 'nullable',
             'travel_tips' => 'nullable',
             'contact_person' => 'nullable',
             'contact_number' => 'nullable',

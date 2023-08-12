@@ -31,6 +31,8 @@ class UpdateEventRequest extends FormRequest
             'interest_type' => 'nullable',
             'event_date' => 'nullable',
             'description' => 'nullable',
+            'destination' => 'nullable',
+            'what_to_bring' => 'nullable',
             'what_to_wear' => 'nullable',
             'travel_tips' => 'nullable',
             'contact_person' => 'nullable',
