@@ -28,7 +28,7 @@ class AccommodationController extends Controller
                         return optional($row->city_municipality)->name;
                     })
                     ->addColumn('actions', function($row) {
-                        $btn = '<a href="/admin/accommodation/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-   "></i></a>
+                        $btn = '<a href="/admin/accommodation/edit/' . $row->id . '" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                 <button id="' . $row->id . '" class="btn btn-danger remove-btn"><i class="fa fa-trash"></i></button>';
                         return $btn;
                     })

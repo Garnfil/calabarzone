@@ -125,6 +125,11 @@
                                                 id="longitude">
                                         </div>
                                         <div class="col-lg-6 my-1">
+                                            <label for="website" class="form-label">Website</label>
+                                            <input type="text" class="form-control" name="website"
+                                                id="website">
+                                        </div>
+                                        <div class="col-lg-6 my-1">
                                             <label for="mobile_number" class="form-label">Is Active?</label>
                                             <fieldset>
                                                 <div class="float-left">

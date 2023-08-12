@@ -35,7 +35,8 @@ class UpdateAccommodationRequest extends FormRequest
             'contact_number' => 'nullable',
             'contact_email' => 'nullable',
             'latitude' => 'nullable',
-            'longitude' => 'nullable'
+            'longitude' => 'nullable',
+            'website' => 'nullable',
         ];
     }
 }
