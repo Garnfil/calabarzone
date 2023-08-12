@@ -125,6 +125,8 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('food_dining/edit/{id}',[FoodAndDiningController::class, 'edit'])->name('food_dining.edit');
     Route::put('food_dining/update/{id}',[FoodAndDiningController::class, 'update'])->name('food_dining.update');
     Route::delete('food_dining/delete', [FoodAndDiningController::class, 'destroy'])->name('food_dining.destroy');
+    Route::get('food_dining/delete/images/{id}/{image_path}', [FoodAndDiningController::class, 'destroyImage'])->name('food_dining.destroy_image');
+
 
     Route::get('facts_trivias', [FactTriviaController::class, 'list'])->name('facts_trivias');
     Route::get('fact_trivia/create', [FactTriviaController::class, 'create'])->name('fact_trivia.create');

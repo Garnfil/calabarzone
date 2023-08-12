@@ -13,6 +13,7 @@ class FoodAndDining extends Model
         'province_id',
         'city_id',
         'featured_image',
+        'images',
         'merchant_code',
         'business_name',
         'interest_type',

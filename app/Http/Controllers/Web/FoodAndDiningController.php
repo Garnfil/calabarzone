@@ -49,12 +49,32 @@ class FoodAndDiningController extends Controller
     public function store(CreateFoodAndDiningRequest $request) {
         $data = $request->validated();
 
-        $featured_image = $request->file('featured_image');
-        $file_name = Str::snake(Str::lower($request->business_name));
-        $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
-        $save_file = $featured_image->move(public_path() . '/app-assets/images/food_dinings', $featured_image_name);
+        if($request->hasFile('featured_image')) {
+            $featured_image = $request->file('featured_image');
+            $file_name = Str::snake(Str::lower($request->business_name));
+            $featured_image_name = $file_name . '.' . $featured_image->getClientOriginalExtension();
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/food_dinings', $featured_image_name);
+        } else {
+            $featured_image_name = null;
+        }
+
+
+        $images = [];
+
+        if($request->has('food_and_dinings_images')) {
+            foreach ($request->food_and_dinings_images as $key => $food_and_dinings_image) {
+                $food_and_dinings_background_name = null;
+                $food_and_dinings_image_file = $food_and_dinings_image['food_and_dinings_images'];
+                if(isset($food_and_dinings_image_file)) {
+                    $food_and_dinings_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $food_and_dinings_image_file->getClientOriginalExtension();
+                    $save_file = $food_and_dinings_image_file->move(public_path() . '/app-assets/images/food_and_dinings_images', $food_and_dinings_background_name);
+                }
+                array_push($images, $food_and_dinings_background_name);
+            }
+        }
 
         $create = FoodAndDining::create(array_merge($data, [
+            'images' => json_encode($images),
             'featured_image' => $featured_image_name,
         ]));
 
@@ -84,7 +104,30 @@ class FoodAndDiningController extends Controller
             $save_file = $featured_image->move(public_path() . '/app-assets/images/food_dinings', $featured_image_name);
         }
 
+        $images = json_decode($food_dining->images);
+
+        if($request->has('food_and_dinings_images')) {
+
+            if($images == null || $images == '') {
+                $images = [];
+            }
+
+            foreach ($request->food_and_dinings_images as $key => $food_and_dinings_image) {
+                $food_and_dinings_background_name = null;
+                $food_and_dinings_image_file = $food_and_dinings_image['food_and_dinings_images'];
+                if(isset($food_and_dinings_image_file)) {
+                    $food_and_dinings_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $food_and_dinings_image_file->getClientOriginalExtension();
+                    $save_file = $food_and_dinings_image_file->move(public_path() . '/app-assets/images/food_and_dinings_images', $food_and_dinings_background_name);
+                }
+
+                if(is_array($images)) {
+                    array_push($images, $food_and_dinings_background_name);
+                }
+            }
+        }
+
         $update = $food_dining->update(array_merge($data, [
+            'images' => json_encode($images),
             'featured_image' => $featured_image_name
         ]));
 
@@ -98,6 +141,15 @@ class FoodAndDiningController extends Controller
         $old_upload_image = public_path('/app-assets/images/food_dinings/') . $food_dining->featured_image;
         $remove_image = @unlink($old_upload_image);
 
+        $food_dining_images = json_decode($food_dining->images);
+
+        if($food_dining_images || is_array($food_dining_images)) {
+            foreach ($food_dining_images as $key => $food_dining_image) {
+                $old_upload_image = public_path('/app-assets/images/food_and_dinings_images/') . $food_dining_image;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
         $delete = $food_dining->delete();
 
         if($delete) {
@@ -106,5 +158,25 @@ class FoodAndDiningController extends Controller
                 'message' => 'Deleted Successfully'
             ], 200);
         }
+    }
+
+    public function destroyImage(Request $request) {
+        $food_and_dinings = FoodAndDining::where('id', $request->id)->first();
+
+        $images = json_decode($food_and_dinings->images);
+        $image_path = $request->image_path;
+        if(is_array($images)) {
+            if (($key = array_search($image_path, $images)) !== false) {
+                unset($images[$key]);
+                $old_upload_image = public_path('/app-assets/images/food_and_dinings_images/') . $image_path;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
+        $food_and_dinings->update([
+            'images' => json_encode($images)
+        ]);
+
+        return back()->with('success', 'Remove Image Successfully');
     }
 }
