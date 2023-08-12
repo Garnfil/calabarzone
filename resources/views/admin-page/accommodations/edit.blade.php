@@ -1,6 +1,6 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Create Accommodation')
+@section('title', 'Edit Accommodation')
 
 @section('content')
     <div class="app-content content">
@@ -146,11 +146,57 @@
                                             </fieldset>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <h3><i class="fa-fa-image"></i> Other Images</h3>
+                                    <hr>
+                                    <div class="row">
+                                        <input type="hidden" name="current_images" value="{{ $accommodation->images }}">
+                                        <div class="form-group col-12 mb-2 file-repeater">
+                                            <div data-repeater-list="accommodation_images">
+                                                <div data-repeater-item>
+                                                    <div class="row mb-1">
+                                                        <div class="col-9 col-xl-10">
+                                                            <label class="file center-block">
+                                                                <input type="file" id="file" name="accommodation_images" class="form-control">
+                                                                <span class="file-custom"></span>
+                                                            </label>
+                                                        </div>
+                                                        {{-- <div class="col-lg-3">
+                                                            <img src="{{ URL::asset('app-assets/images/accommodations_images/' . $image) }}" alt="Image" style="width: 100% !important;">
+                                                        </div> --}}
+                                                        <div class="col-2 col-xl-1">
+                                                            <button type="button" data-repeater-delete class="btn btn-icon btn-danger mr-1"><i class="feather icon-x"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" data-repeater-create class="btn btn-primary">
+                                                <i class="icon-plus4"></i> Add new file
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <img class="img-responsive" id="previewImage" style="width: 100% !important;"
-                                        src="{{ URL::asset('app-assets/images/accommodations/' . $accommodation->featured_image) }}"
-                                        alt="">
+                                    @if($accommodation->featured_image)
+                                        <img class="img-responsive" id="previewImage" style="width: 100% !important;"
+                                            src="{{ URL::asset('app-assets/images/accommodations/' . $accommodation->featured_image) }}"
+                                            alt="">
+                                    @else
+                                        <img src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="Default Image" style="width: 100%;">
+                                    @endif
+                                    <div class="d-flex flex-wrap my-2" style="gap: 10px;">
+                                        <?php $images = json_decode($accommodation->images) ?>
+                                        @forelse ($images as $image)
+                                            <div style="width: 100px; height: 100px;">
+                                                <img src="{{ URL::asset("app-assets/images/accommodations_images/" . $image) }}" style="width: 100%; height: 70%; object-fit: cover;">
+                                                <a href="{{ route('admin.accommodation.destroy_image', ['id' => $accommodation->id, 'image_path' => $image]) }}" class="btn btn-danger btn-block">Remove</a>
+                                            </div>
+                                        @empty
+
+                                        @endforelse
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-footer border-top py-2">

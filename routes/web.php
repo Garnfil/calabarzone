@@ -117,6 +117,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('accommodation/edit/{id}',[AccommodationController::class, 'edit'])->name('accommodation.edit');
     Route::put('accommodation/update/{id}',[AccommodationController::class, 'update'])->name('accommodation.update');
     Route::delete('accommodation/delete', [AccommodationController::class, 'destroy'])->name('accommodation.destroy');
+    Route::get('accommodation/delete/images/{id}/{image_path}', [AccommodationController::class, 'destroyImage'])->name('accommodation.destroy_image');
 
     Route::get('food_dinings', [FoodAndDiningController::class, 'list'])->name('food_dinings');
     Route::get('food_dining/create', [FoodAndDiningController::class, 'create'])->name('food_dining.create');
