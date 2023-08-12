@@ -91,8 +91,11 @@
                                     </div>
                                     <div class="featured-image-container" style="width: 50% !important;">
                                         <h6>Featured Icon Preview</h6>
-                                        <img class="img-responsive" id="previewIconImage" style="width: 100% !important;"
+                                        <div style="width: 100%; height: 150px; max-height: 200px; padding: 2rem; background: #0a254a; border-radius: 5px;">
+                                            <img class="img-responsive" id="previewIconImage" style="width: 100% !important; height: 100%; object-fit: cover;"
                                             src="{{ URL::asset('app-assets/images/interests_icons/' . $interest->icon) }}" alt="">
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
