@@ -11,7 +11,7 @@
             <div class="content-body">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                        <h2 class="card-title">Provinces</h2>
+                        <h2 class="card-title">Cities or Municipalities</h2>
                         <a href="{{ route('admin.city_municipality.create') }}" class="btn btn-primary">Create City or
                             Municipality</a>
                     </div>
