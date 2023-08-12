@@ -177,8 +177,16 @@
                                                 @enderror
                                             </span>
                                         </div>
+                                        <div class="col-lg-6 my-1">
+                                            <label for="mobile_number" class="form-label">Other Images</label>
+                                            <fieldset>
+                                                <div class="float-left">
+                                                    <input type="file" class="form-control" id="food_and_dinings_images" multiple="multiple" name="food_and_dinings_images[]" data-group-cls="btn-group-sm" />
+                                                </div>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <hr>
+                                    {{-- <hr>
                                     <h3><i class="fa-fa-image"></i> Other Images</h3>
                                     <hr>
                                     <div class="row">
@@ -206,7 +214,7 @@
                                                 <i class="icon-plus4"></i> Add new file
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-lg-4">
                                     <img class="img-responsive" id="previewImage" style="width: 100% !important;"

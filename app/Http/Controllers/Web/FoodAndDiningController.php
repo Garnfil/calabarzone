@@ -64,7 +64,7 @@ class FoodAndDiningController extends Controller
         if($request->has('food_and_dinings_images')) {
             foreach ($request->food_and_dinings_images as $key => $food_and_dinings_image) {
                 $food_and_dinings_background_name = null;
-                $food_and_dinings_image_file = $food_and_dinings_image['food_and_dinings_images'];
+                $food_and_dinings_image_file = $food_and_dinings_image;
                 if(isset($food_and_dinings_image_file)) {
                     $food_and_dinings_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $food_and_dinings_image_file->getClientOriginalExtension();
                     $save_file = $food_and_dinings_image_file->move(public_path() . '/app-assets/images/food_and_dinings_images', $food_and_dinings_background_name);
@@ -110,19 +110,24 @@ class FoodAndDiningController extends Controller
 
             if($images == null || $images == '') {
                 $images = [];
+                $count = 0;
+            } else {
+                $count = count($images);
             }
 
             foreach ($request->food_and_dinings_images as $key => $food_and_dinings_image) {
                 $food_and_dinings_background_name = null;
-                $food_and_dinings_image_file = $food_and_dinings_image['food_and_dinings_images'];
+                $food_and_dinings_image_file = $food_and_dinings_image;
                 if(isset($food_and_dinings_image_file)) {
-                    $food_and_dinings_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $food_and_dinings_image_file->getClientOriginalExtension();
+                    $food_and_dinings_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $count . '.' . $food_and_dinings_image_file->getClientOriginalExtension();
                     $save_file = $food_and_dinings_image_file->move(public_path() . '/app-assets/images/food_and_dinings_images', $food_and_dinings_background_name);
                 }
 
                 if(is_array($images)) {
                     array_push($images, $food_and_dinings_background_name);
                 }
+
+                $count++;
             }
         }
 
@@ -174,7 +179,7 @@ class FoodAndDiningController extends Controller
         }
 
         $food_and_dinings->update([
-            'images' => json_encode($images)
+            'images' => json_encode(array_values($images))
         ]);
 
         return back()->with('success', 'Remove Image Successfully');

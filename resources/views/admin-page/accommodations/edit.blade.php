@@ -145,8 +145,16 @@
                                                 </div>
                                             </fieldset>
                                         </div>
+                                        <div class="col-lg-6 my-1">
+                                            <label for="mobile_number" class="form-label">Other Images</label>
+                                            <fieldset>
+                                                <div class="float-left">
+                                                    <input type="file" class="form-control" id="accommodation_images" multiple="multiple" name="accommodation_images[]" data-group-cls="btn-group-sm" />
+                                                </div>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <hr>
+                                    {{-- <hr>
                                     <h3><i class="fa-fa-image"></i> Other Images</h3>
                                     <hr>
                                     <div class="row">
@@ -161,9 +169,9 @@
                                                                 <span class="file-custom"></span>
                                                             </label>
                                                         </div>
-                                                        {{-- <div class="col-lg-3">
+                                                         <div class="col-lg-3">
                                                             <img src="{{ URL::asset('app-assets/images/accommodations_images/' . $image) }}" alt="Image" style="width: 100% !important;">
-                                                        </div> --}}
+                                                        </div>
                                                         <div class="col-2 col-xl-1">
                                                             <button type="button" data-repeater-delete class="btn btn-icon btn-danger mr-1"><i class="feather icon-x"></i></button>
                                                         </div>
@@ -175,7 +183,7 @@
                                                 <i class="icon-plus4"></i> Add new file
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-lg-4">
                                     @if($accommodation->featured_image)

@@ -62,7 +62,7 @@ class AccommodationController extends Controller
         if($request->has('accommodation_images')) {
             foreach ($request->accommodation_images as $key => $accommodation_image) {
                 $accommodation_background_name = null;
-                $accommodation_image_file = $accommodation_image['accommodation_images'];
+                $accommodation_image_file = $accommodation_image;
                 if(isset($accommodation_image_file)) {
                     $accommodation_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $accommodation_image_file->getClientOriginalExtension();
                     $save_file = $accommodation_image_file->move(public_path() . '/app-assets/images/accommodations_images', $accommodation_background_name);
@@ -110,19 +110,24 @@ class AccommodationController extends Controller
 
             if($images == null || $images == '') {
                 $images = [];
+                $count = 0;
+            } else {
+                $count = count($images);
             }
 
             foreach ($request->accommodation_images as $key => $accommodation_image) {
                 $accommodation_background_name = null;
-                $accommodation_image_file = $accommodation_image['accommodation_images'];
+                $accommodation_image_file = $accommodation_image;
                 if(isset($accommodation_image_file)) {
-                    $accommodation_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $accommodation_image_file->getClientOriginalExtension();
+                    $accommodation_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $count . '.' . $accommodation_image_file->getClientOriginalExtension();
                     $save_file = $accommodation_image_file->move(public_path() . '/app-assets/images/accommodations_images', $accommodation_background_name);
                 }
 
                 if(is_array($images)) {
                     array_push($images, $accommodation_background_name);
                 }
+
+                $count++;
             }
         }
 
@@ -175,7 +180,7 @@ class AccommodationController extends Controller
         }
 
         $accommodation->update([
-            'images' => json_encode($images)
+            'images' => json_encode(array_values($images))
         ]);
 
         return back()->with('success', 'Remove Image Successfully');
