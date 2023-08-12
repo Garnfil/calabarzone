@@ -28,12 +28,12 @@ class UpdateGCITourRequest extends FormRequest
             'province' => 'nullable',
             'what_to_wear' => 'nullable',
             'best_time' => 'nullable',
-            'operation_hours' => 'nullable',
+            'tour_duration' => 'nullable',
             'flyers' => 'mimes:pdf',
             'youtube' => 'nullable',
             'tour_cities' => 'nullable|array|min:1', // Make sure tour_cities is an array and has at least one element
             'tour_cities.*.city' => 'nullable',
-            'tour_cities.*.description' => 'nullable',
+            'tour_cities.*.tour_details' => 'nullable',
             'tour_cities.*.background_image' => 'image',
             'tour_cover' => 'image'
         ];
