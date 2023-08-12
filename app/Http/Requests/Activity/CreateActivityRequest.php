@@ -31,6 +31,7 @@ class CreateActivityRequest extends FormRequest
             'interest_type' => 'nullable',
             'description' => 'nullable',
             'things_todo' => 'nullable',
+            'destination' => 'nullable',
             'what_to_wear' => 'nullable',
             'operational_hours' => 'nullable',
             'best_time_to_visit' => 'nullable',

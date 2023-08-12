@@ -111,6 +111,16 @@
                                             </span>
                                         </div>
                                         <div class="col-lg-6 my-1">
+                                            <label for="destination" class="form-label">Destination</label>
+                                            <input type="text" class="form-control" name="destination"
+                                                id="destination">
+                                            <span class="text-danger danger">
+                                                @error('destination')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-6 my-1">
                                             <label for="operational_hours" class="form-label">Operational Hours</label>
                                             <input type="text" class="form-control" name="operational_hours"
                                                 id="operational_hours">

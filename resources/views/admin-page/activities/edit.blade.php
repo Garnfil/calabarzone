@@ -11,7 +11,7 @@
             <div class="content-body">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center border-bottom">
-                        <h2 class="card-title">Create Activity</h2>
+                        <h2 class="card-title">Edit Activity</h2>
                         <a href="{{ route('admin.activities') }}" class="btn btn-primary">Back to List</a>
                     </div>
                     <div class="card-body">
@@ -114,6 +114,16 @@
                                                 value="{{ $activity->what_to_wear }}">
                                             <span class="text-danger danger">
                                                 @error('what_to_wear')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-6 my-1">
+                                            <label for="destination" class="form-label">Destination</label>
+                                            <input type="text" class="form-control" name="destination"
+                                                id="destination" value="{{  $activity->destination }}">
+                                            <span class="text-danger danger">
+                                                @error('destination')
                                                     {{ $message }}
                                                 @enderror
                                             </span>
