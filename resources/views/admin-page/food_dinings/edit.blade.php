@@ -214,7 +214,7 @@
                             <div class="col-lg-4">
                                 @if($food_dining->featured_image)
                                     <img class="img-responsive" id="previewImage" style="width: 100% !important;"
-                                        src="{{ URL::asset('app-assets/images/food_dinings/' . $accommodation->featured_image) }}"
+                                        src="{{ URL::asset('app-assets/images/food_dinings/' . $food_dining->featured_image) }}"
                                         alt="">
                                 @else
                                     <img src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="Default Image" style="width: 100%;">
