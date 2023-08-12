@@ -30,7 +30,7 @@ class UserController extends Controller
                         if (is_array($interests)) {
                             if(count($interests) > 0) {
                                 foreach ($interests as $key => $interest) {
-                                    $output .= '<div class="badge badge-primary mx-50">' . $interest['interest_name'] . '</div>';
+                                    $output .= '<div class="badge badge-primary m-50">' . $interest['interest_name'] . '</div>';
                                 }
                                 return $output;
                             }
