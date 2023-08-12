@@ -28,7 +28,7 @@ class UserController extends Controller
             'message' => $validator->errors()
         ], 401);
 
-        $image_name = $request->firstname . '_' . $request->lastname;
+        $image_name = $request->username;
 
         if($request->hasFile('user_profile')) {
             $file = $request->file('user_profile');
