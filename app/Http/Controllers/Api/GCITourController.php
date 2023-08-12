@@ -11,7 +11,7 @@ use App\Models\GCITourCity;
 class GCITourController extends Controller
 {
     public function getGCITours(Request $request) {
-        $gci_tours = GCITour::latest()->with('tour_province', 'tour_cities')->get();
+        $gci_tours = GCITour::whereIn('id', [2, 3, 4, 5, 6])->latest()->with('tour_province', 'tour_cities')->get();
         return response($gci_tours, 200);
     }
 
