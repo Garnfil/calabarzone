@@ -67,6 +67,7 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.', 'middleware' => ['auth.admin
     Route::get('province/edit/{id}',[ProvinceController::class, 'edit'])->name('province.edit');
     Route::put('province/update/{id}',[ProvinceController::class, 'update'])->name('province.update');
     Route::delete('province/delete', [ProvinceController::class, 'destroy'])->name('province.destroy');
+    Route::get('province/delete/images/{id}/{image_path}', [ProvinceController::class, 'destroyImage'])->name('province.destroy_image');
 
     Route::get('cities_municipalities', [CityMunicipalityController::class, 'list'])->name('cities_municipalities');
     Route::get('city_municipality/lookup', [CityMunicipalityController::class, 'lookup'])->name('city_municipality.lookup');

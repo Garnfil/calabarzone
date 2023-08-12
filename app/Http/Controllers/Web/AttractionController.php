@@ -69,9 +69,9 @@ class AttractionController extends Controller
         if($request->has('attraction_images')) {
             foreach ($request->attraction_images as $key => $attraction_image) {
                 $attraction_background_name = null;
-                $attraction_image_file = $attraction_image['attraction_images'];
+                $attraction_image_file = $attraction_image;
                 if(isset($attraction_image_file)) {
-                    $attraction_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $attraction_image_file->getClientOriginalExtension();
+                    $attraction_background_name = Str::snake(Str::lower($request->attraction_name)) . '_' . $key . '.' . $attraction_image_file->getClientOriginalExtension();
                     $save_file = $attraction_image_file->move(public_path() . '/app-assets/images/attractions_images', $attraction_background_name);
                 }
                 array_push($images, $attraction_background_name);
@@ -112,25 +112,28 @@ class AttractionController extends Controller
 
         $images = json_decode($attraction->images);
 
-        // dd($request->attraction_images);
-
         if($request->has('attraction_images')) {
 
             if($images == null || $images == '') {
                 $images = [];
+                $count = 0;
+            } else {
+                $count = count($images);
             }
 
             foreach ($request->attraction_images as $key => $attraction_image) {
                 $attraction_background_name = null;
-                $attraction_image_file = $attraction_image['attraction_images'];
+                $attraction_image_file = $attraction_image;
                 if(isset($attraction_image_file)) {
-                    $attraction_background_name = Str::snake(Str::lower($request->business_name)) . '_' . $key . '.' . $attraction_image_file->getClientOriginalExtension();
+                    $attraction_background_name = Str::snake(Str::lower($request->attraction_name)) . '_' . $count . '.' . $attraction_image_file->getClientOriginalExtension();
                     $save_file = $attraction_image_file->move(public_path() . '/app-assets/images/attractions_images', $attraction_background_name);
                 }
 
                 if(is_array($images)) {
                     array_push($images, $attraction_background_name);
                 }
+
+                $count++;
             }
         }
 
@@ -175,6 +178,7 @@ class AttractionController extends Controller
 
         $images = json_decode($attraction->images);
         $image_path = $request->image_path;
+
         if(is_array($images)) {
             if (($key = array_search($image_path, $images)) !== false) {
                 unset($images[$key]);
@@ -184,7 +188,7 @@ class AttractionController extends Controller
         }
 
         $attraction->update([
-            'images' => json_encode($images)
+            'images' => json_encode(array_values($images))
         ]);
 
         return back()->with('success', 'Remove Image Successfully');

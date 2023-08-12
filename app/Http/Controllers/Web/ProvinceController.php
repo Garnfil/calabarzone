@@ -84,8 +84,26 @@ class ProvinceController extends Controller
             $save_file = $featured_image->move(public_path() . '/app-assets/images/provinces', $featured_image_name);
         }
 
+        $images = json_decode($province->images);
+
+        if($request->has('images')) {
+            if($images == null || $images == '') {
+                $images = [];
+            }
+            foreach ($request->images as $key => $province_image) {
+                $province_background_name = null;
+                $province_image_file = $province_image;
+                if(isset($province_image_file)) {
+                    $province_background_name = Str::snake(Str::lower($request->name)) . '_' . $key . '.' . $province_image_file->getClientOriginalExtension();
+                    $save_file = $province_image_file->move(public_path() . '/app-assets/images/provinces_images', $province_background_name);
+                }
+                array_push($images, $province_background_name);
+            }
+        }
+
         $update = $province->update(array_merge($data,
             ['transportations' => json_encode($request->transportations),
+            'images' => json_encode($images),
             'featured_image' => $featured_image_name],
         ));
 
@@ -101,11 +119,39 @@ class ProvinceController extends Controller
 
         $delete = $province->delete();
 
+        $province_images = json_decode($province->images);
+
+        if($province_images || is_array($province_images)) {
+            foreach ($province_images as $key => $province_image) {
+                $old_upload_image = public_path('/app-assets/images/provinces_images/') . $attraction_image;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
         if($delete) {
             return response([
                 'status' => true,
                 'message' => 'Deleted Successfully'
             ], 200);
         }
+    }
+
+    public function destroyImage(Request $request) {
+        $province = Province::where('id', $request->id)->first();
+        $images = json_decode($province->images);
+        $image_path = $request->image_path;
+        if(is_array($images)) {
+            if (($key = array_search($image_path, $images)) !== false) {
+                unset($images[$key]);
+                $old_upload_image = public_path('/app-assets/images/provinces_images/') . $image_path;
+                $remove_image = @unlink($old_upload_image);
+            }
+        }
+
+        $province->update([
+            'images' => json_encode(array_values($images))
+        ]);
+
+        return back()->with('success', 'Remove Image Successfully');
     }
 }
