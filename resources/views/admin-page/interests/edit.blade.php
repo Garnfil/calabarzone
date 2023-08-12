@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 d-flex justify-content-between" style="gap: 10px">
-                                    <div class="featured-image-container" style="width: 50% !important;">
+                                    <div class="featured-image-container" style="width: 75% !important;">
                                         <h6>Featured Image Preview</h6>
                                         @if($interest->featured_image)
                                             <img class="img-responsive" id="previewFeaturedImage" style="width: 100% !important;" src="{{ URL::asset('app-assets/images/interests/' . $interest->featured_image) }}" alt="">
@@ -89,9 +89,9 @@
                                             <img class="img-responsive" id="previewFeaturedImage" style="width: 100% !important;" src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="">
                                         @endif
                                     </div>
-                                    <div class="featured-image-container" style="width: 50% !important;">
-                                        <h6>Featured Icon Preview</h6>
-                                        <div style="width: 100%; height: 150px; max-height: 200px; padding: 2rem; background: #0a254a; border-radius: 5px;">
+                                    <div class="featured-image-container" style="width: 25% !important;">
+                                        <h6>Featured Icon</h6>
+                                        <div style="width: 100%; height: 100px; max-height: 200px; padding: 1rem; background: #0a254a; border-radius: 5px;">
                                             <img class="img-responsive" id="previewIconImage" style="width: 100% !important; height: 100%; object-fit: cover;"
                                             src="{{ URL::asset('app-assets/images/interests_icons/' . $interest->icon) }}" alt="">
                                         </div>
