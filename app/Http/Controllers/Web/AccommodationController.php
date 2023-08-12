@@ -120,7 +120,7 @@ class AccommodationController extends Controller
                     $save_file = $accommodation_image_file->move(public_path() . '/app-assets/images/accommodations_images', $accommodation_background_name);
                 }
 
-                if($images) {
+                if(is_array($images)) {
                     array_push($images, $accommodation_background_name);
                 }
             }
