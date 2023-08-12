@@ -113,25 +113,27 @@ class GCITourController extends Controller
             'flyers' => $flyer_name,
         ]));
 
-        if(count($request->tour_cities) > 0) {
-            foreach ($request->tour_cities as $key => $city) {
-                $city_background_name = $city['old_background_city_image'];
+        if($request->has('tour_cities')) {
+            if(count($request->tour_cities) > 0) {
+                foreach ($request->tour_cities as $key => $city) {
+                    $city_background_name = $city['old_background_city_image'];
 
-                if(isset($city['background_image'])) {
-                    $background_image = $city['background_image'];
-                    $city_background_name = Str::snake(Str::lower($city['city'])) . '.' . $background_image->getClientOriginalExtension();
-                    $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
+                    if(isset($city['background_image'])) {
+                        $background_image = $city['background_image'];
+                        $city_background_name = Str::snake(Str::lower($city['city'])) . '.' . $background_image->getClientOriginalExtension();
+                        $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
+                    }
+
+                    $update_tour_city = GCITourCity::updateOrCreate(
+                        ['id' => $city['city_id']],
+                        [
+                            'main_id' => $tour->id,
+                            'city' => $city['city'],
+                            'tour_details' => $city['tour_details'],
+                            'background_image' => $city_background_name
+                        ]
+                    );
                 }
-
-                $update_tour_city = GCITourCity::updateOrCreate(
-                    ['id' => $city['city_id']],
-                    [
-                        'main_id' => $tour->id,
-                        'city' => $city['city'],
-                        'tour_details' => $city['tour_details'],
-                        'background_image' => $city_background_name
-                    ]
-                );
             }
         }
 
