@@ -187,15 +187,16 @@
                                     @endif
                                     <div class="d-flex flex-wrap my-2" style="gap: 10px;">
                                         <?php $images = json_decode($accommodation->images) ?>
-                                        @forelse ($images as $image)
-                                            <div style="width: 100px; height: 100px;">
-                                                <img src="{{ URL::asset("app-assets/images/accommodations_images/" . $image) }}" style="width: 100%; height: 70%; object-fit: cover;">
-                                                <a href="{{ route('admin.accommodation.destroy_image', ['id' => $accommodation->id, 'image_path' => $image]) }}" class="btn btn-danger btn-block">Remove</a>
-                                            </div>
-                                        @empty
+                                        @if(is_array($images))
+                                            @forelse ($images as $image)
+                                                <div style="width: 100px; height: 100px;">
+                                                    <img src="{{ URL::asset("app-assets/images/accommodations_images/" . $image) }}" style="width: 100%; height: 70%; object-fit: cover;">
+                                                    <a href="{{ route('admin.accommodation.destroy_image', ['id' => $accommodation->id, 'image_path' => $image]) }}" class="btn btn-danger btn-block">Remove</a>
+                                                </div>
+                                            @empty
 
-                                        @endforelse
-
+                                            @endforelse
+                                        @endif
                                     </div>
                                 </div>
                             </div>
