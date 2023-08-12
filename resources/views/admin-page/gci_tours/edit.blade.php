@@ -255,6 +255,44 @@
                                     <h4 class="form-section"><i class="fa fa-globe"></i> GCI CITIES</h4>
                                     <div class="repeater-default">
                                         <div data-repeater-list="tour_cities">
+                                            <div data-repeater-item>
+                                                <div class="row">
+                                                    <input type="hidden" name="city_id"
+                                                        value="">
+                                                    <input type="hidden" name="old_background_city_image"
+                                                        value="">
+                                                    <div class="form-group mb-1 col-sm-12 col-lg-2">
+                                                        <label for="city">City</label>
+                                                        <br>
+                                                        <input type="text" class="form-control" id="city"
+                                                            name="city" value="">
+                                                    </div>
+                                                    <div class="form-group mb-1 col-sm-12 col-lg-3">
+                                                        <label for="tour_details">Tour Details</label>
+                                                        <br>
+                                                        <textarea class="form-control" id="tour_details" rows="5" name="tour_details"></textarea>
+                                                    </div>
+                                                    <div class="form-group mb-1 col-sm-12 col-lg-3">
+                                                        <label for="background_image"
+                                                            class="cursor-pointer">Background
+                                                            Image <span class="warning" style="font-size: 12px">Change
+                                                                it if
+                                                                needed</span></label>
+                                                        <br>
+                                                        <input type="file" name="background_image"
+                                                            class="form-control" id="background_image">
+                                                    </div>
+                                                    <div class="col-sm-12 col-lg-2">
+
+                                                    </div>
+                                                    <div class="form-group col-sm-12 col-lg-2 text-center mt-2">
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-repeater-delete> <i class="feather icon-x"></i>
+                                                            Delete</button>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
                                             @foreach ($tour->tour_cities as $city)
                                                 <div data-repeater-item>
                                                     <div class="row">
