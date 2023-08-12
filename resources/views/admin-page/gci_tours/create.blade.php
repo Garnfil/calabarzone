@@ -51,6 +51,10 @@
                                     <input type="text" class="form-control" name="best_time" id="best_time">
                                 </div>
                                 <div class="col-lg-6 my-1">
+                                    <label for="tour_details" class="form-label">Tour Details</label>
+                                    <textarea type="text" class="form-control" rows="5" name="tour_details" id="tour_details"></textarea>
+                                </div>
+                                <div class="col-lg-6 my-1">
                                     <label for="tour_duration" class="form-label">Tour Duration</label>
                                     <input type="text" class="form-control" name="tour_duration" id="tour_duration"> <br>
                                     <label for="youtube" class="form-label">Youtube</label>

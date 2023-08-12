@@ -25,6 +25,7 @@ class UpdateGCITourRequest extends FormRequest
     {
         return [
             'tour_name' => 'required',
+            'tour_details' => 'nullable',
             'province' => 'nullable',
             'what_to_wear' => 'nullable',
             'best_time' => 'nullable',
