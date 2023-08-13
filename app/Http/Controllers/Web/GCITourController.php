@@ -114,15 +114,17 @@ class GCITourController extends Controller
                         $save_file = $background_image->move(public_path() . '/app-assets/images/gci_tour_cities_backgrounds', $city_background_name);
                     }
 
-                    $update_tour_city = GCITourCity::updateOrCreate(
-                        ['id' => $city['city_id']],
-                        [
-                            'main_id' => $tour->id,
-                            'city' => $city['city'],
-                            'tour_details' => $city['tour_details'],
-                            'background_image' => $city_background_name
-                        ]
-                    );
+                    if($city['city']) {
+                        $update_tour_city = GCITourCity::updateOrCreate(
+                            ['id' => $city['city_id']],
+                            [
+                                'main_id' => $tour->id,
+                                'city' => $city['city'],
+                                'tour_details' => $city['tour_details'],
+                                'background_image' => $city_background_name
+                            ]
+                        );
+                    }
                 }
             }
         }
