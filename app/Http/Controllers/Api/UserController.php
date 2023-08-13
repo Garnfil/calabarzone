@@ -34,7 +34,7 @@ class UserController extends Controller
         $image_name = $request->username;
 
         if($request->hasFile('user_profile')) {
-            $old_upload_image = public_path('/app-assets/images/users_profile') . $user->username;
+            $old_upload_image = public_path('/app-assets/images/users_profile') . $user->user_profile;
             @unlink($old_upload_image);
             $file = $request->file('user_profile');
             $file_name = Str::snake(Str::lower($image_name)) . '.' . $file->getClientOriginalExtension();
