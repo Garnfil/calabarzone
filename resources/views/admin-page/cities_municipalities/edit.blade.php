@@ -94,6 +94,8 @@
                                         <img class="img-responsive" id="previewImage" style="width: 100% !important;"
                                             src="{{ URL::asset('app-assets/images/city_municipality/' . $data->featured_image) }}"
                                             alt="">
+                                    @else
+                                        <img src="{{ URL::asset('app-assets/images/default-image.jpg') }}" alt="" style="width: 100% !important;">
                                     @endif
                                 </div>
                             </div>

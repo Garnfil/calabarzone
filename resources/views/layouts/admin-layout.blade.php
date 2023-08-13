@@ -84,7 +84,7 @@
                                 href="#"><i class="feather icon-menu"></i></a></li>
                         <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
                                     class="ficon feather icon-maximize"></i></a></li>
-                        <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i
+                        {{-- <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i
                                     class="ficon feather icon-search"></i></a>
                             <div class="search-input">
                                 <input class="input" type="text" placeholder="Explore Stack..." tabindex="0"
@@ -92,7 +92,7 @@
                                 <div class="search-input-close"><i class="feather icon-x"></i></div>
                                 <ul class="search-list"></ul>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item"><a
