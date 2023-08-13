@@ -183,7 +183,7 @@
                                     <div class="col-lg-6 my-1">
                                         <label for="mobile_number" class="form-label">Other Images</label>
                                         <fieldset>
-                                            <div class="float-left">
+                                            <div class="form-group">
                                                 <input type="file" class="form-control" id="food_and_dinings_images" multiple="multiple" name="food_and_dinings_images[]" data-group-cls="btn-group-sm" />
                                             </div>
                                         </fieldset>

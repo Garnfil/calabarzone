@@ -3,6 +3,11 @@
 @section('title', 'Edit User')
 
 @section('content')
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+        margin: 1rem 0;
+    }
+</style>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
