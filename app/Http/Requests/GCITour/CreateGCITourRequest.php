@@ -25,7 +25,7 @@ class CreateGCITourRequest extends FormRequest
     {
         return [
             'tour_name' => 'required',
-            'tour_details' => 'tour_details',
+            'tour_details' => 'nullable|max:1000',
             'province' => 'nullable',
             'what_to_wear' => 'nullable',
             'best_time' => 'nullable',
@@ -36,7 +36,7 @@ class CreateGCITourRequest extends FormRequest
             'tour_type' => 'nullable',
             'tour_cities' => 'nullable|array|min:1', // Make sure tour_cities is an array and has at least one element
             'tour_cities.*.city' => 'nullable',
-            'tour_cities.*.description' => 'nullable',
+            'tour_cities.*.description' => 'nullable|max:1000',
             'tour_cities.*.background_image' => 'nullable',
         ];
     }

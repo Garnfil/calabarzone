@@ -67,7 +67,11 @@
                         data: 'actions',
                         name: 'actions',
                     },
-                ]
+                ],
+                columnDefs: [ {
+                    'targets': [0, 1, 2, 3, 4], // column index (start from 0)
+                    'orderable': false, // set orderable false for selected columns
+                }]
             })
         }
 

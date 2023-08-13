@@ -49,11 +49,13 @@ class ProvinceController extends Controller
     {
         $data = $request->validated();
 
-        $featured_image = $request->file('featured_image');
-
-        $featured_image_name = Str::snake($request->name) . '.' . $featured_image->getClientOriginalExtension();
-
-        $save_file = $featured_image->move(public_path() . '/app-assets/images/provinces', $featured_image_name);
+        if($request->hasFile('featured_image')) {
+            $featured_image = $request->file('featured_image');
+            $featured_image_name = Str::snake($request->name) . '.' . $featured_image->getClientOriginalExtension();
+            $save_file = $featured_image->move(public_path() . '/app-assets/images/provinces', $featured_image_name);
+        } else {
+            $featured_image_name = null;
+        }
 
         $create = Province::create(array_merge($data,
                             ['transportations' => json_encode($request->transportations),
