@@ -33,7 +33,7 @@ class UpdateGCITourRequest extends FormRequest
             'flyers' => 'mimes:pdf',
             'youtube' => 'nullable',
             'tour_type' => 'nullable',
-            'tour_cities' => 'nullable|array|min:1', // Make sure tour_cities is an array and has at least one element
+            'tour_cities' => 'nullable|array', // Make sure tour_cities is an array and has at least one element
             'tour_cities.*.city' => 'nullable',
             'tour_cities.*.tour_details' => 'nullable|max:1000',
             'tour_cities.*.background_image' => 'image',
