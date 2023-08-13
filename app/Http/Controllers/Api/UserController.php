@@ -29,9 +29,13 @@ class UserController extends Controller
             'message' => $validator->errors()
         ], 401);
 
+        $user = Auth::user();
+
         $image_name = $request->username;
 
         if($request->hasFile('user_profile')) {
+            $old_upload_image = public_path('/app-assets/images/users_profile') . $user->username;
+            @unlink($old_upload_image);
             $file = $request->file('user_profile');
             $file_name = Str::snake(Str::lower($image_name)) . '.' . $file->getClientOriginalExtension();
             $save_file = $file->move(public_path() . '/app-assets/images/users_profile', $file_name);
@@ -39,7 +43,7 @@ class UserController extends Controller
             $file_name = null;
         }
 
-        $user_update = Auth::user()->update([
+        $user_update = $user->update([
             'username' => $request->username,
             'user_profile' => $file_name,
             'firstname' => $request->firstname,
