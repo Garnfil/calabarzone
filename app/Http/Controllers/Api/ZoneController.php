@@ -39,9 +39,9 @@ class ZoneController extends Controller
         // Loop through the models, retrieve the data, and add the "type" key
         foreach ($models as $modelClass => $type) {
             if($type == 'accommodations' || $type == 'attractions') {
-                $results = $modelClass::where('interest_type', $interest->id)->where('is_active', 1)->get()->toArray();
+                $results = $modelClass::where('interest_type', $interest->id)->where('is_active', 1)->with('province')->get()->toArray();
             } else {
-                $results = $modelClass::where('interest_type', $interest->id)->get()->toArray();
+                $results = $modelClass::where('interest_type', $interest->id)->with('province')->get()->toArray();
             }
             foreach ($results as $result) {
                 $result['type'] = $type;
@@ -142,6 +142,7 @@ class ZoneController extends Controller
                 if($limit > count($results)) {
 
                     $data = $model->whereNotIn('id', $type_ids[$type])
+                    ->with('province')
                     ->whereIn('interest_type', $interest_ids)
                     ->first();
 
