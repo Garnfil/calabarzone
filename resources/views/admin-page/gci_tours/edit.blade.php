@@ -223,8 +223,6 @@
                                                 <div class="col-lg-5">
                                                     @if($tour->flyers)
                                                         <iframe src="{{ URL::asset('app-assets/images/tour_flyers/' . $tour->flyers )}}" width="100%" height="400px"></iframe>
-                                                        @else
-
                                                     @endif
                                                 </div>
                                             </div>

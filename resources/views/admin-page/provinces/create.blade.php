@@ -42,7 +42,7 @@
                                         <div class="col-md-6 my-1">
                                             <label for="featured_image" class="form-label">Province Image</label>
                                             <input type="file" class="form-control" name="featured_image"
-                                                id="featured_image" value="{{ old('featured_image') }}">
+                                                id="featured_image" value="{{ old('featured_image') }}" >
                                             <span class="danger text-danger">
                                                 @error('featured_image')
                                                     {{ $message }}
