@@ -61,23 +61,23 @@ class ZoneController extends Controller
 
         switch ($type) {
             case 'attractions':
-                $data = Attraction::find($id);
+                $data = Attraction::where('id', $id)->with('province')->first();
                 break;
 
             case 'events':
-                $data = Event::find($id);
+                $data = Event::where('id', $id)->with('province')->first();
                 break;
 
             case 'activities':
-                $data = Activity::find($id);
+                $data = Activity::where('id', $id)->with('province')->first();
                 break;
 
             case 'accommodations':
-                $data = Accommodation::find($id);
+                $data = Accommodation::where('id', $id)->with('province')->first();
                 break;
 
             case 'food_dinings':
-                $data = FoodAndDining::find($id);
+                $data = FoodAndDining::where('id', $id)->with('province')->first();
                 break;
 
             // Optionally, you can add more cases for other types if needed
