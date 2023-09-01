@@ -103,18 +103,18 @@ class ProvinceController extends Controller
             }
         }
 
-        if($request->hasFile('list_of_dot_accredited_establishments')) {
-            $file = $request->file('list_of_dot_accredited_establishments');
-            $accredited_pdf = Str::snake(Str::lower($request->name)) . '_pdf' . '.' . $file->getClientOriginalExtension();
-            $save_file =  $file->move(public_path() . '/app-assets/images/provinces_accredited_establishments', $accredited_pdf);
-        } else {
-            $accredited_pdf = $province->list_of_dot_accredited_establishments;
-        }
+        // if($request->hasFile('list_of_dot_accredited_establishments')) {
+        //     $file = $request->file('list_of_dot_accredited_establishments');
+        //     $accredited_pdf = Str::snake(Str::lower($request->name)) . '_pdf' . '.' . $file->getClientOriginalExtension();
+        //     $save_file =  $file->move(public_path() . '/app-assets/images/provinces_accredited_establishments', $accredited_pdf);
+        // } else {
+        //     $accredited_pdf = $province->list_of_dot_accredited_establishments;
+        // }
 
         $update = $province->update(array_merge($data,
             [
                 'transportations' => json_encode($request->transportations),
-                'list_of_dot_accredited_establishments' => $accredited_pdf,
+                'list_of_dot_accredited_establishments' => $request->list_of_dot_accredited_establishments,
                 'images' => json_encode($images),
                 'featured_image' => $featured_image_name],
         ));

@@ -132,8 +132,8 @@
                                                 value="">
                                         </div>
                                         <div class="col-lg-6 my-1">
-                                            <label for="list_of_dot_accredited_establishments">List of DOT Accredited Establishments <span class="primary" style="font-size: 10px;">( PDF only )</span></label>
-                                            <input type="file" accept=".pdf" name="list_of_dot_accredited_establishments" id="list_of_dot_accredited_establishments" class="form-control">
+                                            <label for="list_of_dot_accredited_establishments">List of DOT Accredited Establishments</label>
+                                            <input type="text" name="list_of_dot_accredited_establishments" id="list_of_dot_accredited_establishments" class="form-control" value="{{ $province->list_of_dot_accredited_establishments }}">
                                         </div>
                                     </div>
                                 </div>
@@ -153,11 +153,6 @@
                                                 </div>
                                             @empty
                                             @endforelse
-                                        @endif
-                                    </div>
-                                    <div class="my-1">
-                                        @if($province->list_of_dot_accredited_establishments)
-                                            <iframe src="{{ URL::asset('app-assets/images/provinces_accredited_establishments/' . $province->list_of_dot_accredited_establishments )}}" width="100%" height="400px"></iframe>
                                         @endif
                                     </div>
                                 </div>
