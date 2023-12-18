@@ -50,7 +50,7 @@ class AuthController extends Controller
             'email' => ['required', 'unique:users,email', 'email'],
             'password' => ['required', 'required_with:confirm_password', 'same:confirm_password'],
             'confirm_password' => ['required', 'min:8'],
-            'phone_number' => ['nullable', 'min:9']
+            'phone_number' => ['nullable']
         ]);
 
         # if the requested input have an error
